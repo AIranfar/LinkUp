@@ -17,9 +17,9 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
     profile_image = db.Column(db.String(500), nullable=True)
+    about_me = db.Column(db.String(800))
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now)
-    about_me = db.Column(db.String(800))
 
 
     @property
@@ -37,5 +37,12 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'hashed_password': self.hashed_password,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'profile_image': self.profile_image,
+            'about_me': self.about_me,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
