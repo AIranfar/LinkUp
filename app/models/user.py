@@ -22,7 +22,10 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now)
 
-
+    posts = db.relationship('Post', back_populates='user', cascade='all, delete-orphan')
+    comments = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
+    likes = db.relationship('Like', back_populates='user', cascade='all, delete-orphan')
+    
     @property
     def password(self):
         return self.hashed_password
@@ -39,7 +42,6 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'hashed_password': self.hashed_password,
             'first_name': self.first_name,
             'last_name': self.last_name,
             'profile_image': self.profile_image,
