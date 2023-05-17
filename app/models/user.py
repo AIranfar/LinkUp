@@ -3,7 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
 
-
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -17,15 +16,15 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
     profile_image = db.Column(db.String(500), nullable=False)
-    about_me = db.Column(db.String(800)),
+    about_me = db.Column(db.String(800))
     location = db.Column(db.String(100))
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now)
 
-    posts = db.relationship('Post', back_populates='user', cascade='all, delete-orphan')
-    comments = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
-    likes = db.relationship('Like', back_populates='user', cascade='all, delete-orphan')
-    
+    post = db.relationship('Post', back_populates='user', cascade='all, delete-orphan')
+    comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
+    like = db.relationship('Like', back_populates='user', cascade='all, delete-orphan')
+
     @property
     def password(self):
         return self.hashed_password

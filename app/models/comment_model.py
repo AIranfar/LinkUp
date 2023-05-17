@@ -9,13 +9,13 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     comment_body = db.Column(db.String(500), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('user.id')), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now)
 
-    user = db.relationship('User', back_populates='comments')
-    post = db.relationship('Post', back_populates='comments')
+    user = db.relationship('User', back_populates='comment')
+    post = db.relationship('Post', back_populates='comment')
 
     def to_dict(self):
         return {
@@ -24,5 +24,5 @@ class Comment(db.Model):
             'user_id': self.user_id,
             'post_id': self.post_id,
             'created_at': self.created_at,
-            'updated-at': self.updated_at
+            'updated_at': self.updated_at
         }

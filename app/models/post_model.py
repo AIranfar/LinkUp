@@ -14,9 +14,9 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now)
 
-    user = db.relationship('User', back_populates='posts')
-    comments = db.relationship('Comment', back_populates='posts', cascade='all, delete-orphan')
-    likes = db.relationship('Like', back_populates='posts', cascade='all, delete-orphan')
+    user = db.relationship('User', back_populates='post')
+    comment = db.relationship('Comment', back_populates='post', cascade='all, delete-orphan')
+    like = db.relationship('Like', back_populates='post', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
