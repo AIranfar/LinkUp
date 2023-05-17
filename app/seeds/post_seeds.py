@@ -24,7 +24,7 @@ def seed_posts():
         updated_at=datetime.today()
     )
     post4 = Post(
-        post_body='Introducing the all new IPhone 20. Today, we are thrilled to announce a groundbreaking leap in mobile technology with the unveiling of the highly anticipated iPhone 20. Pushing the boundaries of innovation, the iPhone 20 represents the pinnacle of Apple\'s relentless pursuit of excellence in design, performance, and user experience. The iPhone 20 is designed to exceed all expectations, redefining what a smartphone can do. Featuring an ultra-sleek, seamless design, the device is constructed with an innovative blend of sustainable materials, making it not only beautiful but also environmentally friendly.',
+        post_body='Introducing the all new IPhone 20. Today, we are thrilled to announce a groundbreaking leap in mobile technology with the unveiling of the highly anticipated iPhone 20. Pushing the boundaries of innovation, the iPhone 20 represents the pinnacle of Apple\'s relentless pursuit of excellence in design, performance, and user experience. The iPhone 20 is designed to exceed all expectations, redefining what a smartphone can do.',
         user_id='4',
         image='https://cdn.wccftech.com/wp-content/uploads/2021/05/foldable-iPhone-2.jpg',
         created_at=datetime.today(),
