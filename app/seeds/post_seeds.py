@@ -6,7 +6,7 @@ def seed_posts():
     post1 = Post(
         post_body='Today, I am thrilled to share an exciting initiative that the Bill and Melinda Gates Foundation is undertaking to address a critical global challenge. We believe in using our resources and technology to make a positive impact and improve lives around the world. Introducing the "Hope for Tomorrow" program! Through this initiative, we are partnering with local communities and NGOs to provide clean drinking water to areas affected by water scarcity.',
         user_id=1,
-        imagte='https://assets.gatesnotes.com/8a5ac0b3-6095-00af-c50a-89056fbe4642/d6bb9286-ef58-4008-b370-7835b7ebecc4/toilets_2014_1200px_v9.jpg',
+        image='https://assets.gatesnotes.com/8a5ac0b3-6095-00af-c50a-89056fbe4642/d6bb9286-ef58-4008-b370-7835b7ebecc4/toilets_2014_1200px_v9.jpg',
         created_at=datetime.today(),
         updated_at=datetime.today()
     )
@@ -32,7 +32,7 @@ def seed_posts():
     )
 
     all_posts = [post1, post2, post3, post4]
-    db.session.add(post for post in all_posts)
+    add_posts = [db.session.add(post) for post in all_posts]
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

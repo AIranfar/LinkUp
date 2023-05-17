@@ -53,7 +53,7 @@ def seed_users():
     )
 
     all_users = [bill, elon, jeff, tim]
-    db.session.add(user for user in all_users)
+    add_users = [db.session.add(user) for user in all_users]
     db.session.commit()
 
 

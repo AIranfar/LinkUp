@@ -24,7 +24,7 @@ def seed_comments():
     )
 
     all_comments = [comment1, comment2, comment3]
-    db.session.add(comment for comment in all_comments)
+    add_comments = [db.session.add(comment) for comment in all_comments]
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
@@ -33,7 +33,7 @@ def seed_comments():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_posts():
+def undo_comments():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
