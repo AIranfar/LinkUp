@@ -32,7 +32,7 @@ def seed_posts():
     )
 
     all_posts = [post1, post2, post3, post4]
-    db.session.add(all_posts)
+    db.session.add(post for post in all_posts)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

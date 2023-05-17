@@ -24,7 +24,7 @@ def seed_comments():
     )
 
     all_comments = [comment1, comment2, comment3]
-    db.session.add(all_comments)
+    db.session.add(comment for comment in all_comments)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
