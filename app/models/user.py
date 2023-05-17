@@ -17,7 +17,8 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
     profile_image = db.Column(db.String(500), nullable=True)
-    about_me = db.Column(db.String(800))
+    about_me = db.Column(db.String(800)),
+    location = db.Column(db.String(100))
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now)
 
@@ -43,6 +44,7 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'profile_image': self.profile_image,
             'about_me': self.about_me,
+            'location': self.location,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
