@@ -46,5 +46,5 @@ def create_new_post():
 
         db.session.add(new_post)
         db.session.commit()
-        return {'New Post', new_post.to_dict()}
+        return new_post.to_dict()
     return form.errors
