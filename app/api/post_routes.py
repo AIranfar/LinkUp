@@ -9,7 +9,7 @@ post_routes = Blueprint('posts', __name__)
 ##get all posts
 
 @post_routes.route('/')
-# @login_required
+@login_required
 def get_all_posts():
     """"
     Query for all posts route that returns all of the posts from the db.
@@ -26,12 +26,3 @@ def get_all_posts():
         post['owner_info'] = post_owner['username']
     return response
 
-@post_routes.route('/current')
-@login_required
-def get_all_user_posts():
-    """
-    Query for all posts that belong to a specific user
-    """
-    user_id = session.get('_user_id')
-    posts = Post.query.filter_by(user_id=user_id).all()
-    return {'posts': [post.to_dict() for post in posts]}
