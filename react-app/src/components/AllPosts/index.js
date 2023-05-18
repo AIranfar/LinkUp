@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetAllPosts } from "../../store/posts";
+import CreateNewPost from "../CreateNewPost";
+import OpenModalButton from '../OpenModalButton';
 import './AllPosts.css'
 
 const GetAllPosts = () => {
@@ -29,6 +31,9 @@ const GetAllPosts = () => {
 
     return (
         <div>
+            <div>
+                <OpenModalButton buttonText="Create a new post" modalComponent={<CreateNewPost />} />
+            </div>
             {allPosts.map((post) => {
                 return (
                     <div className="single-post">
