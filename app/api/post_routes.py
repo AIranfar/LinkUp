@@ -11,9 +11,6 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/')
 # @login_required
 def get_all_posts():
-    """"
-    Query for all posts route that returns all of the posts from the db.
-    """
     all_posts = Post.query.all()
     response = [one_post.to_dict() for one_post in all_posts]
     print('All Posts', all_posts)
@@ -48,3 +45,17 @@ def create_new_post():
         db.session.commit()
         return new_post.to_dict()
     return form.errors
+
+# Delete Post
+
+@post_routes.route('/<int:id>', methods='DELETE')
+@login_required
+def delete_post(id):
+    post = Post.query(id)
+    if (not post):
+        return ('No Post Found', 404)
+
+    db.session.delete(post)
+    db.session.commit()
+
+    return {'Post Successfully Deleted': id}
