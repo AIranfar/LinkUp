@@ -1,0 +1,20 @@
+.new-post-container {
+    height: 20rem;
+    width: 25rem
+}
+
+.new-post-profile-image {
+    height: 100px;
+    width: 150px;
+}
+
+.new-post-errors {
+    font-weight: bold;
+    color: red;
+    font-size: 15px;
+}
+
+.new-post-form-container {
+    display: flex;
+    flex-direction: column;
+}

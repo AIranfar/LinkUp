@@ -1,6 +1,8 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetAllPosts } from "../../store/posts";
+import CreateNewPost from "../CreateNewPost";
+import OpenModalButton from '../OpenModalButton';
 import './AllPosts.css'
 
 const GetAllPosts = () => {
@@ -12,12 +14,34 @@ const GetAllPosts = () => {
         dispatch(thunkGetAllPosts())
     }, [dispatch])
 
+    function formatDate(createdAt) {
+        const date = new Date();
+        const monthNames = [
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
+
+        const day = date.getDate();
+        const monthIndex = date.getMonth();
+        const month = monthNames[monthIndex];
+        const year = date.getFullYear();
+
+        return `${month} ${day}, ${year}`;
+    }
+
     return (
         <div>
+            <div>
+                <OpenModalButton buttonText="Create a new post" modalComponent={<CreateNewPost />} />
+            </div>
             {allPosts.map((post) => {
                 return (
-                    post.post_body
-                    )
+                    <div className="single-post">
+                        {post.post_body}
+                        {formatDate(post.created_at)}
+                        {<img src={post.image} className="all-products-image" />}
+                    </div>
+                )
             })}
         </div>
     )
