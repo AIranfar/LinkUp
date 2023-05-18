@@ -16,9 +16,10 @@ const GetAllPosts = () => {
         <div>
             {allPosts.map((post) => {
                 return (
-                    post.post_body
-                    )
-            })}
+                    <div>
+                        {post.post_body}
+                    </div>
+                    )})}
         </div>
     )
 }
