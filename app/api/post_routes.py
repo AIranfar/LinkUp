@@ -12,7 +12,7 @@ post_routes = Blueprint('posts', __name__)
 # @login_required
 def get_all_posts():
     """"
-    Query for all products route that returns all of the products from the db.
+    Query for all posts route that returns all of the posts from the db.
     """
     all_posts = Post.query.all()
     response = [one_post.to_dict() for one_post in all_posts]
