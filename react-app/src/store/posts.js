@@ -25,6 +25,7 @@ export const thunkGetAllPosts = () => async dispatch => {
     if (response.ok) {
         const posts = await response.json()
         const normalizedPosts = normalizedAllPosts(posts)
+        // console.log('NORMAL POSTS', normalizedPosts)
         dispatch(actionGetAllPosts(normalizedPosts))
         return normalizedPosts
     }
