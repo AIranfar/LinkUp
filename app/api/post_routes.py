@@ -48,7 +48,7 @@ def create_new_post():
 
 # Edit a Post
 
-@post_routes.route('/<int:id>', methoda=['PUT'])
+@post_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_post(id):
     post = Post.query.get(id)
