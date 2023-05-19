@@ -51,7 +51,7 @@ def create_new_post():
 @post_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_post(id):
-    post = Post.query(id)
+    post = Post.query.get(id)
     if (not post):
         return ('No Post Found', 404)
 
