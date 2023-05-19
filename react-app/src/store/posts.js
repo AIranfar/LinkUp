@@ -1,6 +1,6 @@
 const GET_ALL_POSTS = 'posts/GET_ALL_POSTS'
 const CREATE_NEW_POST = 'posts/CREATE_NEW_POST'
-
+const EDIT_POST = 'posts/EDIT_POST'
 const DELETE_POST = 'posts/DELETE_POST'
 
 // ACTIONS
@@ -13,6 +13,11 @@ export const actionGetAllPosts = (posts) => ({
 export const actionCreateNewPost = (post) => ({
     type: CREATE_NEW_POST,
     post
+})
+
+export const actionEditPost = (postId) => ({
+    type: EDIT_POST,
+    postId
 })
 
 export const actionDeletePost = (postId) => ({
@@ -57,6 +62,19 @@ export const thunkCreateNewPost = (post) => async dispatch => {
     }
 }
 
+export const thunkEditPost = (post, postId) => async dispatch => {
+    const response = await fetch(`/api/products/${postId}`, {
+        method: 'PUT',
+        body: post
+    })
+
+    if (response.ok) {
+        const updatedPost = await response.json()
+        dispatch(actionEditPost(updatedPost))
+        return updatedPost
+    }
+}
+
 export const thunkDeletePost = (postId) => async dispatch => {
     const response = await fetch(`/api/posts/${postId}`, {
         method: 'DELETE'
@@ -68,7 +86,7 @@ export const thunkDeletePost = (postId) => async dispatch => {
     }
 }
 
-const initialState = { allPosts: {}, singlePost: {} }
+const initialState = { allPosts: {} }
 
 // Reducer
 
@@ -83,6 +101,10 @@ const postReducer = (state = initialState, action) => {
             const newState = { ...state, allPosts: { ...state.allPosts } }
             newState.allPosts[action.post.id] = action.post
             return newState
+        }
+        case EDIT_POST: {
+            const newState = {...state}
+            newState.allPosts[action.products.id] = action.posts
         }
         case DELETE_POST: {
             const newState = { ...state, allPosts: { ...state.allPosts } }

@@ -46,12 +46,28 @@ def create_new_post():
         return new_post.to_dict()
     return form.errors
 
+# Edit a Post
+
+@post_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_post(id):
+    post = Post.query.get(id)
+    data = request.get_json()
+
+    if post:
+        post.post_body = data['post_body'],
+        post.image = data['image']
+
+        db.session.commit()
+        return post.to_dict()
+    return {'Message': 'Post was not successfully edited'}
+
 # Delete Post
 
 @post_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_post(id):
-    post = Post.query(id)
+    post = Post.query.get(id)
     if (not post):
         return ('No Post Found', 404)
 

@@ -13,10 +13,10 @@ const DeletePost = ({ postId }) => {
     }
 
     return (
-        <div className='delete-review-container'>
-            <h1 className='delete-review-title'>Confirm Delete</h1>
-            <p className='delete-review-text'>Are you sure you want to remove this Post?</p>
-            <div className='delete-review-submit'>
+        <div className='delete-post-container'>
+            <h1 className='delete-posttitle'>Confirm Delete</h1>
+            <p className='delete-post-text'>Are you sure you want to remove this Post?</p>
+            <div className='delete-post-submit'>
                 <button id='yes-delete' onClick={handleSubmit}>Delete</button>
                 <button id='no-keep' onClick={closeModal}>Cancel</button>
             </div>
@@ -24,4 +24,4 @@ const DeletePost = ({ postId }) => {
     )
 }
 
-export default DeleteReview;
+export default DeletePost;
