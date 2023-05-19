@@ -48,7 +48,7 @@ def create_new_post():
 
 # Delete Post
 
-@post_routes.route('/<int:id>', methods='DELETE')
+@post_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_post(id):
     post = Post.query(id)
