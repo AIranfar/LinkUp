@@ -63,13 +63,15 @@ export const thunkCreateNewPost = (post) => async dispatch => {
 }
 
 export const thunkEditPost = (post, postId) => async dispatch => {
-    const response = await fetch(`/api/products/${postId}`, {
+    const response = await fetch(`/api/posts/${postId}`, {
         method: 'PUT',
-        body: post
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(post)
     })
 
     if (response.ok) {
         const updatedPost = await response.json()
+        console.log('UPDATED RESPONSE', updatedPost)
         dispatch(actionEditPost(updatedPost))
         return updatedPost
     }
@@ -104,7 +106,8 @@ const postReducer = (state = initialState, action) => {
         }
         case EDIT_POST: {
             const newState = {...state}
-            newState.allPosts[action.products.id] = action.posts
+            newState.allPosts[action.postId.id] = action.postId
+            return newState
         }
         case DELETE_POST: {
             const newState = { ...state, allPosts: { ...state.allPosts } }
