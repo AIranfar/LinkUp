@@ -44,7 +44,7 @@ const GetAllPosts = () => {
                             {sessionUser.id === post.user_id ?
                                 <div>
                                     <OpenModalButton buttonText="Delete Post" modalComponent={<DeletePostModal postId={post.id} />} />
-                                    {/* <OpenModalButton buttonText="Edit Post" modalComponent={<EditPostModal postId={post.id} />} /> */}
+                                    <OpenModalButton buttonText="Edit Post" modalComponent={<EditPostModal postId={post.id} />} />
                                 </div> : null}
                             {post.post_body}
                             {formatDate(post.created_at)}

@@ -86,7 +86,7 @@ export const thunkDeletePost = (postId) => async dispatch => {
     }
 }
 
-const initialState = { allPosts: {}, singlePost: {} }
+const initialState = { allPosts: {} }
 
 // Reducer
 
