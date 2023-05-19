@@ -14,7 +14,7 @@ const GetAllPosts = () => {
         dispatch(thunkGetAllPosts())
     }, [dispatch])
 
-    function formatDate(createdAt) {
+    function formatDate() {
         const date = new Date();
         const monthNames = [
             "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -34,15 +34,17 @@ const GetAllPosts = () => {
             <div>
                 <OpenModalButton buttonText="Create a new post" modalComponent={<CreateNewPost />} />
             </div>
-            {allPosts.map((post) => {
-                return (
-                    <div className="single-post">
-                        {post.post_body}
-                        {formatDate(post.created_at)}
-                        {<img src={post.image} className="all-products-image" />}
-                    </div>
-                )
-            })}
+            <div className="all-posts-container">
+                {allPosts.map((post) => {
+                    return (
+                        <div className="single-post">
+                            {post.post_body}
+                            {formatDate(post.created_at)}
+                            {<img src={post.image} className="all-posts-image" />}
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }
