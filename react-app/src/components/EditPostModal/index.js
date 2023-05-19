@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { thunkEditPost } from "../../store/posts";
+import { thunkEditPost, thunkGetAllPosts } from "../../store/posts";
 import { useModal } from "../../context/Modal";
 import './EditPostModal.css'
 
@@ -45,6 +45,7 @@ const EditPost = ({ postId }) => {
         const updatedPost = await dispatch(thunkEditPost(newPost, singlePost.id))
         console.log('updatedPOST --> ', updatedPost)
         closeModal();
+        dispatch(thunkGetAllPosts())
     }
 
     return (
