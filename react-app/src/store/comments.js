@@ -1,9 +1,9 @@
-const GET_COMMENTS_BY_POST = 'comments/GET_COMMENTS_BY_POST'
+const GET_ALL_COMMENTS = 'comments/GET_COMMENTS_BY_POST'
 
 // ACTION
 
 export const actionGetComments = (comments) => ({
-    type: GET_COMMENTS_BY_POST,
+    type: GET_ALL_COMMENTS,
     comments
 })
 
@@ -14,14 +14,16 @@ const normalizedAllComments = (comments) => {
     comments.forEach(comment => {
         normalizedComments[comment.id] = comment
     })
+    return normalizedComments
 }
 // THUNKS
 
-export const thunkGetComments = (postId) => async dispatch => {
-    const response = await fetch (`/api/comments/${postId}`)
+export const thunkGetComments = () => async dispatch => {
+    const response = await fetch ('/api/comments/')
 
     if (response.ok) {
         const comments = await response.json()
+        // console.log('NORMAL COMMENTS', comments)
         const normalizedComments = normalizedAllComments(comments)
         dispatch(actionGetComments(normalizedComments))
         return normalizedAllComments
@@ -34,7 +36,7 @@ const initialState = { allComments : {} }
 
 const commentReducer = (state = initialState, action) => {
     switch(action.type) {
-        case GET_COMMENTS_BY_POST: {
+        case GET_ALL_COMMENTS: {
             const newState = { ...state };
             newState.allComments = action.comments
             return newState

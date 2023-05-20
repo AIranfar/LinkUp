@@ -6,12 +6,12 @@ from datetime import datetime
 
 comment_routes = Blueprint('comments', __name__)
 
-# get all comments by post id
+# get all comments
 
-@comment_routes.route('/<int:post_id>')
+@comment_routes.route('/')
 @login_required
 def get_all_post_comments(post_id):
-    post_comments = Comment.query.filter_by(post_id=post_id).order_by(Comment.created_at.desc()).all()
+    post_comments = Comment.query.all()
     comments = [comment.to_dict() for comment in post_comments]
 
     for comment in comments:
