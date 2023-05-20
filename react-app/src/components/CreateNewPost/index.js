@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateNewPost } from "../../store/posts";
 import { useModal } from "../../context/Modal";
@@ -7,7 +6,6 @@ import './CreateNewPost.css'
 
 const CreateNewPost = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const [post_body, setPost_body] = useState('')
     const [image, setImage] = useState('')
     const [errors, setErrors] = useState('');
