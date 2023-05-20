@@ -24,3 +24,24 @@ def get_all_comments():
         comment['comment_owner_profile_picture'] = comment_owner['profile_image']
 
     return comments
+
+# create new comment
+
+@comment_routes.route('/<int:post_id>', methods=['POST'])
+@login_required
+def create_new_post(post_id):
+    form = CommentForm()
+    user_id = session.get('_user_id')
+    form['csrf_token'].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        new_comment = Comment(
+            user_id = user_id,
+            comment_body = form.data['comment_body'],
+            post_id = post_id
+        )
+
+        db.session.add(new_comment)
+        db.session.commit()
+        return new_comment.to_dict()
+    return form.errors
