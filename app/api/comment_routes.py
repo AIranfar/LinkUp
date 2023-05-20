@@ -10,14 +10,17 @@ comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/')
 @login_required
-def get_all_post_comments(post_id):
+def get_all_comments():
     post_comments = Comment.query.all()
     comments = [comment.to_dict() for comment in post_comments]
 
     for comment in comments:
         userId = comment['user_id']
         user = User.query.get(userId)
-        review_user = user.to_dict()
-        comment['User_info'] = review_user
+        comment_owner = user.to_dict()
+        comment['User_info'] = comment_owner
+        comment['comment_owner_first_name'] = comment_owner['first_name']
+        comment['comment_owner_last_name'] = comment_owner['last_name']
+        comment['comment_owner_profile_picture'] = comment_owner['profile_image']
 
     return comments
