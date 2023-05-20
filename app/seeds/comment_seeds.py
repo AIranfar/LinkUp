@@ -6,7 +6,7 @@ def seed_comments():
     comment1 = Comment (
         comment_body='Very cool Elon. But I put my order in 6 months ago. When can I expect it to be delivered?',
         user_id=3,
-        post_id=1,
+        post_id=2,
         created_at=datetime.today(),
         updated_at=datetime.today()
     )
