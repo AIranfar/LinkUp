@@ -35,7 +35,17 @@ export const thunkGetComments = () => async dispatch => {
     }
 }
 
+export const thunkCreateNewComment = (post_id, comment) => async dispatch => {
+    const response = await fetch(`/api/comments/${post_id}`, {
+        method: 'POST',
+        body: comment
+    })
 
+    if (response.ok) {
+        const newComment = await response.json()
+        dispatch(actionCreateNewComment(newComment))
+    }
+}
 
 const initialState = { allComments : {} }
 
