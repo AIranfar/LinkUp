@@ -1,0 +1,20 @@
+.new-comment-container {
+    height: 20rem;
+    width: 25rem
+}
+
+.new-comment-profile-image {
+    height: 100px;
+    width: 150px;
+}
+
+.new-comment-errors {
+    font-weight: bold;
+    color: red;
+    font-size: 15px;
+}
+
+.new-comment-form-container {
+    display: flex;
+    flex-direction: column;
+}
