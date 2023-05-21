@@ -1,6 +1,8 @@
 const GET_ALL_COMMENTS = 'comments/GET_COMMENTS_BY_POST'
 const CREATE_NEW_COMMENT = 'comments/ADD_NEW_COMMENT'
 
+const DELETE_COMMENT = 'comments/DELETE_COMMENT'
+
 // ACTION
 
 export const actionGetComments = (comments) => ({
@@ -11,6 +13,13 @@ export const actionGetComments = (comments) => ({
 export const actionCreateNewComment = (comment) => ({
     type: CREATE_NEW_COMMENT,
     comment
+})
+
+
+
+export const actionDeleteComment = (commentId) => ({
+    type: DELETE_COMMENT,
+    commentId
 })
 
 // NORMALIZE FUNCTIONS
@@ -25,7 +34,7 @@ const normalizedAllComments = (comments) => {
 // THUNKS
 
 export const thunkGetComments = () => async dispatch => {
-    const response = await fetch ('/api/comments/')
+    const response = await fetch('/api/comments/')
 
     if (response.ok) {
         const comments = await response.json()
@@ -35,8 +44,8 @@ export const thunkGetComments = () => async dispatch => {
     }
 }
 
-export const thunkCreateNewComment = (post_id, comment) => async dispatch => {
-    const response = await fetch(`/api/comments/${post_id}`, {
+export const thunkCreateNewComment = (postId, comment) => async dispatch => {
+    const response = await fetch(`/api/comments/${postId}`, {
         method: 'POST',
         body: comment
     })
@@ -47,12 +56,22 @@ export const thunkCreateNewComment = (post_id, comment) => async dispatch => {
     }
 }
 
-const initialState = { allComments : {} }
+export const thunkDeleteComment = (commentId) => async dispatch => {
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: 'DELETE'
+    })
+
+    if (response.ok) {
+        dispatch(actionDeleteComment(commentId))
+    }
+}
+
+const initialState = { allComments: {} }
 
 // REDUCER
 
 const commentReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case GET_ALL_COMMENTS: {
             const newState = { ...state };
             newState.allComments = action.comments
@@ -62,6 +81,11 @@ const commentReducer = (state = initialState, action) => {
             const newState = { ...state, allComments: { ...state.allComments } }
             newState.allComments[action.comment.id] = action.post
             return newState
+        }
+        case DELETE_COMMENT: {
+            const deleteState = { ...state }
+            delete deleteState.allComments[action.commentId];
+            return deleteState
         }
         default: return state
     }
