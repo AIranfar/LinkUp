@@ -46,3 +46,17 @@ def create_new_comment(post_id):
         db.session.commit()
         return new_comment.to_dict()
     return form.errors
+
+# delete comment
+
+@comment_routes.route('/<int:review_id>', methods=['DELETE'])
+@login_required
+def delete_comment(comment_id):
+    comment = Comment.query.get(comment_id)
+    if (not comment):
+        return ('No comment found'), 404
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    return {'Comment Successfully Deleted': comment_id}
