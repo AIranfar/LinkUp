@@ -21,6 +21,9 @@ def get_all_posts():
         user = User.query.get(user_id)
         post_owner = user.to_dict()
         post['owner_info'] = post_owner['username']
+        post['owner_first_name'] = post_owner['first_name']
+        post['owner_last_name'] = post_owner['last_name']
+        post['owner_profile_picture'] = post_owner['profile_image']
     return response
 
 # Create a new Post

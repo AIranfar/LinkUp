@@ -14,7 +14,20 @@
     gap: 10rem
 }
 
+.post-profile-picture {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 4rem;
+    object-fit: cover
+}
+
 .all-posts-image {
     width: 50%;
     margin-bottom: 2rem;
+}
+
+.post-profile-image {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 3rem;
 }

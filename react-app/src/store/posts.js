@@ -45,7 +45,6 @@ export const thunkGetAllPosts = () => async dispatch => {
         const normalizedPosts = normalizedAllPosts(posts)
         // console.log('NORMAL POSTS', normalizedPosts)
         dispatch(actionGetAllPosts(normalizedPosts))
-        return normalizedPosts
     }
 }
 
@@ -58,7 +57,6 @@ export const thunkCreateNewPost = (post) => async dispatch => {
     if (response.ok) {
         const newPost = await response.json()
         dispatch(actionCreateNewPost(newPost))
-        return newPost
     }
 }
 
@@ -73,7 +71,6 @@ export const thunkEditPost = (post, postId) => async dispatch => {
         const updatedPost = await response.json()
         console.log('UPDATED RESPONSE', updatedPost)
         dispatch(actionEditPost(updatedPost))
-        return updatedPost
     }
 }
 
