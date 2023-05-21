@@ -5,6 +5,7 @@ import CreateNewPost from "../CreateNewPost";
 import OpenModalButton from '../OpenModalButton';
 import DeletePostModal from '../DeletePostModal';
 import EditPostModal from '../EditPostModal';
+import CreateNewComment from "../CreateNewComment";
 // import DeleteCommentModal from '../DeleteCommentModal'
 // import EditCommentModal from '../EditCommentModal'
 import { thunkGetComments } from "../../store/comments";
@@ -16,7 +17,7 @@ const GetAllPosts = () => {
     console.log('ALLPOSTS', allPosts)
     const sessionUser = useSelector((state) => state.session.user);
     const allComments = Object.values(useSelector((state) => state.allComments.allComments))
-    // console.log('ALLCOMMENTS->', allComments)
+    console.log('ALLCOMMENTS->', allComments)
     // console.log('USER', sessionUser)
 
 
@@ -25,9 +26,6 @@ const GetAllPosts = () => {
         dispatch(thunkGetComments())
     }, [dispatch])
 
-    if (!allComments) {
-        return <div>Loading comments...</div>;
-    }
 
     function formatDate() {
         const date = new Date();
@@ -44,6 +42,10 @@ const GetAllPosts = () => {
         return `${month} ${day}, ${year}`;
     }
 
+    if (!allComments) {
+        return <div>Loading comments...</div>;
+    }
+    
     const matchingComments = (postId) => {
         return allComments.filter(comment => comment.post_id === postId);
     };
@@ -70,6 +72,8 @@ const GetAllPosts = () => {
                                     {post.post_body}
                                     {formatDate(post.created_at)}
                                     {<img src={post.image} className="all-posts-image" />}
+                                    {console.log('POSTID', post.id)}
+                                    <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
                                     {matchingComments(post.id).map((comment) => {
                                         return (
                                             <p>
@@ -78,8 +82,8 @@ const GetAllPosts = () => {
                                                 {comment.comment_owner_first_name} {comment.comment_owner_last_name}
                                                 {sessionUser.id === comment.user_id ?
                                                     <div>
-                                                        {/* <OpenModalButton buttonText="Delete Comment" modalComponent={<DeleteCommentModal postId={post.id} />} /> */}
                                                         {/* <OpenModalButton buttonText="Edit Comment" modalComponent={<EditCommentModal postId={post.id} />} /> */}
+                                                        {/* <OpenModalButton buttonText="Delete Comment" modalComponent={<DeleteCommentModal postId={post.id} />} /> */}
                                                     </div> : null}
                                                 {comment.comment_body}
                                             </p>

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkCreateNewComment } from '../../store/comments';
+import { thunkCreateNewComment, thunkGetComments } from '../../store/comments';
 import { useModal } from "../../context/Modal";
 import './CreateNewComment.css'
 
-const CreateNewComment = ({ post_id }) => {
+const CreateNewComment = ({ postId }) => {
     const dispatch = useDispatch();
     const [comment_body, setComment_body] = useState('')
+    const [errors, setErrors] = useState('')
     const sessionUser = useSelector((state) => state.session.user);
     const {closeModal} = useModal()
+    console.log('POSTID', postId)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,17 +23,19 @@ const CreateNewComment = ({ post_id }) => {
             return setErrors(allErrors)
         }
 
-        const newComment = {
-            comment_body
-        }
+        console.log('COMMENT_BODY:', comment_body)
 
-        dispatch(thunkCreateNewComment(post_id, newComment))
+        const newComment = new FormData();
+        newComment.append('comment_body', comment_body)
+
+        dispatch(thunkCreateNewComment(postId, newComment))
+        dispatch(thunkGetComments())
         closeModal()
     }
 
     return (
         <div className='new-comment-container'>
-            <form className='new-comment-form-container' onSubmit={handleSubmit}>
+            <form className='new-comment-form-container' method='POST' encType="multipart/form-data" onSubmit={handleSubmit}>
                 <img className='new-comment-profile-image' src={sessionUser.profile_image} />
                 {errors.post_body ? <p className='new-comment-errors'>{errors.comment_body}</p> : null}
                 <input

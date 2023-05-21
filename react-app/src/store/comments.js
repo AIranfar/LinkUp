@@ -40,9 +40,9 @@ export const thunkCreateNewComment = (post_id, comment) => async dispatch => {
         method: 'POST',
         body: comment
     })
-
     if (response.ok) {
         const newComment = await response.json()
+        // console.log('NEW COMMENT:', newComment)
         dispatch(actionCreateNewComment(newComment))
     }
 }
