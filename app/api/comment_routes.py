@@ -49,7 +49,7 @@ def create_new_comment(post_id):
 
 # delete comment
 
-@comment_routes.route('/<int:review_id>', methods=['DELETE'])
+@comment_routes.route('/<int:comment_id>', methods=['DELETE'])
 @login_required
 def delete_comment(comment_id):
     comment = Comment.query.get(comment_id)

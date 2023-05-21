@@ -6,7 +6,7 @@ import OpenModalButton from '../OpenModalButton';
 import DeletePostModal from '../DeletePostModal';
 import EditPostModal from '../EditPostModal';
 import CreateNewComment from "../CreateNewComment";
-// import DeleteCommentModal from '../DeleteCommentModal'
+import DeleteCommentModal from '../DeleteCommentModal'
 // import EditCommentModal from '../EditCommentModal'
 import { thunkGetComments } from "../../store/comments";
 import './AllPosts.css'
@@ -45,7 +45,7 @@ const GetAllPosts = () => {
     if (!allComments) {
         return <div>Loading comments...</div>;
     }
-    
+
     const matchingComments = (postId) => {
         return allComments.filter(comment => comment.post_id === postId);
     };
@@ -83,7 +83,7 @@ const GetAllPosts = () => {
                                                 {sessionUser.id === comment.user_id ?
                                                     <div>
                                                         {/* <OpenModalButton buttonText="Edit Comment" modalComponent={<EditCommentModal postId={post.id} />} /> */}
-                                                        {/* <OpenModalButton buttonText="Delete Comment" modalComponent={<DeleteCommentModal postId={post.id} />} /> */}
+                                                        <OpenModalButton buttonText="Delete Comment" modalComponent={<DeleteCommentModal commentId={comment.id} />} />
                                                     </div> : null}
                                                 {comment.comment_body}
                                             </p>
