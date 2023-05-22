@@ -7,7 +7,7 @@ import DeletePostModal from '../DeletePostModal';
 import EditPostModal from '../EditPostModal';
 import CreateNewComment from "../CreateNewComment";
 import DeleteCommentModal from '../DeleteCommentModal'
-// import EditCommentModal from '../EditCommentModal'
+import EditCommentModal from '../EditCommentModal'
 import { thunkGetComments } from "../../store/comments";
 import './AllPosts.css'
 
@@ -72,17 +72,17 @@ const GetAllPosts = () => {
                                     {post.post_body}
                                     {formatDate(post.created_at)}
                                     {<img src={post.image} className="all-posts-image" />}
-                                    {console.log('POSTID', post.id)}
+                                    {/* {console.log('POSTID', post.id)} */}
                                     <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
                                     {matchingComments(post.id).map((comment) => {
                                         return (
                                             <p>
-                                                {console.log('comment->', comment)}
+                                                {/* {console.log('comment->', comment)} */}
                                                 {<img src={comment.comment_owner_profile_picture} className='post-profile-picture' />}
                                                 {comment.comment_owner_first_name} {comment.comment_owner_last_name}
                                                 {sessionUser.id === comment.user_id ?
                                                     <div>
-                                                        {/* <OpenModalButton buttonText="Edit Comment" modalComponent={<EditCommentModal postId={post.id} />} /> */}
+                                                        <OpenModalButton buttonText="Edit Comment" modalComponent={<EditCommentModal commentId={comment.id} />} />
                                                         <OpenModalButton buttonText="Delete Comment" modalComponent={<DeleteCommentModal commentId={comment.id} />} />
                                                     </div> : null}
                                                 {comment.comment_body}

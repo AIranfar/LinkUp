@@ -42,8 +42,8 @@ const EditPost = ({ postId }) => {
         // newPost.append('post_body', post_body)
         // newPost.append('image', image)
 
-        const updatedPost = await dispatch(thunkEditPost(newPost, singlePost.id))
-        console.log('updatedPOST --> ', updatedPost)
+        await dispatch(thunkEditPost(newPost, singlePost.id))
+        // console.log('updatedPOST --> ', updatedPost)
         closeModal();
         dispatch(thunkGetAllPosts())
     }
@@ -51,7 +51,7 @@ const EditPost = ({ postId }) => {
     return (
         <div className='edit-post-container'>
             <div>Edit Your Post</div>
-            <form className='edit-post-form-container' method='POST' encType="multipart/form-data" onSubmit={handleSubmit}>
+            <form className='edit-post-form-container' onSubmit={handleSubmit}>
                 <img className='edit-post-profile-image' src={sessionUser.profile_image} />
                 {errors.post_body ? <p className='edit-post-errors'>{errors.post_body}</p> : null}
                 <input
