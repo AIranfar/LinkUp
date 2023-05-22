@@ -69,7 +69,7 @@ export const thunkEditPost = (post, postId) => async dispatch => {
 
     if (response.ok) {
         const updatedPost = await response.json()
-        console.log('UPDATED RESPONSE', updatedPost)
+        // console.log('UPDATED RESPONSE', updatedPost)
         dispatch(actionEditPost(updatedPost))
     }
 }
