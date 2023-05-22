@@ -10,7 +10,7 @@ const CreateNewPost = () => {
     const [image, setImage] = useState('')
     const [errors, setErrors] = useState('');
     const sessionUser = useSelector((state) => state.session.user);
-    console.log('SessionUser', sessionUser)
+    // console.log('SessionUser', sessionUser)
     const { closeModal } = useModal()
 
     const handleSubmit = async (e) => {

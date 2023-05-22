@@ -1,6 +1,6 @@
 const GET_ALL_COMMENTS = 'comments/GET_COMMENTS_BY_POST'
 const CREATE_NEW_COMMENT = 'comments/ADD_NEW_COMMENT'
-
+const EDIT_COMMENT = 'comments/EDIT_COMMENT'
 const DELETE_COMMENT = 'comments/DELETE_COMMENT'
 
 // ACTION
@@ -15,7 +15,10 @@ export const actionCreateNewComment = (comment) => ({
     comment
 })
 
-
+export const actionEditComment = (commentId) => ({
+    type: EDIT_COMMENT,
+    commentId
+})
 
 export const actionDeleteComment = (commentId) => ({
     type: DELETE_COMMENT,
@@ -56,6 +59,20 @@ export const thunkCreateNewComment = (postId, comment) => async dispatch => {
     }
 }
 
+export const thunkEditComment = (comment, commentId) => async dispatch => {
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: 'PUT',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(comment)
+    })
+
+    if (response.ok) {
+        const updatedComment = await response.json()
+        console.log('thunk comment', updatedComment)
+        dispatch(actionEditComment(updatedComment))
+    }
+}
+
 export const thunkDeleteComment = (commentId) => async dispatch => {
     const response = await fetch(`/api/comments/${commentId}`, {
         method: 'DELETE'
@@ -82,6 +99,11 @@ const commentReducer = (state = initialState, action) => {
             newState.allComments[action.comment.id] = action.post
             return newState
         }
+        case EDIT_COMMENT: {
+            const newState = { ...state };
+            newState.allComments[action.commentId.id] = action.comment;
+            return newState;
+          }
         case DELETE_COMMENT: {
             const deleteState = { ...state }
             delete deleteState.allComments[action.commentId];
