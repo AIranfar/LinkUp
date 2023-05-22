@@ -50,8 +50,10 @@ export const thunkGetComments = () => async dispatch => {
 export const thunkCreateNewComment = (postId, comment) => async dispatch => {
     const response = await fetch(`/api/comments/${postId}`, {
         method: 'POST',
-        body: comment
-    })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(comment)
+      });
+
     if (response.ok) {
         const newComment = await response.json()
         // console.log('NEW COMMENT:', newComment)
@@ -95,13 +97,13 @@ const commentReducer = (state = initialState, action) => {
             return newState
         }
         case CREATE_NEW_COMMENT: {
-            const newState = { ...state, allComments: { ...state.allComments } }
-            newState.allComments[action.comment.id] = action.post
-            return newState
-        }
-        case EDIT_COMMENT: {
+            const newState = { ...state, allComments: { ...state.allComments } };
+            newState.allComments[action.comment.id] = action.comment;
+            return newState;
+          }
+          case EDIT_COMMENT: {
             const newState = { ...state };
-            newState.allComments[action.commentId.id] = action.comment;
+            newState.allComments[action.commentId] = action.comment;
             return newState;
           }
         case DELETE_COMMENT: {
