@@ -24,6 +24,20 @@ function LoginFormModal() {
     }
   };
 
+  const demoUser = () => {
+    setEmail("bill@microsoft.com");
+    setPassword("password");
+    dispatch(login("bill@microsoft.com", "password"))
+      .then(closeModal)
+      .then(history.push('/posts'))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(["The provided credentials were invalid."]);
+        }
+      });
+  }
+
   return (
     <>
       <h1>Log In</h1>
@@ -52,6 +66,7 @@ function LoginFormModal() {
           />
         </label>
         <button type="submit">Log In</button>
+        <button className="demo-user-button" onClick={demoUser}>Log in as Demo User</button>
       </form>
     </>
   );

@@ -1,0 +1,24 @@
+.splash-container {
+    display: flex;
+    gap: 20rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.splash-login-sign-up-button {
+    background-color: #0072b1;
+    color: white;
+    width: 26rem;
+    height: 4rem;
+    border-radius: 40px;
+}
+
+.splash-page-image {
+    width: 50rem;
+}
+
+.splash-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem
+}
