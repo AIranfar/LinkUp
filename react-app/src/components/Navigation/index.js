@@ -11,10 +11,16 @@ function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<ul>
-			<ul>
-				<NavLink exact to="/">Home</NavLink>
-			</ul>
+		<div className='nav-bar-container'>
+			{sessionUser ? (
+				<div className='up-link-container'>
+					<NavLink exact to="/posts" className='up-link blue-link'><span className="up">up</span></NavLink>
+				</div>
+			) : (
+				<div className='up-link-container'>
+					<div className='up-link white-link'>Link<span className="up">up</span></div>
+				</div>
+			)}
 			{isLoaded && (
 				<div>
 					{sessionUser ? (
@@ -36,7 +42,7 @@ function Navigation({ isLoaded }) {
 					)}
 				</div>
 			)}
-		</ul>
+		</div>
 	);
 }
 

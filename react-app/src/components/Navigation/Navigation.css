@@ -1,7 +1,39 @@
+.nav-bar-container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 7em;
+}
+
 .profile-dropdown {
   position: absolute;
 }
 
 .hidden {
   display: none;
+}
+
+.up-link-container {
+  height: 50px;
+  width: 50px;
+  /* background-color: #0072b1; */
+}
+
+.up-link {
+  display: flex;
+  text-decoration: none;
+  font-size: 40px;
+  justify-content: center;
+}
+
+.up-link {
+  background-color: white;
+  color: #0072b1
+}
+
+.up-link .up {
+  background-color: #0072b1;
+  color: white;
+  margin-left: .2rem;
 }
