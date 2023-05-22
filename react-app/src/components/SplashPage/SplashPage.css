@@ -1,3 +1,8 @@
+.splash-page-bigger-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .splash-container {
     display: flex;
     gap: 20rem;
