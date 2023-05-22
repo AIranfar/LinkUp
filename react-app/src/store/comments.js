@@ -68,7 +68,8 @@ export const thunkEditComment = (comment, commentId) => async dispatch => {
 
     if (response.ok) {
         const updatedComment = await response.json()
-        dispatch(actionEditComment)
+        console.log('thunk comment', updatedComment)
+        dispatch(actionEditComment(updatedComment))
     }
 }
 
@@ -99,10 +100,10 @@ const commentReducer = (state = initialState, action) => {
             return newState
         }
         case EDIT_COMMENT: {
-            const newState = { ...state }
-            newState.allComments[action.commentId.id] = action.commentId
-            return newState
-        }
+            const newState = { ...state };
+            newState.allComments[action.commentId.id] = action.comment;
+            return newState;
+          }
         case DELETE_COMMENT: {
             const deleteState = { ...state }
             delete deleteState.allComments[action.commentId];
