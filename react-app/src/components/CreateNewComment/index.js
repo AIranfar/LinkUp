@@ -30,6 +30,7 @@ const CreateNewComment = ({ postId }) => {
 
         dispatch(thunkCreateNewComment(postId, newComment))
         closeModal()
+        window.location.reload()
     }
 
     return (
