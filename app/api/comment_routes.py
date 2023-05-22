@@ -47,6 +47,21 @@ def create_new_comment(post_id):
         return new_comment.to_dict()
     return form.errors
 
+# edit comment
+
+@comment_routes.route('/<int:comment_id', methods=['PUT'])
+@login_required
+def edit_comment(comment_id):
+    comment = Comment.query.get(id)
+    data = request.get_json()
+
+    if comment:
+        comment.comment_body = data['comment_body']
+
+        db.session.commit()
+        return comment.to_dict()
+    return {'Message': 'Comment was not successfully edited'}
+
 # delete comment
 
 @comment_routes.route('/<int:comment_id>', methods=['DELETE'])
