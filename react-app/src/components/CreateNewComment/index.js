@@ -23,7 +23,7 @@ const CreateNewComment = ({ postId }) => {
             return setErrors(allErrors)
         }
 
-        console.log('COMMENT_BODY:', comment_body)
+        // console.log('COMMENT_BODY:', comment_body)
 
         const newComment = new FormData();
         newComment.append('comment_body', comment_body)
