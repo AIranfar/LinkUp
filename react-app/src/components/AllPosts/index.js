@@ -52,51 +52,54 @@ const GetAllPosts = () => {
 
     return (
         <div>
-            <div>
-                <OpenModalButton buttonText="Create a new post" modalComponent={<CreateNewPost />} />
-            </div>
-            <div className="all-posts-container">
-                {allPosts.map((post) => {
-                    return (
-                        <div>
-                            <div>
-                                <div className="single-post">
-                                    {<img src={post.owner_profile_picture} className='post-profile-picture' />}
-                                    {post.owner_first_name} {post.owner_last_name}
-                                    {/* {console.log('EACHPOST->', post)} */}
-                                    {sessionUser.id === post.user_id ?
-                                        <div>
-                                            <OpenModalButton buttonText="Delete Post" modalComponent={<DeletePostModal postId={post.id} />} />
-                                            <OpenModalButton buttonText="Edit Post" modalComponent={<EditPostModal postId={post.id} />} />
-                                        </div> : null}
-                                    {post.post_body}
-                                    {formatDate(post.created_at)}
-                                    {<img src={post.image} className="all-posts-image" />}
-                                    {/* {console.log('POSTID', post.id)} */}
-                                    <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
-                                    {matchingComments(post.id).map((comment) => {
-                                        return (
-                                            <p>
-                                                {/* {console.log('comment->', comment)} */}
-                                                {<img src={comment.comment_owner_profile_picture} className='post-profile-picture' />}
-                                                {comment.comment_owner_first_name} {comment.comment_owner_last_name}
-                                                {sessionUser.id === comment.user_id ?
-                                                    <div>
-                                                        <OpenModalButton buttonText="Edit Comment" modalComponent={<EditCommentModal commentId={comment.id} />} />
-                                                        <OpenModalButton buttonText="Delete Comment" modalComponent={<DeleteCommentModal commentId={comment.id} />} />
-                                                    </div> : null}
-                                                {comment.comment_body}
-                                            </p>
-                                        )
-                                    })}
+            {sessionUser ? (
+                <div>
+                    <OpenModalButton buttonText="Create a new post" modalComponent={<CreateNewPost />} />
+                    <div className="all-posts-container">
+                        {allPosts.map((post) => {
+                            return (
+                                <div key={post.id}>
+                                    <div className="single-post">
+                                        <img src={post.owner_profile_picture} className="post-profile-picture" />
+                                        {post.owner_first_name} {post.owner_last_name}
+                                        {/* {console.log('EACHPOST->', post)} */}
+                                        {sessionUser.id === post.user_id ? (
+                                            <div>
+                                                <OpenModalButton buttonText="Delete Post" modalComponent={<DeletePostModal postId={post.id} />} />
+                                                <OpenModalButton buttonText="Edit Post" modalComponent={<EditPostModal postId={post.id} />} />
+                                            </div>
+                                        ) : null}
+                                        {post.post_body}
+                                        {formatDate(post.created_at)}
+                                        <img src={post.image} className="all-posts-image" />
+                                        {/* {console.log('POSTID', post.id)} */}
+                                        <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
+                                        {matchingComments(post.id).map((comment) => {
+                                            return (
+                                                <p key={comment.id}>
+                                                    {/* {console.log('comment->', comment)} */}
+                                                    <img src={comment.comment_owner_profile_picture} className="post-profile-picture" />
+                                                    {comment.comment_owner_first_name} {comment.comment_owner_last_name}
+                                                    {sessionUser.id === comment.user_id ? (
+                                                        <div>
+                                                            <OpenModalButton buttonText="Edit Comment" modalComponent={<EditCommentModal commentId={comment.id} />} />
+                                                            <OpenModalButton buttonText="Delete Comment" modalComponent={<DeleteCommentModal commentId={comment.id} />} />
+                                                        </div>
+                                                    ) : null}
+                                                    {comment.comment_body}
+                                                </p>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            ) : null}
         </div>
-    )
+    );
+
 }
 
 export default GetAllPosts;
