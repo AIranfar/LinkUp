@@ -29,7 +29,6 @@ const CreateNewComment = ({ postId }) => {
         newComment.append('comment_body', comment_body)
 
         dispatch(thunkCreateNewComment(postId, newComment))
-        dispatch(thunkGetComments())
         closeModal()
     }
 
