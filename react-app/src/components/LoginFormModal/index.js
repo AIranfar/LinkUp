@@ -32,7 +32,7 @@ function LoginFormModal() {
       setErrors(data);
     } else {
       closeModal();
-      history.push('/posts');
+      history.push('/feed');
     }
   };
 
