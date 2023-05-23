@@ -16,8 +16,8 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
     profile_image = db.Column(db.String(500), nullable=False)
-    about_me = db.Column(db.String(800))
-    location = db.Column(db.String(100))
+    about_me = db.Column(db.String(800), nullable=True)
+    location = db.Column(db.String(100), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now)
 

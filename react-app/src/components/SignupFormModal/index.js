@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
 
 function SignupFormModal() {
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [profileImage, setProfileImage] = useState("");
+	const [aboutMe, setAboutMe] = useState("");
+	const [location, setLocation] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
@@ -16,11 +23,13 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password));
+			console.log('frontend data-->', username, email, firstName, lastName, profileImage, aboutMe, location, password)
+			const data = await dispatch(signUp(username, email, firstName, lastName, profileImage, aboutMe, location, password));
 			if (data) {
 				setErrors(data);
 			} else {
 				closeModal();
+				history.push('/posts')
 			}
 		} else {
 			setErrors([
@@ -39,6 +48,15 @@ function SignupFormModal() {
 					))}
 				</ul>
 				<label>
+					Username
+					<input
+						type="text"
+						value={username}
+						onChange={(e) => setUsername(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
 					Email
 					<input
 						type="text"
@@ -48,12 +66,49 @@ function SignupFormModal() {
 					/>
 				</label>
 				<label>
-					Username
+					First Name
 					<input
 						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
+						value={firstName}
+						onChange={(e) => setFirstName(e.target.value)}
 						required
+					/>
+				</label>
+				<label>
+					Last Name
+					<input
+						type="text"
+						value={lastName}
+						onChange={(e) => setLastName(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Profile Picture
+					<input
+						type="text"
+						value={profileImage}
+						onChange={(e) => setProfileImage(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					About Me
+					<input
+						type="textbox"
+						rows='3'
+						value={aboutMe}
+						placeholder="Optional"
+						onChange={(e) => setAboutMe(e.target.value)}
+					/>
+				</label>
+				<label>
+					Location
+					<input
+						type="text"
+						value={location}
+						placeholder="Optional"
+						onChange={(e) => setLocation(e.target.value)}
 					/>
 				</label>
 				<label>

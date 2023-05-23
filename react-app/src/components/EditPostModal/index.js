@@ -1,12 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { thunkEditPost, thunkGetAllPosts } from "../../store/posts";
 import { useModal } from "../../context/Modal";
 import './EditPostModal.css'
 
 const EditPost = ({ postId }) => {
-    // const { postId } = useParams();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const postsArr = Object.values(useSelector((state) => state.allPosts.allPosts))
