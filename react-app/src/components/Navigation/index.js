@@ -28,18 +28,22 @@ function Navigation({ isLoaded }) {
 							<ProfileButton user={sessionUser} />
 						</ul>
 					) : (
-						<>
-							<OpenModalButton
-								className='navigation-signup-button'
-								buttonText="Sign Up"
-								modalComponent={<SignupFormModal />}
-							/>
-							<OpenModalButton
-								className='navigation-login-button'
-								buttonText="Log In"
-								modalComponent={<LoginFormModal />}
-							/>
-						</>
+						<div className='navigation-signup-login-button-container'>
+							{/* <div className='navigation-signup-container'> */}
+								<OpenModalButton
+									className='navigation-signup-button'
+									buttonText="Join Now"
+									modalComponent={<SignupFormModal />}
+								/>
+							{/* </div> */}
+							{/* <div className='navigation-login-button'> */}
+								<OpenModalButton
+									className='navigation-login-button'
+									buttonText="Log In"
+									modalComponent={<LoginFormModal />}
+								/>
+							{/* </div> */}
+						</div>
 					)}
 				</div>
 			)}

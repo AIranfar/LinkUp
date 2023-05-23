@@ -39,6 +39,48 @@
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
+.navigation-signup-button {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+  color: black;
+  border-color: white;
+  font-size: 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 25px;
+  width: 120px;
+  height: 45px;
+}
+
 .navigation-login-button {
-  
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+  color: #0A66C2;
+  border-color: #0A66C2;
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 25px;
+  font-weight: 600;
+  border: 2px solid #0A66C2;
+  cursor: pointer;
+  background-color: white;
+  width: 120px;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation-signup-login-button-container {
+  display: flex;
+  gap: 3rem;
+}
+
+.navigation-login-button:hover {
+  background-color: rgba(240, 247, 254);
+}
+
+.navigation-signup-button:hover {
+  background-color: #F5F5F5;
 }
