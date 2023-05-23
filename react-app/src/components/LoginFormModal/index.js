@@ -40,9 +40,9 @@ function LoginFormModal() {
     <>
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
+        <ul className='signup-form-errors'>
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <ul key={idx}>{error}</ul>
           ))}
         </ul>
         <label>
