@@ -19,10 +19,17 @@
     height: 4rem;
     border-radius: 40px;
     font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.splash-login-sign-up-button:hover {
+    font-weight: bold;
+    box-shadow: 1px 1px 1px 1px black;
 }
 
 .splash-page-heading {
     color: #8F5849;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
     font-size: 56px;
     font-weight: 200;
 }
