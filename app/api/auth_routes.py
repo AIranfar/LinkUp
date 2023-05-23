@@ -14,7 +14,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 
@@ -61,10 +61,16 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('SIGNUP FORM DATA:', form.data)
     if form.validate_on_submit():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
+            first_name=form.data['first_name'],
+            last_name=form.data['last_name'],
+            profile_image=form.data['profile_image'],
+            about_me=form.data['about_me'],
+            location=form.data['location'],
             password=form.data['password']
         )
         db.session.add(user)
