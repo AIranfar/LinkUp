@@ -47,7 +47,8 @@ const GetAllPosts = () => {
     }
 
     const matchingComments = (postId) => {
-        return allComments.filter(comment => comment.post_id === postId);
+        console.log('POSTY----->', postId)
+        return allComments.filter(comment => comment?.post_id === postId);
     };
 
     return (
@@ -77,7 +78,7 @@ const GetAllPosts = () => {
                                         {matchingComments(post.id).map((comment) => {
                                             return (
                                                 <p key={comment.id}>
-                                                    {/* {console.log('comment->', comment)} */}
+                                                    {console.log('comment->', comment)}
                                                     <img src={comment.comment_owner_profile_picture} className="post-profile-picture" />
                                                     {comment.comment_owner_first_name} {comment.comment_owner_last_name}
                                                     {sessionUser.id === comment.user_id ? (

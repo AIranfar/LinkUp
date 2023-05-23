@@ -33,7 +33,6 @@ const EditComment = ({ commentId }) => {
 
         dispatch(thunkEditComment(updatedComment, commentId))
         closeModal()
-        window.location.reload()
     }
 
     return (

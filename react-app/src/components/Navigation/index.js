@@ -1,23 +1,53 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import LoginFormModal from '../LoginFormModal';
+import OpenModalButton from '../OpenModalButton';
+import SignupFormModal from '../SignupFormModal';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<ul>
-			<ul>
-				<NavLink exact to="/posts">LinkUp</NavLink>
-			</ul>
-			{isLoaded && (
-				<ul>
-					<ProfileButton user={sessionUser} />
-				</ul>
+		<div className='nav-bar-container'>
+			{sessionUser ? (
+				<div className='up-link-container'>
+					<NavLink exact to="/posts" className='up-link blue-link'><span className="up">up</span></NavLink>
+				</div>
+			) : (
+				<div className='up-link-container'>
+					<div className='up-link white-link'>Link<span className="up">up</span></div>
+				</div>
 			)}
-		</ul>
+			{isLoaded && (
+				<div>
+					{sessionUser ? (
+						<ul>
+							<ProfileButton user={sessionUser} />
+						</ul>
+					) : (
+						<div className='navigation-signup-login-button-container'>
+							{/* <div className='navigation-signup-container'> */}
+								<OpenModalButton
+									className='navigation-signup-button'
+									buttonText="Join Now"
+									modalComponent={<SignupFormModal />}
+								/>
+							{/* </div> */}
+							{/* <div className='navigation-login-button'> */}
+								<OpenModalButton
+									className='navigation-login-button'
+									buttonText="Log In"
+									modalComponent={<LoginFormModal />}
+								/>
+							{/* </div> */}
+						</div>
+					)}
+				</div>
+			)}
+		</div>
 	);
 }
 

@@ -1,20 +1,42 @@
+.splash-page-bigger-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .splash-container {
     display: flex;
-    gap: 20rem;
+    gap: 5rem;
     justify-content: center;
     align-items: center;
+    padding: 4rem;
+    margin-left: 5rem;
 }
 
 .splash-login-sign-up-button {
-    background-color: #0072b1;
+    background-color: #0A66C2;
     color: white;
     width: 26rem;
     height: 4rem;
     border-radius: 40px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.splash-login-sign-up-button:hover {
+    font-weight: bold;
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+.splash-page-heading {
+    color: #8F5849;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-size: 56px;
+    font-weight: 200;
 }
 
 .splash-page-image {
-    width: 50rem;
+    width: 43rem;
+    margin-right: 5rem;
 }
 
 .splash-button-container {

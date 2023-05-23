@@ -19,24 +19,22 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
-        history.push('/posts')
+      closeModal()
+      history.push('/posts')
     }
   };
 
-  const demoUser = () => {
+  const demoUser = async () => {
     setEmail("bill@microsoft.com");
     setPassword("password");
-    dispatch(login("bill@microsoft.com", "password"))
-      .then(closeModal)
-      .then(history.push('/posts'))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(["The provided credentials were invalid."]);
-        }
-      });
-  }
+    const data = await dispatch(login("bill@microsoft.com", "password"));
+    if (data) {
+      setErrors(data);
+    } else {
+      closeModal();
+      history.push('/posts');
+    }
+  };
 
   return (
     <>
