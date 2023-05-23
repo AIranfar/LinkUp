@@ -47,31 +47,34 @@ export const thunkGetComments = () => async dispatch => {
     }
 }
 
-export const thunkCreateNewComment = (postId, comment) => async dispatch => {
+export const thunkCreateNewComment = (postId, comment_body) => async dispatch => {
+    // console.log('COMMENT_BODY--->', comment_body)
     const response = await fetch(`/api/comments/${postId}`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(comment)
-      });
+        body: JSON.stringify({ comment_body: comment_body })
+    });
 
     if (response.ok) {
         const newComment = await response.json()
         // console.log('NEW COMMENT:', newComment)
         dispatch(actionCreateNewComment(newComment))
+        dispatch(thunkGetComments())
     }
 }
 
 export const thunkEditComment = (comment, commentId) => async dispatch => {
     const response = await fetch(`/api/comments/${commentId}`, {
         method: 'PUT',
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(comment)
     })
 
     if (response.ok) {
         const updatedComment = await response.json()
-        console.log('thunk comment', updatedComment)
+        // console.log('thunk comment', updatedComment)
         dispatch(actionEditComment(updatedComment))
+        dispatch(thunkGetComments())
     }
 }
 
@@ -82,6 +85,7 @@ export const thunkDeleteComment = (commentId) => async dispatch => {
 
     if (response.ok) {
         dispatch(actionDeleteComment(commentId))
+        dispatch(thunkGetComments())
     }
 }
 
@@ -97,15 +101,15 @@ const commentReducer = (state = initialState, action) => {
             return newState
         }
         case CREATE_NEW_COMMENT: {
-            const newState = { ...state, allComments: { ...state.allComments } };
-            newState.allComments[action.comment.id] = action.comment;
-            return newState;
-          }
-          case EDIT_COMMENT: {
+            const newState = { ...state, allComments: { ...state.allComments } }
+            newState.allComments[action.comment.id] = action.comment
+            return newState
+        }
+        case EDIT_COMMENT: {
             const newState = { ...state };
-            newState.allComments[action.commentId] = action.comment;
+            newState.allComments[action.commentId.id] = action.commentId;
             return newState;
-          }
+        }
         case DELETE_COMMENT: {
             const deleteState = { ...state }
             delete deleteState.allComments[action.commentId];

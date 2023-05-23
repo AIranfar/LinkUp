@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkCreateNewComment, thunkGetComments } from '../../store/comments';
+import { thunkCreateNewComment } from '../../store/comments';
 import { useModal } from "../../context/Modal";
 import './CreateNewComment.css'
 
@@ -9,29 +9,28 @@ const CreateNewComment = ({ postId }) => {
     const [comment_body, setComment_body] = useState('')
     const [errors, setErrors] = useState('')
     const sessionUser = useSelector((state) => state.session.user);
-    const {closeModal} = useModal()
+    const { closeModal } = useModal();
     console.log('POSTID', postId)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let allErrors = {}
+        let allErrors = {};
 
-        if (comment_body.length > 500) allErrors.comment_body = 'Comment must be less than 500 characters'
+        if (comment_body.length > 500)
+            allErrors.comment_body = "Comment must be less than 500 characters";
+
+        console.log('FORM_DATA', comment_body)
 
         if (Object.keys(allErrors).length) {
-            return setErrors(allErrors)
+            return setErrors(allErrors);
         }
 
-        // console.log('COMMENT_BODY:', comment_body)
-
-        const newComment = new FormData();
-        newComment.append('comment_body', comment_body)
-
+        const newComment = comment_body
+        console.log('NEWCOMMENT -->', newComment)
         dispatch(thunkCreateNewComment(postId, newComment))
-        closeModal()
-        window.location.reload()
-    }
+        closeModal();
+    };
 
     return (
         <div className='new-comment-container'>

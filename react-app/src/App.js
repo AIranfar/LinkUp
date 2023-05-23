@@ -29,7 +29,7 @@ function App() {
           <Route path="/posts">
             <AllPosts />
           </Route>
-          <Route exact-path="/">
+          <Route exact path="/">
             <SplashPage />
           </Route>
         </Switch>

@@ -47,7 +47,8 @@ const GetAllPosts = () => {
     }
 
     const matchingComments = (postId) => {
-        return allComments.filter(comment => comment.post_id === postId);
+        console.log('POSTY----->', postId)
+        return allComments.filter(comment => comment?.post_id === postId);
     };
 
     return (

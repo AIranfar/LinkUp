@@ -10,7 +10,6 @@ const DeleteComment = ({ commentId }) => {
     const handleSubmit = () => {
         dispatch(thunkDeleteComment(commentId))
         closeModal()
-        window.location.reload()
     }
 
     return (
