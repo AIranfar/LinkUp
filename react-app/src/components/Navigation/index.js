@@ -30,13 +30,14 @@ function Navigation({ isLoaded }) {
 					) : (
 						<>
 							<OpenModalButton
-								buttonText="Log In"
-								modalComponent={<LoginFormModal />}
-							/>
-
-							<OpenModalButton
+								className='navigation-signup-button'
 								buttonText="Sign Up"
 								modalComponent={<SignupFormModal />}
+							/>
+							<OpenModalButton
+								className='navigation-login-button'
+								buttonText="Log In"
+								modalComponent={<LoginFormModal />}
 							/>
 						</>
 					)}

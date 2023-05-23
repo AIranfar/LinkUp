@@ -3,7 +3,7 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  padding: 1em 7em;
+  padding: 1em 11.5em;
 }
 
 .profile-dropdown {
@@ -28,11 +28,15 @@
 
 .up-link {
   background-color: white;
-  color: #0072b1
+  color: #0A66C2
 }
 
 .up-link .up {
-  background-color: #0072b1;
+  background-color: #0A66C2;
   color: white;
   margin-left: .2rem;
+}
+
+.navigation-login-button {
+
 }

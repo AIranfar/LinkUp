@@ -5,13 +5,15 @@
 
 .splash-container {
     display: flex;
-    gap: 20rem;
+    gap: 5rem;
     justify-content: center;
     align-items: center;
+    padding: 4rem;
+    margin-left: 5rem;
 }
 
 .splash-login-sign-up-button {
-    background-color: #0072b1;
+    background-color: #0A66C2;
     color: white;
     width: 26rem;
     height: 4rem;
@@ -19,8 +21,15 @@
     font-size: 1.3rem;
 }
 
+.splash-page-heading {
+    color: #8F5849;
+    font-size: 56px;
+    font-weight: 200;
+}
+
 .splash-page-image {
-    width: 50rem;
+    width: 43rem;
+    margin-right: 5rem;
 }
 
 .splash-button-container {

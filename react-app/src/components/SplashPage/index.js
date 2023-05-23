@@ -11,7 +11,7 @@ const SplashPage = () => {
         <div className='splash-page-bigger-container' >
             <div className='splash-container'>
                 <div className='splash-button-container'>
-                    <h1>Welcome to your professional community</h1>
+                    <h1 className='splash-page-heading'>Welcome to your professional community</h1>
                     <OpenModalButton
                         className='splash-login-sign-up-button'
                         buttonText="Log In"
