@@ -14,10 +14,10 @@ import './AllPosts.css'
 const GetAllPosts = () => {
     const dispatch = useDispatch();
     const allPosts = Object.values(useSelector((state) => state.allPosts.allPosts))
-    console.log('ALLPOSTS', allPosts)
+    // console.log('ALLPOSTS', allPosts)
     const sessionUser = useSelector((state) => state.session.user);
     const allComments = Object.values(useSelector((state) => state.allComments.allComments))
-    console.log('ALLCOMMENTS->', allComments)
+    // console.log('ALLCOMMENTS->', allComments)
     // console.log('USER', sessionUser)
 
 
@@ -61,7 +61,7 @@ const GetAllPosts = () => {
                             return (
                                 <div key={post.id}>
                                     <div className="single-post">
-                                        <img src={post.owner_profile_picture} className="post-profile-picture" />
+                                        <img src={post.owner_profile_picture} alt='Your-Profile-Image' className="post-profile-picture" />
                                         {post.owner_first_name} {post.owner_last_name}
                                         {/* {console.log('EACHPOST->', post)} */}
                                         {sessionUser.id === post.user_id ? (
@@ -72,14 +72,14 @@ const GetAllPosts = () => {
                                         ) : null}
                                         {post.post_body}
                                         {formatDate(post.created_at)}
-                                        <img src={post.image} className="all-posts-image" />
+                                        <img src={post.image} alt='Post-Image' className="all-posts-image" />
                                         {/* {console.log('POSTID', post.id)} */}
                                         <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
                                         {matchingComments(post.id).map((comment) => {
                                             return (
                                                 <p key={comment.id}>
-                                                    {console.log('comment->', comment)}
-                                                    <img src={comment.comment_owner_profile_picture} className="post-profile-picture" />
+                                                    {/* {console.log('comment->', comment)} */}
+                                                    <img src={comment.comment_owner_profile_picture} alt='post-profile-image' className="post-profile-picture" />
                                                     {comment.comment_owner_first_name} {comment.comment_owner_last_name}
                                                     {sessionUser.id === comment.user_id ? (
                                                         <div>

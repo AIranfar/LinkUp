@@ -18,7 +18,7 @@ function Navigation({ isLoaded }) {
 				</div>
 			) : (
 				<div className='up-link-container'>
-					<div className='up-link white-link'>Link<span className="up">up</span></div>
+					<div className='up-link'>Link<span className="up">up</span></div>
 				</div>
 			)}
 			{isLoaded && (

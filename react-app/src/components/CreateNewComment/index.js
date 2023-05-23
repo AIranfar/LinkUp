@@ -20,14 +20,14 @@ const CreateNewComment = ({ postId }) => {
         if (comment_body.length > 500)
             allErrors.comment_body = "Comment must be less than 500 characters";
 
-        console.log('FORM_DATA', comment_body)
+        // console.log('FORM_DATA', comment_body)
 
         if (Object.keys(allErrors).length) {
             return setErrors(allErrors);
         }
 
         const newComment = comment_body
-        console.log('NEWCOMMENT -->', newComment)
+        // console.log('NEWCOMMENT -->', newComment)
         dispatch(thunkCreateNewComment(postId, newComment))
         closeModal();
     };

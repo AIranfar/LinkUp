@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkDeleteComment, thunkGetComments } from "../../store/comments";
+import { thunkDeleteComment } from "../../store/comments";
 import './DeleteCommentModal.css'
 
 const DeleteComment = ({ commentId }) => {

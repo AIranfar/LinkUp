@@ -75,7 +75,7 @@ export const thunkEditPost = (post, postId) => async dispatch => {
 }
 
 export const thunkDeletePost = (postId) => async dispatch => {
-    console.log('THUNK POSTID', postId)
+    // console.log('THUNK POSTID', postId)
     const response = await fetch(`/api/posts/${postId}`, {
         method: 'DELETE'
     });

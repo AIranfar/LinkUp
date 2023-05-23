@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
-import { thunkEditComment, thunkGetComments } from "../../store/comments";
+import { thunkEditComment } from "../../store/comments";
 import { useModal } from "../../context/Modal";
 import './EditCommentModal.css';
 
