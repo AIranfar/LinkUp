@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
 					<NavLink exact to="/feed" className='up-link'>Link<span className="up">up</span></NavLink>
 				</div>
 			) : (
-				<div className='up-link-container'>
+				<div className='splash-page-up-link-container'>
 					<div className='up-link'>Link<span className="up">up</span></div>
 				</div>
 			)}
@@ -25,10 +25,7 @@ function Navigation({ isLoaded }) {
 				<div>
 					{sessionUser ? (
 						<ul>
-							<ProfileButton
-							className='navigation-profile-button'
-							buttonText={sessionUser.profile_image}
-							user={sessionUser} />
+							<ProfileButton user={sessionUser} />
 						</ul>
 					) : (
 						<div className='navigation-signup-login-button-container'>
