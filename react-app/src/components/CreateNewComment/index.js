@@ -17,8 +17,8 @@ const CreateNewComment = ({ postId }) => {
 
         let allErrors = {};
 
-        if (comment_body.length > 500)
-            allErrors.comment_body = "Comment must be less than 500 characters";
+        if (comment_body.length > 500) allErrors.comment_body = "Comment must be less than 500 characters";
+        if (comment_body.length === 0) allErrors.comment_body = "Comment field can not be empty";
 
         // console.log('FORM_DATA', comment_body)
 

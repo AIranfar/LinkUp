@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetAllPosts } from "../../store/posts";
 import CreateNewPost from "../CreateNewPost";
@@ -14,11 +14,10 @@ import './AllPosts.css'
 const GetAllPosts = () => {
     const dispatch = useDispatch();
     const allPosts = Object.values(useSelector((state) => state.allPosts.allPosts))
-    // console.log('ALLPOSTS', allPosts)
     const sessionUser = useSelector((state) => state.session.user);
     const allComments = Object.values(useSelector((state) => state.allComments.allComments))
-    // console.log('ALLCOMMENTS->', allComments)
-    // console.log('USER', sessionUser)
+    const ulRef = useRef();
+    const [isMenuOpen, setMenuOpen] = useState(false);
 
 
     useEffect(() => {
@@ -42,22 +41,65 @@ const GetAllPosts = () => {
         return `${month} ${day}, ${year}`;
     }
 
+    const matchingComments = (postId) => {
+        return allComments.filter(comment => comment?.post_id === postId);
+    };
+
+    const toggleMenu = () => {
+        setMenuOpen(prevState => !prevState);
+    };
+
+    const closeMenu = () => {
+        setMenuOpen(false);
+    };
+
+    useEffect(() => {
+        if (!isMenuOpen) return;
+
+        const handleOutsideClick = (e) => {
+            if (!ulRef.current.contains(e.target)) {
+                closeMenu();
+            }
+        };
+
+        document.addEventListener("click", handleOutsideClick);
+
+        return () => document.removeEventListener("click", handleOutsideClick);
+    }, [isMenuOpen]);
+
+    const ulClassName = "post-edit-delete" + (isMenuOpen ? "" : " hidden")
+
+    const renderPostActions = (post) => {
+        if (sessionUser.id === post.user_id) {
+            return (
+                <>
+                    <i onClick={toggleMenu} className="fa-solid fa-ellipsis"></i>
+                    <div className={ulClassName} ref={ulRef}>
+                        <div className="post-edit-delete-container">
+                                <i className="fa-solid fa-pencil edit-pencil-symbol"></i>
+                                <OpenModalButton buttonText="Edit Post" modalComponent={<EditPostModal postId={post.id} />} />
+                                <i class="fa-regular fa-trash-can delete-trashcan-symbol"></i>
+                                <OpenModalButton buttonText="Delete Post" modalComponent={<DeletePostModal postId={post.id} />} />
+                        </div>
+                    </div>
+                </>
+            );
+        }
+        return null;
+    };
+
     if (!allComments) {
         return <div>Loading comments...</div>;
     }
 
-    const matchingComments = (postId) => {
-        // console.log('POSTY----->', postId)
-        return allComments.filter(comment => comment?.post_id === postId);
-    };
 
     return (
         <div>
             {sessionUser ? (
                 <div>
                     <div className="create-new-post-container">
-                    <img src={sessionUser.profile_image} className="post-profile-picture" />
-                    <OpenModalButton className='create-new-post-button' buttonText="Start a post" modalComponent={<CreateNewPost />} />
+                        <img src={sessionUser.profile_image} className="post-profile-picture" />
+                        <OpenModalButton className='create-new-post-button' buttonText="Start a post" modalComponent={<CreateNewPost />} />
                     </div>
                     <div className='feed-divider'></div>
                     <div className="all-posts-container">
@@ -67,22 +109,14 @@ const GetAllPosts = () => {
                                     <div className="single-post">
                                         <img src={post.owner_profile_picture} className="post-profile-picture" />
                                         {post.owner_first_name} {post.owner_last_name}
-                                        {/* {console.log('EACHPOST->', post)} */}
-                                        {sessionUser.id === post.user_id ? (
-                                            <div>
-                                                <OpenModalButton buttonText="Delete Post" modalComponent={<DeletePostModal postId={post.id} />} />
-                                                <OpenModalButton buttonText="Edit Post" modalComponent={<EditPostModal postId={post.id} />} />
-                                            </div>
-                                        ) : null}
+                                        {renderPostActions(post)}
                                         {post.post_body}
                                         {formatDate(post.created_at)}
                                         <img src={post.image} className="all-posts-image" />
-                                        {/* {console.log('POSTID', post.id)} */}
                                         <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
                                         {matchingComments(post.id).map((comment) => {
                                             return (
                                                 <p key={comment.id}>
-                                                    {/* {console.log('comment->', comment)} */}
                                                     <img src={comment.comment_owner_profile_picture} alt='post-profile-image' className="post-profile-picture" />
                                                     {comment.comment_owner_first_name} {comment.comment_owner_last_name}
                                                     {sessionUser.id === comment.user_id ? (
