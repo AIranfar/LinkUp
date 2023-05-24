@@ -14,10 +14,10 @@ import './AllPosts.css'
 const GetAllPosts = () => {
     const dispatch = useDispatch();
     const allPosts = Object.values(useSelector((state) => state.allPosts.allPosts))
-    console.log('ALLPOSTS', allPosts)
+    // console.log('ALLPOSTS', allPosts)
     const sessionUser = useSelector((state) => state.session.user);
     const allComments = Object.values(useSelector((state) => state.allComments.allComments))
-    console.log('ALLCOMMENTS->', allComments)
+    // console.log('ALLCOMMENTS->', allComments)
     // console.log('USER', sessionUser)
 
 
@@ -78,8 +78,8 @@ const GetAllPosts = () => {
                                         {matchingComments(post.id).map((comment) => {
                                             return (
                                                 <p key={comment.id}>
-                                                    {console.log('comment->', comment)}
-                                                    <img src={comment.comment_owner_profile_picture} className="post-profile-picture" />
+                                                    {/* {console.log('comment->', comment)} */}
+                                                    <img src={comment.comment_owner_profile_picture} alt='post-profile-image' className="post-profile-picture" />
                                                     {comment.comment_owner_first_name} {comment.comment_owner_last_name}
                                                     {sessionUser.id === comment.user_id ? (
                                                         <div>

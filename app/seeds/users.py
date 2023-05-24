@@ -11,7 +11,8 @@ def seed_users():
         password='password',
         first_name='Bill',
         last_name='Gates',
-        profile_image='https://content.fortune.com/wp-content/uploads/2022/07/GettyImages-1401841720-e1657905858652.jpg', about_me='Tech pioneer and philanthropist. Co-founder of Microsoft, I\'ve dedicated my life to advancing technology and making a positive impact through the Bill & Melinda Gates Foundation. With a hunger for knowledge and a commitment to global issues, I strive to create a brighter future for all.', location='Seattle, Washington',
+        profile_image='https://content.fortune.com/wp-content/uploads/2022/07/GettyImages-1401841720-e1657905858652.jpg',
+        about_me='Tech pioneer and philanthropist. Co-founder of Microsoft, I\'ve dedicated my life to advancing technology and making a positive impact through the Bill & Melinda Gates Foundation. With a hunger for knowledge and a commitment to global issues, I strive to create a brighter future for all.', location='Seattle, Washington',
         created_at=date.today(),
         updated_at=date.today()
     )

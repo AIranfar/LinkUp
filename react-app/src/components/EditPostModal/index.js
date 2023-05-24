@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { thunkEditPost, thunkGetAllPosts } from "../../store/posts";
 import { useModal } from "../../context/Modal";
 import './EditPostModal.css'
