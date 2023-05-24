@@ -55,7 +55,11 @@ const GetAllPosts = () => {
         <div>
             {sessionUser ? (
                 <div>
-                    <OpenModalButton buttonText="Create a new post" modalComponent={<CreateNewPost />} />
+                    <div className="create-new-post-container">
+                    <img src={sessionUser.profile_image} className="post-profile-picture" />
+                    <OpenModalButton className='create-new-post-button' buttonText="Start a post" modalComponent={<CreateNewPost />} />
+                    </div>
+                    <div className='feed-divider'></div>
                     <div className="all-posts-container">
                         {allPosts.map((post) => {
                             return (
