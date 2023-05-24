@@ -16,9 +16,6 @@ const GetAllPosts = () => {
     const allPosts = Object.values(useSelector((state) => state.allPosts.allPosts))
     const sessionUser = useSelector((state) => state.session.user);
     const allComments = Object.values(useSelector((state) => state.allComments.allComments))
-    const ulRef = useRef();
-    const [isMenuOpen, setMenuOpen] = useState(false);
-
 
     useEffect(() => {
         dispatch(thunkGetAllPosts())
@@ -45,43 +42,15 @@ const GetAllPosts = () => {
         return allComments.filter(comment => comment?.post_id === postId);
     };
 
-    const toggleMenu = () => {
-        setMenuOpen(prevState => !prevState);
-    };
-
-    const closeMenu = () => {
-        setMenuOpen(false);
-    };
-
-    useEffect(() => {
-        if (!isMenuOpen) return;
-
-        const handleOutsideClick = (e) => {
-            if (!ulRef.current.contains(e.target)) {
-                closeMenu();
-            }
-        };
-
-        document.addEventListener("click", handleOutsideClick);
-
-        return () => document.removeEventListener("click", handleOutsideClick);
-    }, [isMenuOpen]);
-
-    const ulClassName = "post-edit-delete" + (isMenuOpen ? "" : " hidden")
-
     const renderPostActions = (post) => {
         if (sessionUser.id === post.user_id) {
             return (
                 <>
-                    <i onClick={toggleMenu} className="fa-solid fa-ellipsis"></i>
-                    <div className={ulClassName} ref={ulRef}>
-                        <div className="post-edit-delete-container">
-                                <i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>
-                                <OpenModalButton buttonText="Edit Post" modalComponent={<EditPostModal postId={post.id} />} />
-                                <i class="fa-regular fa-trash-can delete-trashcan-symbol"></i>
-                                <OpenModalButton buttonText="Delete Post" modalComponent={<DeletePostModal postId={post.id} />} />
-                        </div>
+                    <div className="post-edit-delete-container">
+                        <OpenModalButton buttonText={<i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>} modalComponent={<EditPostModal postId={post.id} />} />
+                        <OpenModalButton buttonText={<i class="fa-regular fa-trash-can delete-trashcan-symbol"></i>} modalComponent={<DeletePostModal postId={post.id} />} />
                     </div>
+
                 </>
             );
         }
@@ -105,31 +74,29 @@ const GetAllPosts = () => {
                     <div className="all-posts-container">
                         {allPosts.map((post) => {
                             return (
-                                <div key={post.id}>
-                                    <div className="single-post">
-                                        <img src={post.owner_profile_picture} className="post-profile-picture" />
-                                        {post.owner_first_name} {post.owner_last_name}
-                                        {renderPostActions(post)}
-                                        {post.post_body}
-                                        {formatDate(post.created_at)}
-                                        <img src={post.image} className="all-posts-image" />
-                                        <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
-                                        {matchingComments(post.id).map((comment) => {
-                                            return (
-                                                <p key={comment.id}>
-                                                    <img src={comment.comment_owner_profile_picture} alt='post-profile-image' className="post-profile-picture" />
-                                                    {comment.comment_owner_first_name} {comment.comment_owner_last_name}
-                                                    {sessionUser.id === comment.user_id ? (
-                                                        <div>
-                                                            <OpenModalButton buttonText="Edit Comment" modalComponent={<EditCommentModal commentId={comment.id} />} />
-                                                            <OpenModalButton buttonText="Delete Comment" modalComponent={<DeleteCommentModal commentId={comment.id} />} />
-                                                        </div>
-                                                    ) : null}
-                                                    {comment.comment_body}
-                                                </p>
-                                            );
-                                        })}
-                                    </div>
+                                <div className="single-post">
+                                    <img src={post.owner_profile_picture} className="post-profile-picture" />
+                                    {post.owner_first_name} {post.owner_last_name}
+                                    {renderPostActions(post)}
+                                    {post.post_body}
+                                    {formatDate(post.created_at)}
+                                    <img src={post.image} className="all-posts-image" />
+                                    <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
+                                    {matchingComments(post.id).map((comment) => {
+                                        return (
+                                            <p key={comment.id}>
+                                                <img src={comment.comment_owner_profile_picture} alt='post-profile-image' className="post-profile-picture" />
+                                                {comment.comment_owner_first_name} {comment.comment_owner_last_name}
+                                                {sessionUser.id === comment.user_id ? (
+                                                    <div>
+                                                        <OpenModalButton buttonText={<i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>} modalComponent={<EditCommentModal commentId={comment.id} />} />
+                                                        <OpenModalButton buttonText={<i class="fa-regular fa-trash-can delete-trashcan-symbol"></i>} modalComponent={<DeleteCommentModal commentId={comment.id} />} />
+                                                    </div>
+                                                ) : null}
+                                                {comment.comment_body}
+                                            </p>
+                                        );
+                                    })}
                                 </div>
                             );
                         })}

@@ -12,12 +12,12 @@
 }
 
 .user-info-profile-image {
-    height: 6rem;
-    width: 6rem;
-    border-radius: 3rem;
+    height: 75px;
+    width: 75px;
+    border-radius: 50px;
     object-fit:fill;
     border: 3px solid white;
-    padding-top: 15px
+    margin-top: 15px;
 }
 
 .user-info-name {
