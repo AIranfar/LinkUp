@@ -30,22 +30,7 @@ def get_all_comments():
 @comment_routes.route('/<int:post_id>', methods=['POST'])
 @login_required
 def create_new_comment(post_id):
-    # form = CommentForm()
     user_id = session.get('_user_id')
-    # form['csrf_token'].data = request.cookies["csrf_token"]
-    # # print ('FORM DATA:', form.data)
-    # if form.validate_on_submit():
-    #     new_comment = Comment(
-    #         comment_body = form.data['comment_body'],
-    #         user_id = user_id,
-    #         post_id = post_id
-    #     )
-
-    #     # print('NEW COMMENT:', new_comment.to_dict())
-    #     db.session.add(new_comment)
-    #     db.session.commit()
-    #     return new_comment.to_dict()
-    # return form.errors
     data = request.get_json()
     print('DATAAAAAAAAAA----->', data)
     new_comment = Comment(

@@ -21,7 +21,8 @@ const EditComment = ({ commentId }) => {
 
         let allErrors = {}
 
-        if (comment_body.length > 500) allErrors.comment_body = 'Comment must be less than 500 characters'
+        if (comment_body.length > 500) allErrors.comment_body = 'Comment must be less than 500 characters';
+        if (comment_body.length === 0) allErrors.comment_body = 'Comment field can not be empty';
 
         if (Object.keys(allErrors).length) {
             return setErrors(allErrors)
