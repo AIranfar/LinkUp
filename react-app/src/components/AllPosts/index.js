@@ -47,8 +47,8 @@ const GetAllPosts = () => {
             return (
                 <>
                     <div className="post-edit-delete-container">
-                        <OpenModalButton buttonText={<i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>} modalComponent={<EditPostModal postId={post.id} />} />
-                        <OpenModalButton buttonText={<i class="fa-regular fa-trash-can delete-trashcan-symbol"></i>} modalComponent={<DeletePostModal postId={post.id} />} />
+                        <OpenModalButton buttonText={<i className="fa-regular fa-pen-to-square"></i>} modalComponent={<EditPostModal postId={post.id} />} className='edit-pencil-symbol' />
+                        <OpenModalButton buttonText={<i class="fa-regular fa-trash-can"></i>} modalComponent={<DeletePostModal postId={post.id} />} className='delete-trashcan-symbol' />
                     </div>
 
                 </>
@@ -60,7 +60,6 @@ const GetAllPosts = () => {
     if (!allComments) {
         return <div>Loading comments...</div>;
     }
-
 
     return (
         <div>
@@ -75,11 +74,19 @@ const GetAllPosts = () => {
                         {allPosts.map((post) => {
                             return (
                                 <div className="single-post">
-                                    <img src={post.owner_profile_picture} className="post-profile-picture" />
-                                    {post.owner_first_name} {post.owner_last_name}
-                                    {renderPostActions(post)}
-                                    {post.post_body}
-                                    {formatDate(post.created_at)}
+                                    <div className="post-header">
+                                        <div className="post-user-info">
+                                            <img src={post.owner_profile_picture} className="post-profile-picture" />
+                                            <div className="post-user-name-created-at">
+                                                {post.owner_first_name} {post.owner_last_name}
+                                                <p className="post-created-at">{formatDate(post.created_at)}</p>
+                                            </div>
+                                        </div>
+                                        {renderPostActions(post)}
+                                    </div>
+                                    <p className="single-post-body">
+                                        {post.post_body}
+                                    </p>
                                     <img src={post.image} className="all-posts-image" />
                                     <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
                                     {matchingComments(post.id).map((comment) => {

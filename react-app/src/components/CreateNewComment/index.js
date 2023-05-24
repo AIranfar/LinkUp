@@ -10,7 +10,7 @@ const CreateNewComment = ({ postId }) => {
     const [errors, setErrors] = useState('')
     const sessionUser = useSelector((state) => state.session.user);
     const { closeModal } = useModal();
-    console.log('POSTID', postId)
+    // console.log('POSTID', postId)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,7 +18,7 @@ const CreateNewComment = ({ postId }) => {
         let allErrors = {};
 
         if (comment_body.length > 500) allErrors.comment_body = "Comment must be less than 500 characters";
-        if (comment_body.length === 0) allErrors.comment_body = "Comment field can not be empty";
+        if (comment_body.length < 1) allErrors.comment_body = "Comment field can not be empty";
 
         // console.log('FORM_DATA', comment_body)
 
@@ -36,7 +36,7 @@ const CreateNewComment = ({ postId }) => {
         <div className='new-comment-container'>
             <form className='new-comment-form-container' method='POST' encType="multipart/form-data" onSubmit={handleSubmit}>
                 <img className='new-comment-profile-image' src={sessionUser.profile_image} />
-                {errors.post_body ? <p className='new-comment-errors'>{errors.comment_body}</p> : null}
+                {errors.comment_body ? <p className='new-comment-errors'>{errors.comment_body}</p> : null}
                 <input
                     type='textbox'
                     rows='3'

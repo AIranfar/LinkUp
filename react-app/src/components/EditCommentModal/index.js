@@ -22,7 +22,7 @@ const EditComment = ({ commentId }) => {
         let allErrors = {}
 
         if (comment_body.length > 500) allErrors.comment_body = 'Comment must be less than 500 characters';
-        if (comment_body.length === 0) allErrors.comment_body = 'Comment field can not be empty';
+        if (comment_body.length < 1) allErrors.comment_body = 'Comment field can not be empty';
 
         if (Object.keys(allErrors).length) {
             return setErrors(allErrors)
@@ -41,7 +41,7 @@ const EditComment = ({ commentId }) => {
             <div>Edit Your Comment</div>
             <form className='edit-comment-form-container' onSubmit={handleSubmit}>
                 <img className='edit-comment-profile-image' src={sessionUser.profile_image} />
-                {errors.comment_body ? <p className='edit-comment-errors'>{errors.comment}</p> : null}
+                {errors.comment_body ? <p className='edit-comment-errors'>{errors.comment_body}</p> : null}
                 <input
                     type='textbox'
                     rows='7'
