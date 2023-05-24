@@ -3,8 +3,9 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  padding: 1em 11.5em;
-  
+  margin-left: 10rem;
+  margin-right: 10rem;
+  padding-bottom: 10px;
 }
 
 .profile-dropdown {
