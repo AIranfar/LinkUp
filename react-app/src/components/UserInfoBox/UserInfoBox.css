@@ -8,13 +8,14 @@
     align-items: center;
     gap: 2rem;
     margin-left: 40px;
+    background-color: white;
 }
 
 .user-info-profile-image {
     height: 6rem;
     width: 6rem;
-    border-radius: 4rem;
-    object-fit: cover;
+    border-radius: 3rem;
+    object-fit:fill;
     border: 3px solid white;
     padding-top: 15px
 }
