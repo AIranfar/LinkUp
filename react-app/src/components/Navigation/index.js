@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
 		<div className='nav-bar-container'>
 			{sessionUser ? (
 				<div className='up-link-container'>
-					<NavLink exact to="/posts" className='up-link blue-link'><span className="up">up</span></NavLink>
+					<NavLink exact to="/feed" className='up-link blue-link'><span className="up">up</span></NavLink>
 				</div>
 			) : (
 				<div className='up-link-container'>
