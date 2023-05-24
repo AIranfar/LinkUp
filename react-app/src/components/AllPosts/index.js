@@ -76,7 +76,7 @@ const GetAllPosts = () => {
                     <i onClick={toggleMenu} className="fa-solid fa-ellipsis"></i>
                     <div className={ulClassName} ref={ulRef}>
                         <div className="post-edit-delete-container">
-                                <i className="fa-solid fa-pencil edit-pencil-symbol"></i>
+                                <i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>
                                 <OpenModalButton buttonText="Edit Post" modalComponent={<EditPostModal postId={post.id} />} />
                                 <i class="fa-regular fa-trash-can delete-trashcan-symbol"></i>
                                 <OpenModalButton buttonText="Delete Post" modalComponent={<DeletePostModal postId={post.id} />} />
