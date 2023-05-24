@@ -61,7 +61,7 @@ const GetAllPosts = () => {
                             return (
                                 <div key={post.id}>
                                     <div className="single-post">
-                                        <img src={post.owner_profile_picture} alt='Your-Profile-Image' className="post-profile-picture" />
+                                        <img src={post.owner_profile_picture} className="post-profile-picture" />
                                         {post.owner_first_name} {post.owner_last_name}
                                         {/* {console.log('EACHPOST->', post)} */}
                                         {sessionUser.id === post.user_id ? (
@@ -72,7 +72,7 @@ const GetAllPosts = () => {
                                         ) : null}
                                         {post.post_body}
                                         {formatDate(post.created_at)}
-                                        <img src={post.image} alt='Post-Image' className="all-posts-image" />
+                                        <img src={post.image} className="all-posts-image" />
                                         {/* {console.log('POSTID', post.id)} */}
                                         <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
                                         {matchingComments(post.id).map((comment) => {

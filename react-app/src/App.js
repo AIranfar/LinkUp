@@ -34,9 +34,6 @@ function App() {
           <Route exact path="/">
             <SplashPage />
           </Route>
-          <Route path='/user-info'>
-            <UserInfoBox />
-          </Route>
         </Switch>
       )}
     </>
