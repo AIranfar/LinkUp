@@ -1,5 +1,6 @@
 import UserInfoBox from "../UserInfoBox";
 import AllPosts from '../AllPosts';
+import AboutLinkUp from "../AboutLinkUp";
 import './Feed.css'
 
 const Feed = () => {
@@ -7,6 +8,7 @@ const Feed = () => {
         <div className="feed-page">
             <UserInfoBox />
             <AllPosts />
+            <AboutLinkUp />
         </div>
     )
 }

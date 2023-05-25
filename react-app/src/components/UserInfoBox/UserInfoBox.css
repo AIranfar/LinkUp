@@ -1,6 +1,8 @@
 .user-info-box-wrapper {
     max-height: fit-content;
-    width: 50rem;
+    width: 75rem;
+    margin-top: 15px;
+    margin-left: 15rem;
 }
 
 .user-info-box-container {
@@ -15,7 +17,12 @@
     padding-bottom: 15px;
 }
 
-
+.user-info-profile-image-container {
+    background-color: #0A66C2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .user-info-profile-image {
     height: 75px;
