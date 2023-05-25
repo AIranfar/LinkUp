@@ -1,9 +1,14 @@
+.all-posts-container-wrapper {
+    /* width: 20rem; */
+}
+
 .all-posts-container {
+    width: 35rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: white;
-    max-width: 74%;
+    max-width: 100%;
     border-radius: 10px;
 }
 
@@ -37,7 +42,6 @@
 
 .create-new-post-container {
     background-color: white;
-    width: 65%;
     display: flex;
     gap: 2rem;
     padding: 2rem;
@@ -51,7 +55,6 @@
     border: 1px solid rgb(221, 221, 221);
     margin-top: 15px;
     margin-bottom: 15px;
-    width: 74%
 }
 
 .create-new-post-button {

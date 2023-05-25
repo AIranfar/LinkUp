@@ -1,0 +1,54 @@
+.about-app-wrapper {
+    max-height: fit-content;
+    margin-top: 15px;
+    margin-right: 15rem;
+}
+
+.about-app-container {
+    border: 1px solid rgb(221, 221, 221);
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 40px;
+    background-color: white;
+    border-radius: 10px;
+    padding-bottom: 15px;
+}
+
+.about-app-header {
+    font-size: 25px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+}
+
+.about-app-description {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    color: rgb(128, 128, 128);
+    text-align: center;
+}
+
+.about-app-my-info {
+    display: flex;
+    color: gray;
+    align-items: center;
+    padding: 15px;
+    gap: 1rem;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+.my-links {
+    color: gray;
+    cursor: pointer;
+}
+
+.my-links:hover {
+    color: rgb(84, 84, 84);
+}
+
+.languages-used {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    color: rgb(128, 128, 128);
+    text-align: center;
+    padding: 14px;
+}

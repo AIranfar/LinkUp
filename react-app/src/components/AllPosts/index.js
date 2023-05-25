@@ -64,7 +64,7 @@ const GetAllPosts = () => {
     return (
         <div>
             {sessionUser ? (
-                <div>
+                <div className="all-posts-container-wrapper">
                     <div className="create-new-post-container">
                         <img src={sessionUser.profile_image} className="post-profile-picture" />
                         <OpenModalButton className='create-new-post-button' buttonText="Start a post" modalComponent={<CreateNewPost />} />
