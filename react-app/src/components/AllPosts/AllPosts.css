@@ -1,13 +1,8 @@
-.all-posts-container-wrapper {
-    /* width: 20rem; */
-}
-
 .all-posts-container {
     width: 35rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
     max-width: 100%;
     border-radius: 10px;
 }
@@ -15,11 +10,14 @@
 .single-post {
     display: flex;
     flex-direction: column;
+    background-color: white;
     align-items: center;
     justify-content: center;
     border: 1px solid rgb(221, 221, 221);
     gap: 10rem;
     border-radius: 10px;
+    width: 35rem;
+    padding: 15px;
 }
 
 .post-profile-picture {
@@ -108,5 +106,6 @@
 
 .single-post-body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
-    width: 90%
+    width: 35rem;
+    word-wrap: break-word;
 }

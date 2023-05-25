@@ -13,15 +13,38 @@ import './AllPosts.css'
 
 const GetAllPosts = () => {
     const dispatch = useDispatch();
+    const ulRef = useRef();
     const allPosts = Object.values(useSelector((state) => state.allPosts.allPosts))
     const sessionUser = useSelector((state) => state.session.user);
     const allComments = Object.values(useSelector((state) => state.allComments.allComments))
+    const [showComments, setShowComments] = useState(false);
 
     useEffect(() => {
         dispatch(thunkGetAllPosts())
         dispatch(thunkGetComments())
     }, [dispatch])
 
+    const openComments = () => {
+        if (showComments) return;
+        setShowComments(true);
+    };
+
+    useEffect(() => {
+        if (!showComments) return;
+
+        const closeComments = (e) => {
+            if (!ulRef.current.contains(e.target)) {
+                setShowComments(false);
+            }
+        };
+
+        document.addEventListener("click", closeComments);
+
+        return () => document.removeEventListener("click", closeComments);
+    }, [showComments]);
+
+    const ulClassName = "comments" + (showComments ? "" : " hidden");
+    const closeComments = () => setShowComments(false);
 
     function formatDate() {
         const date = new Date();
@@ -84,9 +107,9 @@ const GetAllPosts = () => {
                                         </div>
                                         {renderPostActions(post)}
                                     </div>
-                                    <p className="single-post-body">
+                                    <div className="single-post-body">
                                         {post.post_body}
-                                    </p>
+                                    </div>
                                     <img src={post.image} className="all-posts-image" />
                                     <OpenModalButton buttonText="💬 Comment" modalComponent={<CreateNewComment postId={post.id} />} />
                                     {matchingComments(post.id).map((comment) => {
