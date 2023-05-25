@@ -30,14 +30,20 @@
 
 .about-app-my-info {
     display: flex;
-    /* justify-content: space-around; */
     color: gray;
+    align-items: center;
+    padding: 15px;
+    gap: 1rem;
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
-.linkedin-link {
+.my-links {
     color: gray;
-    background-color: #F3F2EF;
+    cursor: pointer;
+}
+
+.my-links:hover {
+    color: rgb(84, 84, 84);
 }
 
 .languages-used {

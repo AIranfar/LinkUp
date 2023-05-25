@@ -11,13 +11,13 @@ const AboutLinkUp = () => {
                         LinkUp is a full-stack clone of LinkedIn, designed to provide users with a comprehensive platform for professional networking and career development
                     </p>
                     <div className='languages-used'>
-                        <div className='language-text'>Javascript | React | Redux | PostgresSQL | Python | Flask | SQLAlchemy | HTML | CSS</div>
+                        Javascript | React | Redux | PostgresSQL | Python | Flask | SQLAlchemy | HTML | CSS
                     </div>
-                </div>
                 <p className='about-app-my-info'>
-                    Linkup Inc™<a href="https://www.linkedin.com/in/ashkaun-iranfar-608387220/" target="_blank" rel="noopener noreferrer" className="linkedin-link"><i class="fa-brands fa-linkedin" /></a>
-                    <a href="https://github.com/AIranfar" target="_blank" rel="noopener noreferrer" className="linkedin-link"><i class="fa-brands fa-github" /></a>
+                    Linkup Inc™ 2023<a href="https://www.linkedin.com/in/ashkaun-iranfar-608387220/" target="_blank" rel="noopener noreferrer" className="my-links"><i class="fa-brands fa-linkedin" /></a>
+                    <a href="https://github.com/AIranfar" target="_blank" rel="noopener noreferrer" className="my-links"><i class="fa-brands fa-github" /></a>
                 </p>
+                </div>
             </div>
         </>
     )
