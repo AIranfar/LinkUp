@@ -25,9 +25,9 @@ function LoginFormModal() {
   };
 
   const demoUser = async () => {
-    setEmail("bill@microsoft.com");
+    setEmail("elon@tesla.com");
     setPassword("password");
-    const data = await dispatch(login("bill@microsoft.com", "password"));
+    const data = await dispatch(login("elon@tesla.com", "password"));
     if (data) {
       setErrors(data);
     } else {

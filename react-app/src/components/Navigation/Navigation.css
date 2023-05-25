@@ -3,13 +3,14 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  margin-left: 20rem;
+  margin-left: 15rem;
   margin-right: 20rem;
   height: 4rem;
+  max-width: 100%;
 }
 
 .profile-dropdown {
-  position: absolute;
+  position: fixed;
 }
 
 .hidden {
@@ -91,6 +92,7 @@
   object-fit: cover;
   border: 3px solid white;
   margin-top: 15px;
+  margin-right: auto;
 }
 
 .nav-bar-profile-button {
