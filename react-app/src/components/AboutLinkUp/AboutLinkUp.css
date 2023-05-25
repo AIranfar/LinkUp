@@ -1,7 +1,6 @@
 .about-app-wrapper {
     max-height: fit-content;
     margin-top: 15px;
-    margin-right: 15rem;
 }
 
 .about-app-container {
@@ -10,7 +9,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 40px;
     background-color: white;
     border-radius: 10px;
     padding-bottom: 15px;
