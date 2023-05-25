@@ -8,7 +8,7 @@ const UserInfoBox = () => {
         <div className='user-info-box-wrapper'>
             <div className='user-info-box-container'>
                 <div className='user-info-profile-image-container'>
-                <img src={sessionUser.profile_image} alt='user-profile-pic' className='user-info-profile-image' />
+                    <img src={sessionUser.profile_image} alt='user-profile-pic' className='user-info-profile-image' />
                 </div>
                 <div className='user-info-name'>{sessionUser.first_name} {sessionUser.last_name}</div>
                 <div className='user-info-about-me'>{sessionUser.about_me}</div>
