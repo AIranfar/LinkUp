@@ -20,7 +20,7 @@
     border-radius: 40px;
     font-size: 1.3rem;
     cursor: pointer;
-    margin-left: 10rem
+    margin-left: 5rem
 }
 
 .splash-login-sign-up-button:hover {
@@ -33,7 +33,7 @@
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
     font-size: 56px;
     font-weight: 200;
-    margin-left: 10rem;
+    margin-left: 5rem;
 }
 
 .splash-page-image {
