@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
@@ -11,6 +11,7 @@ function ProfileButton({ user }) {
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const sessionUser = useSelector((state) => state.session.user)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -42,8 +43,11 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className='nav-bar-profile-button' onClick={openMenu}>
+        <img src={sessionUser.profile_image} className='nav-bar-profile-image' alt="Profile Image" />
+        <div className="nav-bar-arrow">
+          <i className="fa-solid fa-sort-down"></i>
+        </div>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
