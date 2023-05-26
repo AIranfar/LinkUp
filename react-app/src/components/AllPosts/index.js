@@ -18,6 +18,8 @@ const AllPosts = () => {
   const allComments = useSelector((state) => Object.values(state.allComments.allComments));
   const [openCommentId, setOpenCommentId] = useState(null);
 
+  console.log('ALLCOMMENTS', allComments)
+
   const toggleComments = (postId) => {
     setOpenCommentId((prevOpenCommentId) => (prevOpenCommentId === postId ? false : postId));
   };
@@ -34,6 +36,10 @@ const AllPosts = () => {
 
   const matchingComments = (postId) => {
     return allComments.filter((comment) => comment?.post_id === postId);
+  };
+
+  const getCommentCount = (postId) => {
+    return matchingComments(postId).length;
   };
 
   const renderPostActions = (post) => {
@@ -83,44 +89,52 @@ const AllPosts = () => {
                       {post.owner_first_name} {post.owner_last_name}
                       <p className="post-created-at">{formatDate(post.created_at)}</p>
                     </div>
-                  </div>
-                  {renderPostActions(post)}
+                        </div>
+                        {renderPostActions(post)}
+                    </div>
+                    <div className="single-post-body">{post.post_body}</div>
+                    <img src={post.image} className="all-posts-image" />
+                    <div className="post-footer">
+                        <div className='comment-count-section'>
+                            <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
+                                <i className="fa-regular fa-comment-dots"></i> Comment
+                            </button>
+                            <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
+                                {getCommentCount(post.id)} comments
+                            </button>
+                        </div>
+                  {openCommentId === post.id && (
+                    <>
+                      <OpenModalButton
+                        buttonText="Add a comment..."
+                        modalComponent={<CreateNewComment postId={post.id} />}
+                      />
+                      {matchingComments(post.id).map((comment) => (
+                        <p key={comment.id}>
+                          <img
+                            src={comment.comment_owner_profile_picture}
+                            alt="post-profile-image"
+                            className="post-profile-picture"
+                          />
+                          {comment.comment_owner_first_name} {comment.comment_owner_last_name}
+                          {sessionUser.id === comment.user_id && (
+                            <div>
+                              <OpenModalButton
+                                buttonText={<i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>}
+                                modalComponent={<EditCommentModal commentId={comment.id} />}
+                              />
+                              <OpenModalButton
+                                buttonText={<i className="fa-regular fa-trash-can delete-trashcan-symbol"></i>}
+                                modalComponent={<DeleteCommentModal commentId={comment.id} />}
+                              />
+                            </div>
+                          )}
+                          {comment.comment_body}
+                        </p>
+                      ))}
+                    </>
+                  )}
                 </div>
-                <div className="single-post-body">{post.post_body}</div>
-                <img src={post.image} className="all-posts-image" />
-                <button onClick={() => toggleComments(post.id)}><i className="fa-regular fa-comment-dots"></i>
-                        Comment</button>
-                {openCommentId === post.id && (
-                  <>
-                    <OpenModalButton
-                      buttonText="Add a comment..."
-                      modalComponent={<CreateNewComment postId={post.id} />}
-                    />
-                    {matchingComments(post.id).map((comment) => (
-                      <p key={comment.id}>
-                        <img
-                          src={comment.comment_owner_profile_picture}
-                          alt="post-profile-image"
-                          className="post-profile-picture"
-                        />
-                        {comment.comment_owner_first_name} {comment.comment_owner_last_name}
-                        {sessionUser.id === comment.user_id && (
-                          <div>
-                            <OpenModalButton
-                              buttonText={<i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>}
-                              modalComponent={<EditCommentModal commentId={comment.id} />}
-                            />
-                            <OpenModalButton
-                              buttonText={<i className="fa-regular fa-trash-can delete-trashcan-symbol"></i>}
-                              modalComponent={<DeleteCommentModal commentId={comment.id} />}
-                            />
-                          </div>
-                        )}
-                        {comment.comment_body}
-                      </p>
-                    ))}
-                  </>
-                )}
               </div>
             ))}
           </div>
