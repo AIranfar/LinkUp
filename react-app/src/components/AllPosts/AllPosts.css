@@ -5,6 +5,8 @@
     align-items: center;
     max-width: 100%;
     border-radius: 10px;
+    gap: 15px;
+    max-height: fit-content;
 }
 
 .single-post {
@@ -24,29 +26,27 @@
     height: 3rem;
     width: 3rem;
     border-radius: 4rem;
-    object-fit: cover
+    object-fit: cover;
 }
 
 .all-posts-image {
-    width: 50%;
+    width: 105.5%;
     margin-bottom: 2rem;
+    margin-top: -125px;
 }
 
-.post-profile-image {
-    height: 6rem;
-    width: 6rem;
-    border-radius: 3rem;
-}
 
 .create-new-post-container {
     background-color: white;
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 1rem;
     padding: 2rem;
     margin-top: 15px;
     margin-bottom: 20px;
     border: 1px solid rgb(221, 221, 221);
     border-radius: 10px;
+    height: 2rem;
 }
 
 .feed-divider {
@@ -57,6 +57,7 @@
 
 .create-new-post-button {
     width: 100%;
+    height: 3rem;
     background-color: white;
     border: 1px solid rgb(175, 175, 175);
     border-radius: 20px;
@@ -66,11 +67,11 @@
 }
 
 .create-new-post-button:hover {
-    background-color: rgb(235,235,235);
+    background-color: rgb(235, 235, 235);
 }
 
 .post-header {
-    width: 90%;
+    width: 100%;
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -83,6 +84,9 @@
 
 .post-user-name-created-at {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .post-edit-delete-container {
@@ -90,17 +94,21 @@
 }
 
 .post-created-at {
-    color: gray
+    color: gray;
+    font-size: 1rem;
+    margin-top: 0px;
 }
 
-.edit-pencil-symbol, .delete-trashcan-symbol {
+.edit-pencil-symbol,
+.delete-trashcan-symbol {
     border: none;
     background-color: white;
     cursor: pointer;
     color: gray;
 }
 
-.edit-pencil-symbol:hover, .delete-trashcan-symbol:hover {
+.edit-pencil-symbol:hover,
+.delete-trashcan-symbol:hover {
     color: rgb(63, 63, 63)
 }
 
@@ -108,4 +116,58 @@
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
     width: 35rem;
     word-wrap: break-word;
+    margin-top: -170px;
+}
+
+.comment-count-section {
+    display: flex;
+    gap: 17rem;
+    justify-content: center;
+    margin-top: -25px;
+    border-bottom: 1px solid gray;
+}
+
+
+.open-comment-section-button {
+    display: flex;
+    gap: 5px;
+    background-color: white;
+    border: none;
+    color: gray;
+    font-size: 20px;
+    margin-top: -150px;
+    cursor: pointer;
+    height: 20px;
+}
+
+.open-comment-section-button:hover {
+    color: rgb(61, 61, 61);
+}
+
+.new-comment-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    height: 2rem;
+    width: 88%;
+    margin-top: -100px;
+}
+
+.create-new-comment-button {
+    width: 100%;
+    height: 3rem;
+    background-color: white;
+    border: 1px solid rgb(175, 175, 175);
+    border-radius: 20px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.667);
+    text-align: start;
+}
+
+.create-new-comment-button:hover {
+    background-color: rgb(235, 235, 235);
 }
