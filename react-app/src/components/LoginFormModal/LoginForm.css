@@ -1,0 +1,92 @@
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 400px;
+    width: 450px;
+    border-radius: 10px;
+}
+
+.login-header-text {
+    font-size: 35px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+.login-errors {
+    color: rgb(255, 0, 0);
+    font-weight: 600;
+    font-size: 14px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+
+.login-email-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 70%;
+}
+
+.login-email-text, .login-password-text {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+.login-password-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 70%;
+}
+
+.line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56%;
+  }
+
+  .line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: black;
+  }
+
+  .or {
+    margin: 0 10px;
+  }
+
+.demo-user-button {
+    background-color: #0A66C2;
+    color: white;
+    width: 15rem;
+    height: 2rem;
+    border-radius: 40px;
+    font-size: .8rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.demo-user-button:hover {
+    cursor: pointer;
+    background-color: #2c8ae8;
+}
+
+.login-submit-button {
+    background-color: #0A66C2;
+    color: white;
+    width: 15rem;
+    height: 2rem;
+    border-radius: 40px;
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.login-submit-button:hover {
+    cursor: pointer;
+    background-color: #2c8ae8;
+}
+
+.login-form-input {
+    border-radius: 8px;
+}
