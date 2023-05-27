@@ -24,7 +24,7 @@
 }
 
 .splash-login-sign-up-button:hover {
-    font-weight: bold;
+    /* font-weight: bold; */
     box-shadow: 1px 1px 1px 1px black;
 }
 
