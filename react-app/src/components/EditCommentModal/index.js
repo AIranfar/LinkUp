@@ -38,7 +38,7 @@ const EditComment = ({ commentId }) => {
 
     return (
         <div className='edit-comment-container'>
-            <div>Edit Your Comment</div>
+            <div className="edit-comment-header">Edit Your Comment</div>
             <form className='edit-comment-form-container' onSubmit={handleSubmit}>
                 <img className='edit-comment-profile-image' src={sessionUser.profile_image} />
                 {errors.comment_body ? <p className='edit-comment-errors'>{errors.comment_body}</p> : null}

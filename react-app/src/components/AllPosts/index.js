@@ -71,7 +71,7 @@ const AllPosts = () => {
             {sessionUser && (
                 <div className="all-posts-container-wrapper">
                     <div className="create-new-post-container">
-                        <img src={sessionUser.profile_image} className="post-profile-picture" />
+                        <img src={sessionUser.profile_image} className="new-post-profile-picture" />
                         <OpenModalButton
                             className="create-new-post-button"
                             buttonText="Start a post"
@@ -105,8 +105,8 @@ const AllPosts = () => {
                                     </div>
                                     {openCommentId === post.id && (
                                         <>
-                                            <p className="new-comment-container">
-                                                <img src={sessionUser.profile_image} className="post-profile-picture" />
+                                            <p className="new-comment-button-container">
+                                                <img src={sessionUser.profile_image} className="new-comment-profile-picture" />
                                                 <OpenModalButton
                                                     className='create-new-comment-button'
                                                     buttonText="Add a comment..."

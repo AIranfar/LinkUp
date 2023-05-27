@@ -1,3 +1,4 @@
+
 .all-posts-container {
     width: 35rem;
     display: flex;
@@ -19,7 +20,6 @@
     gap: 10rem;
     border-radius: 10px;
     width: 35rem;
-    padding: 15px;
 }
 
 .post-profile-picture {
@@ -27,14 +27,14 @@
     width: 3rem;
     border-radius: 4rem;
     object-fit: cover;
+    margin-left: 20px
 }
 
 .all-posts-image {
-    width: 105.5%;
+    width: 100%;
     margin-bottom: 2rem;
     margin-top: -125px;
 }
-
 
 .create-new-post-container {
     background-color: white;
@@ -86,7 +86,6 @@
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
-
 }
 
 .post-edit-delete-container {
@@ -114,7 +113,8 @@
 
 .single-post-body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
-    width: 35rem;
+    padding-left: 20px;
+    padding-right: 20px;
     word-wrap: break-word;
     margin-top: -170px;
 }
@@ -144,7 +144,7 @@
     color: rgb(61, 61, 61);
 }
 
-.new-comment-container {
+.new-comment-button-container {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -170,4 +170,11 @@
 
 .create-new-comment-button:hover {
     background-color: rgb(235, 235, 235);
+}
+
+.new-comment-profile-picture, .new-post-profile-picture {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 4rem;
+    object-fit: cover;
 }
