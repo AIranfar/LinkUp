@@ -14,8 +14,8 @@ const DeleteComment = ({ commentId }) => {
 
     return (
         <div className='delete-comment-container'>
-            <h1 className='delete-posttitle'>Confirm Delete</h1>
-            <p className='delete-comment-text'>Are you sure you want to remove this Comment?</p>
+            <h1 className='delete-comment-title'>Confirm Delete</h1>
+            <p className='delete-comment-text'>Are you sure you want to permanently remove this comment?</p>
             <div className='delete-comment-submit'>
                 <button id='yes-delete' onClick={handleSubmit}>Delete</button>
                 <button id='no-keep' onClick={closeModal}>Cancel</button>

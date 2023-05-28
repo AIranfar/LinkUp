@@ -14,8 +14,8 @@ const DeletePost = ({ postId }) => {
 
     return (
         <div className='delete-post-container'>
-            <h1 className='delete-posttitle'>Confirm Delete</h1>
-            <p className='delete-post-text'>Are you sure you want to remove this Post?</p>
+            <h1 className='delete-post-title'>Confirm Delete</h1>
+            <p className='delete-post-text'>Are you sure you want to permanently remove this post?</p>
             <div className='delete-post-submit'>
                 <button id='yes-delete' onClick={handleSubmit}>Delete</button>
                 <button id='no-keep' onClick={closeModal}>Cancel</button>

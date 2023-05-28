@@ -1,4 +1,3 @@
-
 .all-posts-container {
     width: 35rem;
     display: flex;
@@ -14,7 +13,6 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    align-items: center;
     justify-content: center;
     border: 1px solid rgb(221, 221, 221);
     gap: 10rem;
@@ -32,6 +30,7 @@
 
 .all-posts-image {
     width: 100%;
+    height: auto;
     margin-bottom: 2rem;
     margin-top: -125px;
 }
@@ -72,9 +71,9 @@
 
 .post-header {
     width: 100%;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 .post-user-info {
@@ -90,6 +89,7 @@
 
 .post-edit-delete-container {
     margin-top: 10px;
+    margin-right: 10px
 }
 
 .post-created-at {
@@ -116,7 +116,7 @@
     padding-left: 20px;
     padding-right: 20px;
     word-wrap: break-word;
-    margin-top: -170px;
+    margin-top: -150px;
 }
 
 .comment-count-section {
