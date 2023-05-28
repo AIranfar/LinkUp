@@ -20,17 +20,20 @@ function SignupFormModal() {
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
+	const handleImageError = (e) => {
+		e.target.src = '/public/images/up.png';
+	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, firstName, lastName, profileImage, aboutMe, location, password));
 			if (data) {
 				setErrors(data);
 			} else {
 				closeModal();
-				history.push('/feed')
+				history.push('/feed');
 			}
 		} else {
 			setErrors([
