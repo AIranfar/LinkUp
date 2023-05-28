@@ -100,7 +100,7 @@ const AllPosts = () => {
                                             <i className="fa-regular fa-comment-dots"></i> Comment
                                         </button>
                                         <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
-                                            {getCommentCount(post.id)} comments
+                                        {getCommentCount(post.id)} {getCommentCount(post.id) === 1 ? 'comment' : 'comments'}
                                         </button>
                                     </div>
                                     {openCommentId === post.id && (

@@ -11,6 +11,9 @@ const UserInfoBox = () => {
                     <img src={sessionUser.profile_image} alt='user-profile-pic' className='user-info-profile-image' />
                 </div>
                 <div className='user-info-name'>{sessionUser.first_name} {sessionUser.last_name}</div>
+                <div className='user-info-line-container'>
+                    <span className='user-info-line' />
+                </div>
                 <div className='user-info-about-me'>{sessionUser.about_me}</div>
                 <div className='user-info-location'>{sessionUser.location}</div>
             </div>

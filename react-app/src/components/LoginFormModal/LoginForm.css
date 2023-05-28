@@ -1,3 +1,7 @@
+.login-container {
+    border-radius: 100px;
+}
+
 .login-form-container {
     display: flex;
     flex-direction: column;
