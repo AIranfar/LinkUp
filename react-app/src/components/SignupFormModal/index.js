@@ -22,6 +22,8 @@ function SignupFormModal() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, firstName, lastName, profileImage, aboutMe, location, password));
 			if (data) {
@@ -108,10 +110,9 @@ function SignupFormModal() {
 					<label className="signup-label-text">
 						About Me
 					</label>
-					<input
-						className="signup-form-input"
-						type="textbox"
-						rows='3'
+					<textarea
+						className="signup-textarea-input"
+						rows={4}
 						value={aboutMe}
 						placeholder="Optional"
 						onChange={(e) => setAboutMe(e.target.value)}
