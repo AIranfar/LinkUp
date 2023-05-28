@@ -1,23 +1,19 @@
-.login-container {
-    border-radius: 100px;
-}
-
 .login-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 400px;
+    height: 350px;
     width: 450px;
-    border-radius: 10px;
 }
 
 .login-header-text {
     font-size: 35px;
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    text-align: center;
 }
 
-.login-errors {
+.login-form-errors {
     color: rgb(255, 0, 0);
     font-weight: 600;
     font-size: 14px;
