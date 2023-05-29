@@ -57,6 +57,7 @@ export const thunkCreateNewPost = (post) => async dispatch => {
     if (response.ok) {
         const newPost = await response.json()
         dispatch(actionCreateNewPost(newPost))
+        dispatch(thunkGetAllPosts())
     }
 }
 

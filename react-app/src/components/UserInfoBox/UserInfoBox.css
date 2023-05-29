@@ -22,6 +22,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .user-info-profile-image {
@@ -37,6 +39,7 @@
     font-size: 20px;
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
     font-weight: 500;
+    /* border-bottom: 1px solid gray; */
 }
 
 .user-info-about-me {
@@ -44,10 +47,23 @@
     text-align: center;
     padding-left: 20px;
     padding-right: 20px;
-    color: rgb(128, 128, 128)
+    color: rgb(128, 128, 128);
 }
 
 .user-info-location {
     color: rgb(0, 0, 0);
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+.user-info-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: gray;
+}
+
+.user-info-line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }

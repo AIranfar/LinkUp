@@ -20,7 +20,10 @@ const CreateNewPost = () => {
         let allErrors = {}
 
         if (post_body.length < 5 || post_body.length > 500) allErrors.post_body = 'Post must be between 5 and 500 characters'
-        // if (!image.endsWith('.png') && !image.endsWith('.jpg') && !image.endsWith('.jpeg')) allErrors.image = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (image) {
+            if (!image.endsWith('.png') && !image.endsWith('.jpg') && !image.endsWith('.jpeg')) allErrors.image = 'Image URL must end in .png, .jpg, or .jpeg'
+        }
+
         if (Object.keys(allErrors).length) {
             return setErrors(allErrors)
         }
@@ -36,25 +39,37 @@ const CreateNewPost = () => {
 
     return (
         <div className='new-post-container'>
-            <div>Create a New Post</div>
+            <div className="new-post-header-container">
+                <h3 className="new-post-header">Create a New Post</h3>
+            </div>
             <form className='new-post-form-container' method='POST' encType="multipart/form-data" onSubmit={handleSubmit}>
-                <img className='new-post-profile-image' src={sessionUser.profile_image} />
-                {errors.post_body ? <p className='new-post-errors'>{errors.post_body}</p> : null}
-                <input
-                    type='textbox'
-                    rows='7'
-                    onChange={(e) => setPost_body(e.target.value)}
-                    value={post_body}
-                    placeholder='What do you want to talk about?'
-                    name='post_body'
-                />
-                <input
-                    type='url'
-                    onChange={(e) => setImage(e.target.value)}
-                    value={image}
-                    placeholder='Image'
-                    name='image'
-                />
+                <div className="new-post-profile-info">
+                    <img className='new-post-profile-image' src={sessionUser.profile_image} />
+                    <div className="new-post-names">{sessionUser.first_name} {sessionUser.last_name}</div>
+                </div>
+                <div className="new-post-body-container">
+                    {errors.post_body ? <p className='new-post-errors' id='post-errors'>{errors.post_body}</p> : null}
+                    <textarea
+                        className="new-post-body"
+                        type='text'
+                        rows='7'
+                        onChange={(e) => setPost_body(e.target.value)}
+                        value={post_body}
+                        placeholder='What do you want to talk about?'
+                        name='post_body'
+                    />
+                </div>
+                <div className="new-post-body-container">
+                    {errors.image ? <p className='new-post-errors' id='image-errors'>{errors.image}</p> : null}
+                    <input
+                        className="new-post-image"
+                        type='url'
+                        onChange={(e) => setImage(e.target.value)}
+                        value={image}
+                        placeholder='Image URL'
+                        name='image'
+                    />
+                </div>
                 <div className='new-submit-button-container'>
                     <button className='new-post-submit-button' type='submit'>Post</button>
                 </div>

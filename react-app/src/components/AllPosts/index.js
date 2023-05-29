@@ -18,7 +18,7 @@ const AllPosts = () => {
     const allComments = useSelector((state) => Object.values(state.allComments.allComments));
     const [openCommentId, setOpenCommentId] = useState(null);
 
-    console.log('ALLCOMMENTS', sessionUser)
+    // console.log('ALLCOMMENTS', sessionUser)
 
     const toggleComments = (postId) => {
         setOpenCommentId((prevOpenCommentId) => (prevOpenCommentId === postId ? false : postId));
@@ -80,7 +80,7 @@ const AllPosts = () => {
                     </div>
                     <div className="feed-divider"></div>
                     <div className="all-posts-container">
-                        {allPosts.map((post) => (
+                        {allPosts.reverse().map((post) => (
                             <div key={post.id} className="single-post">
                                 <div className="post-header">
                                     <div className="post-user-info">
@@ -100,7 +100,7 @@ const AllPosts = () => {
                                             <i className="fa-regular fa-comment-dots"></i> Comment
                                         </button>
                                         <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
-                                            {getCommentCount(post.id)} comments
+                                            {getCommentCount(post.id)} {getCommentCount(post.id) === 1 ? 'comment' : 'comments'}
                                         </button>
                                     </div>
                                     {openCommentId === post.id && (
@@ -113,29 +113,33 @@ const AllPosts = () => {
                                                     modalComponent={<CreateNewComment postId={post.id} />}
                                                 />
                                             </p>
-                                            {matchingComments(post.id).map((comment) => (
-                                                <p key={comment.id}>
-                                                    <img
-                                                        src={comment.comment_owner_profile_picture}
-                                                        alt="post-profile-image"
-                                                        className="post-profile-picture"
-                                                    />
-                                                    {comment.comment_owner_first_name} {comment.comment_owner_last_name}
-                                                    {sessionUser.id === comment.user_id && (
-                                                        <div>
-                                                            <OpenModalButton
-                                                                buttonText={<i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>}
-                                                                modalComponent={<EditCommentModal commentId={comment.id} />}
-                                                            />
-                                                            <OpenModalButton
-                                                                buttonText={<i className="fa-regular fa-trash-can delete-trashcan-symbol"></i>}
-                                                                modalComponent={<DeleteCommentModal commentId={comment.id} />}
-                                                            />
+                                            <div className="post-comments-container">
+                                                {matchingComments(post.id).map((comment) => (
+                                                    <p key={comment.id}>
+                                                        <img
+                                                            src={comment.comment_owner_profile_picture}
+                                                            alt="post-profile-image"
+                                                            className="post-profile-picture"
+                                                        />
+                                                        {comment.comment_owner_first_name} {comment.comment_owner_last_name}
+                                                        {sessionUser.id === comment.user_id && (
+                                                            <div>
+                                                                <OpenModalButton
+                                                                    buttonText={<i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>}
+                                                                    modalComponent={<EditCommentModal commentId={comment.id} />}
+                                                                />
+                                                                <OpenModalButton
+                                                                    buttonText={<i className="fa-regular fa-trash-can delete-trashcan-symbol"></i>}
+                                                                    modalComponent={<DeleteCommentModal commentId={comment.id} />}
+                                                                />
+                                                            </div>
+                                                        )}
+                                                        <div className='post-comment-body'>
+                                                            {comment.comment_body}
                                                         </div>
-                                                    )}
-                                                    {comment.comment_body}
-                                                </p>
-                                            ))}
+                                                    </p>
+                                                ))}
+                                            </div>
                                         </>
                                     )}
                                 </div>

@@ -26,7 +26,9 @@ const EditPost = ({ postId }) => {
         let allErrors = {}
 
         if (post_body.length < 5 || post_body.length > 500) allErrors.post_body = 'Post must be between 5 and 500 characters'
-        // if (!image.endsWith('.png') && !image.endsWith('.jpg') && !image.endsWith('.jpeg')) allErrors.image = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (image) {
+            if (!image.endsWith('.png') && !image.endsWith('.jpg') && !image.endsWith('.jpeg')) allErrors.image = 'Image URL must end in .png, .jpg, or .jpeg'
+        }
 
         if (Object.keys(allErrors).length) {
             return setErrors(allErrors)
@@ -36,9 +38,6 @@ const EditPost = ({ postId }) => {
             post_body,
             image
         }
-        // new FormData();
-        // newPost.append('post_body', post_body)
-        // newPost.append('image', image)
 
         await dispatch(thunkEditPost(newPost, singlePost.id))
         // console.log('updatedPOST --> ', updatedPost)
@@ -48,25 +47,35 @@ const EditPost = ({ postId }) => {
 
     return (
         <div className='edit-post-container'>
-            <div>Edit Your Post</div>
+            <div className="edit-post-header-container">
+                <h3 className="edit-post-header">Edit Your Post</h3>
+            </div>
             <form className='edit-post-form-container' onSubmit={handleSubmit}>
-                <img className='edit-post-profile-image' src={sessionUser.profile_image} />
-                {errors.post_body ? <p className='edit-post-errors'>{errors.post_body}</p> : null}
+                <div className="edit-post-profile-info">
+                    <img className='edit-post-profile-image' src={sessionUser.profile_image} />
+                    <div className="edit-post-names">{sessionUser.first_name} {sessionUser.last_name}</div>
+                </div>
+                <div className="edit-post-body-container">
+                    {errors.post_body ? <p className='edit-post-errors' id='post-errors'>{errors.post_body}</p> : null}
+                    <textarea
+                        className="edit-post-body"
+                        type='text'
+                        rows='7'
+                        defaultValue={singlePost.post_body}
+                        placeholder='What do you want to talk about?'
+                        name='post_body'
+                    />
+                </div>
+                <div className="edit-post-image-container">
+                {errors.image ? <p className='edit-post-errors' id='image-errors'>{errors.image}</p> : null}
                 <input
-                    type='textbox'
-                    rows='7'
-                    // onChange={(e) => setPost_body(e.target.value)}
-                    defaultValue={singlePost.post_body}
-                    placeholder='What do you want to talk about?'
-                    name='post_body'
-                />
-                <input
+                    className="edit-post-image"
                     type='url'
-                    // onChange={(e) => setImage(e.target.value)}
                     defaultValue={singlePost.image}
                     placeholder='Image'
                     name='image'
-                />
+                    />
+                    </div>
                 <div className='edit-submit-button-container'>
                     <button className='edit-post-submit-button' type='submit'>Edit Post</button>
                 </div>
