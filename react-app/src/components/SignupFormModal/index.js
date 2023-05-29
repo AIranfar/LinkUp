@@ -22,7 +22,7 @@ function SignupFormModal() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		
+
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, firstName, lastName, profileImage, aboutMe, location, password));
 			if (data) {
@@ -153,7 +153,9 @@ function SignupFormModal() {
 						required
 					/>
 				</div>
+				<div className="signup-submit-container">
 				<button className="signup-submit-button" type="submit">Sign Up</button>
+				</div>
 			</form>
 		</>
 	);

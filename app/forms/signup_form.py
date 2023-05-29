@@ -34,7 +34,7 @@ class SignUpForm(FlaskForm):
     last_name = StringField(
         'last_name', validators=[DataRequired(), Length(min=3, max=50, message='Last name must be between 3 and 50 characters')])
     profile_image = StringField(
-        'profile_image', validators=[DataRequired(), URL(message='Invalid URL'), is_allowed_image_link])
+        'profile_image', validators=[DataRequired(), URL(message='Invalid Image URL'), is_allowed_image_link])
     about_me = StringField('about_me')
     location = StringField('location')
     password = StringField(

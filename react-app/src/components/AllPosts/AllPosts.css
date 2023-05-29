@@ -18,6 +18,7 @@
     gap: 10rem;
     border-radius: 10px;
     width: 35rem;
+    height: fit-content;
 }
 
 .post-profile-picture {
@@ -124,7 +125,7 @@
     gap: 17rem;
     justify-content: center;
     margin-top: -25px;
-    border-top: 1px solid gray;
+    /* border-top: 1px solid gray; */
 }
 
 
