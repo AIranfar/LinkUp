@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
@@ -11,7 +11,6 @@ function ProfileButton({ user }) {
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
-  const sessionUser = useSelector((state) => state.session.user)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -44,7 +43,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button className='nav-bar-profile-button' onClick={openMenu}>
-        <img src={sessionUser.profile_image} className='nav-bar-profile-image' alt="Profile Image" />
+        <img src={user.profile_image} className='nav-bar-profile-image' alt="Profile Image" />
         <div className="nav-bar-arrow">
           <i className="fa-solid fa-sort-down"></i>
         </div>
@@ -52,11 +51,16 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <ul>{user.username}</ul>
-            <ul>{user.email}</ul>
-            <ul>
-              <button onClick={handleLogout}>Log Out</button>
-            </ul>
+            <div className="user-profile-open">
+              <div className="user-profile-info">
+              <img src={user.profile_image} className='user-profile-image' alt="Profile Image" />
+              <div className="user-profile-names">{user.first_name} {user.last_name}</div>
+              </div>
+              <div className="user-profile-links">
+                {/* <div className="your-profile-link">Your Profile</div> */}
+                <button className='user-profile-logout-button' onClick={handleLogout}>Log Out</button>
+              </div>
+            </div>
           </>
         ) : (
           <>
