@@ -114,7 +114,7 @@ const AllPosts = () => {
                                                 />
                                             </p>
                                             <div className="post-comments-container">
-                                                {matchingComments(post.id).map((comment) => (
+                                                {matchingComments(post.id).reverse().map((comment) => (
                                                     <p key={comment.id}>
                                                         <img
                                                             src={comment.comment_owner_profile_picture}
