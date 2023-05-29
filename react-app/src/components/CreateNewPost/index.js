@@ -39,12 +39,21 @@ const CreateNewPost = () => {
 
     return (
         <div className='new-post-container'>
-            <div>Create a New Post</div>
+            <div className="new-post-header-container">
+                <h3 className="new-post-header">Create a New Post</h3>
+            </div>
             <form className='new-post-form-container' method='POST' encType="multipart/form-data" onSubmit={handleSubmit}>
-                <img className='new-post-profile-image' src={sessionUser.profile_image} />
+                <div className="new-post-profile-info">
+                    <img className='new-post-profile-image' src={sessionUser.profile_image} />
+                    <div className="new-post-names">{sessionUser.first_name} {sessionUser.last_name}</div>
+                </div>
+                <div>
+
+                </div>
                 {errors.post_body ? <p className='new-post-errors'>{errors.post_body}</p> : null}
-                <input
-                    type='textbox'
+                <textarea
+                    className="new-post-body"
+                    type='text'
                     rows='7'
                     onChange={(e) => setPost_body(e.target.value)}
                     value={post_body}
@@ -53,10 +62,11 @@ const CreateNewPost = () => {
                 />
                 {errors.image ? <p className='new-post-errors'>{errors.image}</p> : null}
                 <input
+                    className="new-post-image"
                     type='url'
                     onChange={(e) => setImage(e.target.value)}
                     value={image}
-                    placeholder='Image'
+                    placeholder='Image URL'
                     name='image'
                 />
                 <div className='new-submit-button-container'>
