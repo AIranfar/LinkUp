@@ -94,7 +94,7 @@
 
 .post-edit-delete-container {
     margin-top: 10px;
-    margin-right: 10px
+    margin-right: 10px;
 }
 
 .post-created-at {
@@ -182,4 +182,43 @@
     width: 3rem;
     border-radius: 4rem;
     object-fit: cover;
+}
+
+.comment-container-image-name {
+    display: flex;
+    gap: 1rem;
+    margin-top: 15px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+.comment-container-user-info {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 15px;
+}
+
+.post-comment-body {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    color: rgba(0, 0, 0, 0.712);
+}
+
+.comment-name-date-comment-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-comments-container {
+    border-top: 1px solid rgba(128, 128, 128, 0.645);
+}
+
+.single-comment-date {
+    color: rgba(128, 128, 128, 0.744);
+}
+
+.comment-user-name {
+    color: rgba(0, 0, 0, 0.712);
 }

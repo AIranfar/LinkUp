@@ -72,7 +72,7 @@ const EditPost = ({ postId }) => {
                     className="edit-post-image"
                     type='url'
                     defaultValue={singlePost.image}
-                    placeholder='Image'
+                    placeholder='Image (Optional)'
                     name='image'
                     />
                     </div>

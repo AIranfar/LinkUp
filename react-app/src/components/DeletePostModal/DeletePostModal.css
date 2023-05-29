@@ -1,14 +1,18 @@
 .delete-post-container {
     height: 175px;
-    width: 400px
+    width: 400px;
+    padding: 10px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 .delete-post-title {
     text-align: center;
+    color: rgba(0, 0, 0, 0.712);
 }
 
 .delete-post-text {
     text-align: center;
+    color: rgba(0, 0, 0, 0.712);
 }
 
 .delete-post-submit {
