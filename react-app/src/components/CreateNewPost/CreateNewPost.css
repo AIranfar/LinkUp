@@ -1,5 +1,5 @@
 .new-post-container {
-    height: 25rem;
+    height: 28rem;
     width: 30rem;
 }
 
@@ -33,13 +33,21 @@
     color: red;
     font-size: 12px;
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
-    width: 87%;
     margin: auto;
+}
+
+#post-errors {
+    margin-bottom: 15px;
+}
+
+#image-errors {
+    margin-top: 10px;
 }
 
 .new-post-form-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .new-post-names {
@@ -48,19 +56,34 @@
     align-items: center;
 }
 
+.new-post-body-container {
+    width: 87%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
 .new-post-body {
     border: 1px solid rgba(196, 196, 196, 0.368);
     border-radius: 10px;
     resize: none;
+    width: 100%;
+    margin: auto;
+}
+
+.new-post-image-container {
     width: 87%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
 }
 
 .new-post-image {
     border: 1px solid rgba(196, 196, 196, 0.368);
     border-radius: 10px;
     resize: none;
-    width: 87%;
+    width: 100%;
     margin: auto;
     margin-top: 20px;
 }

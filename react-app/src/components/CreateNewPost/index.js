@@ -47,28 +47,29 @@ const CreateNewPost = () => {
                     <img className='new-post-profile-image' src={sessionUser.profile_image} />
                     <div className="new-post-names">{sessionUser.first_name} {sessionUser.last_name}</div>
                 </div>
-                <div>
-
+                <div className="new-post-body-container">
+                    {errors.post_body ? <p className='new-post-errors' id='post-errors'>{errors.post_body}</p> : null}
+                    <textarea
+                        className="new-post-body"
+                        type='text'
+                        rows='7'
+                        onChange={(e) => setPost_body(e.target.value)}
+                        value={post_body}
+                        placeholder='What do you want to talk about?'
+                        name='post_body'
+                    />
                 </div>
-                {errors.post_body ? <p className='new-post-errors'>{errors.post_body}</p> : null}
-                <textarea
-                    className="new-post-body"
-                    type='text'
-                    rows='7'
-                    onChange={(e) => setPost_body(e.target.value)}
-                    value={post_body}
-                    placeholder='What do you want to talk about?'
-                    name='post_body'
-                />
-                {errors.image ? <p className='new-post-errors'>{errors.image}</p> : null}
-                <input
-                    className="new-post-image"
-                    type='url'
-                    onChange={(e) => setImage(e.target.value)}
-                    value={image}
-                    placeholder='Image URL'
-                    name='image'
-                />
+                <div className="new-post-body-container">
+                    {errors.image ? <p className='new-post-errors' id='image-errors'>{errors.image}</p> : null}
+                    <input
+                        className="new-post-image"
+                        type='url'
+                        onChange={(e) => setImage(e.target.value)}
+                        value={image}
+                        placeholder='Image URL'
+                        name='image'
+                    />
+                </div>
                 <div className='new-submit-button-container'>
                     <button className='new-post-submit-button' type='submit'>Post</button>
                 </div>
