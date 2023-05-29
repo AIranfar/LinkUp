@@ -60,7 +60,7 @@ const EditPost = ({ postId }) => {
                     <textarea
                         className="edit-post-body"
                         type='text'
-                        rows='7'
+                        rows='9'
                         defaultValue={singlePost.post_body}
                         placeholder='What do you want to talk about?'
                         name='post_body'

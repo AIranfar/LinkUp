@@ -34,18 +34,27 @@ const CreateNewComment = ({ postId }) => {
 
     return (
         <div className='new-comment-container'>
+            <div className="new-comment-header-container">
+                <h3 className="new-comment-header">Add a new comment</h3>
+            </div>
             <form className='new-comment-form-container' method='POST' encType="multipart/form-data" onSubmit={handleSubmit}>
-                <img className='new-comment-profile-image' src={sessionUser.profile_image} />
-                {errors.comment_body ? <p className='new-comment-errors'>{errors.comment_body}</p> : null}
-                <input
-                    type='textbox'
-                    rows='3'
-                    onChange={(e) => setComment_body(e.target.value)}
-                    value={comment_body}
-                    placeholder='Add a comment...'
-                    name='comment_body'
-                />
-                <div className='new-comment-submit-button-container'>
+                <div className="new-comment-profile-info">
+                    <img className='new-comment-profile-image' src={sessionUser.profile_image} />
+                    <div className="new-comment-names">{sessionUser.first_name} {sessionUser.last_name}</div>
+                </div>
+                <div className="new-comment-body-container">
+                    {errors.comment_body ? <p className='new-comment-errors'>{errors.comment_body}</p> : null}
+                    <textarea
+                        className="new-comment-body"
+                        type='text'
+                        rows='9'
+                        onChange={(e) => setComment_body(e.target.value)}
+                        value={comment_body}
+                        placeholder='Add a comment...'
+                        name='comment_body'
+                    />
+                </div>
+                <div className='new-submit-button-container'>
                     <button className='new-comment-submit-button' type='submit'>Post</button>
                 </div>
             </form>
