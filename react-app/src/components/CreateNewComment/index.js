@@ -55,7 +55,7 @@ const CreateNewComment = ({ postId }) => {
                     />
                 </div>
                 <div className='new-submit-button-container'>
-                    <button className='new-comment-submit-button' type='submit'>Post</button>
+                    <button className='new-comment-submit-button' type='submit'>Post Comment</button>
                 </div>
             </form>
         </div>
