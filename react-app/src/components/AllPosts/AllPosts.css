@@ -12,13 +12,12 @@
 .single-post {
     display: flex;
     flex-direction: column;
-    background-color: white;
     justify-content: center;
+    background-color: white;
     border: 1px solid rgb(221, 221, 221);
     gap: 10rem;
     border-radius: 10px;
     width: 35rem;
-    height: fit-content;
 }
 
 .post-profile-picture {
@@ -75,6 +74,11 @@
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+}
+
+.post-footer {
+    display: flex;
+    flex-direction: column
 }
 
 .post-user-info {
