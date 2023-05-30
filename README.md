@@ -1,3 +1,46 @@
+# Welcome to Linkup
+
+LinkUp is a full-stack clone of LinkedIn, designed to provide users with a comprehensive platform for professional networking and career development.
+
+<br />
+
+
+Linkup Live Link --> https://linkup-app.onrender.com/
+
+<br />
+
+### Linkup was created with the following languages and frameworks:
+
+<br />
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![Python](https://img.shields.io/badge/Python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-%23FCA121.svg?style=for-the-badge&logo=sqlalchemy&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+<br />
+
+## Meet the developer:
+
+<br />
+
+**Ashkaun Iranfar**
+
+[Linkedin](https://www.linkedin.com/in/ashkaun-iranfar-608387220/)
+
+[Github](https://github.com/AIranfar)
+
+<br />
+
+**For additional information please check out the WIKI page on this repo:**
+
+[WIKI](https://github.com/AIranfar/LinkUp/wiki)
+
+
 # Flask React Project
 
 This is the starter for the Flask React project.
