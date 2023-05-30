@@ -31,7 +31,7 @@ const CreateNewPost = () => {
         const newPost = new FormData();
         newPost.append('post_body', post_body)
         newPost.append('image', image)
-        console.log('NEWPOST', newPost.get('post_body'))
+        // console.log('NEWPOST', newPost.get('post_body'))
 
         dispatch(thunkCreateNewPost(newPost))
         closeModal();
