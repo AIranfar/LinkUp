@@ -204,6 +204,7 @@
     margin-bottom: 15px;
     margin-top: 20px;
     color: rgba(0, 0, 0, 0.712);
+    word-break: break-word;
 }
 
 .comment-name-date-comment-body {
@@ -221,4 +222,10 @@
 
 .comment-user-name {
     color: rgba(0, 0, 0, 0.712);
+}
+
+.comment-edit-delete-container {
+    display: flex;
+    align-items: start;
+    margin-top: 15px;
 }
