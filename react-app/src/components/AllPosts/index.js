@@ -113,33 +113,44 @@ const AllPosts = () => {
                                                     modalComponent={<CreateNewComment postId={post.id} />}
                                                 />
                                             </p>
-                                            <div className="post-comments-container">
-                                                {matchingComments(post.id).reverse().map((comment) => (
-                                                    <p key={comment.id}>
-                                                        <img
-                                                            src={comment.comment_owner_profile_picture}
-                                                            alt="post-profile-image"
-                                                            className="post-profile-picture"
-                                                        />
-                                                        {comment.comment_owner_first_name} {comment.comment_owner_last_name}
+                                            {matchingComments(post.id).reverse().map((comment) => (
+                                                <div className="post-comments-container">
+                                                    <div className="comment-container-user-info">
+                                                        <div className="comment-container-image-name">
+                                                            <img
+                                                                src={comment.comment_owner_profile_picture}
+                                                                alt="post-profile-image"
+                                                                className="post-profile-picture"
+                                                            />
+                                                            <div className="comment-name-date-comment-body">
+                                                                <div className="comment-user-name">
+                                                                    {comment.comment_owner_first_name} {comment.comment_owner_last_name}
+                                                                </div>
+                                                                <div className="single-comment-date">
+                                                                    {formatDate(comment.created_at)}
+                                                                </div>
+                                                                <div className='post-comment-body'>
+                                                                    {comment.comment_body}
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         {sessionUser.id === comment.user_id && (
-                                                            <div>
+                                                            <div className="post-edit-delete-container">
                                                                 <OpenModalButton
                                                                     buttonText={<i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>}
                                                                     modalComponent={<EditCommentModal commentId={comment.id} />}
+                                                                    className="edit-pencil-symbol"
                                                                 />
                                                                 <OpenModalButton
                                                                     buttonText={<i className="fa-regular fa-trash-can delete-trashcan-symbol"></i>}
                                                                     modalComponent={<DeleteCommentModal commentId={comment.id} />}
+                                                                    className="delete-trashcan-symbol"
                                                                 />
                                                             </div>
                                                         )}
-                                                        <div className='post-comment-body'>
-                                                            {comment.comment_body}
-                                                        </div>
-                                                    </p>
-                                                ))}
-                                            </div>
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </>
                                     )}
                                 </div>

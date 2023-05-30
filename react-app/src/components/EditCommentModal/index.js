@@ -38,17 +38,25 @@ const EditComment = ({ commentId }) => {
 
     return (
         <div className='edit-comment-container'>
-            <div className="edit-comment-header">Edit Your Comment</div>
+            <div className="edit-comment-header-container">
+                <h3 className="edit-comment-header">Edit your comment</h3>
+            </div>
             <form className='edit-comment-form-container' onSubmit={handleSubmit}>
-                <img className='edit-comment-profile-image' src={sessionUser.profile_image} />
-                {errors.comment_body ? <p className='edit-comment-errors'>{errors.comment_body}</p> : null}
-                <input
-                    type='textbox'
-                    rows='7'
-                    defaultValue={singleComment.comment_body}
-                    placeholder='What do you want to talk about?'
-                    name='comment_body'
-                />
+                <div className="edit-comment-profile-info">
+                    <img className='edit-comment-profile-image' src={sessionUser.profile_image} />
+                    <div className="edit-comment-names">{sessionUser.first_name} {sessionUser.last_name}</div>
+                </div>
+                <div className="new-comment-body-container">
+                    {errors.comment_body ? <p className='edit-comment-errors'>{errors.comment_body}</p> : null}
+                    <textarea
+                        className="edit-comment-body"
+                        type='text'
+                        rows='9'
+                        defaultValue={singleComment.comment_body}
+                        placeholder='Edit your comment...'
+                        name='comment_body'
+                    />
+                </div>
                 <div className='edit-submit-button-container'>
                     <button className='edit-comment-submit-button' type='submit'>Edit Comment</button>
                 </div>

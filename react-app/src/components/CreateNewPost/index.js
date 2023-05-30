@@ -52,7 +52,7 @@ const CreateNewPost = () => {
                     <textarea
                         className="new-post-body"
                         type='text'
-                        rows='7'
+                        rows='9'
                         onChange={(e) => setPost_body(e.target.value)}
                         value={post_body}
                         placeholder='What do you want to talk about?'
@@ -66,7 +66,7 @@ const CreateNewPost = () => {
                         type='url'
                         onChange={(e) => setImage(e.target.value)}
                         value={image}
-                        placeholder='Image URL'
+                        placeholder='Image URL (Optional)'
                         name='image'
                     />
                 </div>
