@@ -135,7 +135,7 @@ const AllPosts = () => {
                                                             </div>
                                                         </div>
                                                         {sessionUser.id === comment.user_id && (
-                                                            <div className="post-edit-delete-container">
+                                                            <div className="comment-edit-delete-container">
                                                                 <OpenModalButton
                                                                     buttonText={<i className="fa-regular fa-pen-to-square edit-pencil-symbol"></i>}
                                                                     modalComponent={<EditCommentModal commentId={comment.id} />}
