@@ -5,7 +5,7 @@ LinkUp is a full-stack clone of LinkedIn, designed to provide users with a compr
 <br />
 
 
-Linkup Live Link --> https://linkup-app.onrender.com/
+[Linkup Live Link](https://linkup-app.onrender.com/)
 <br />
 
 ## Splash Page
