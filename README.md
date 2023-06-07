@@ -9,7 +9,9 @@ Linkup Live Link --> https://linkup-app.onrender.com/
 
 <br />
 
-![Alt Text](./react-app//public/images/Linkup-homepage.png)
+## Splash Page
+
+![Alt Text](./react-app//public/images/Linkup-Splash-Page.gif)
 
 <br />
 
