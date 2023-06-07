@@ -13,9 +13,9 @@ Linkup Live Link --> https://linkup-app.onrender.com/
 ![Alt Text](./react-app//public/images/Linkup-Splash-Page.gif)
 <br />
 
-## Splash Page
+## Feed Page
 
-![Alt Text](./react-app//public/images/Linkup-Splash-Page.gif)
+![Alt Text](./react-app//public/images/Linkup-Feed-Page.gif)
 <br />
 
 ### Linkup was created with the following languages and frameworks:
