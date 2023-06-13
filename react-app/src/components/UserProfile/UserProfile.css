@@ -1,0 +1,6 @@
+.user-profile-page-container {
+    display: flex;
+    gap: 5rem;
+    background-color: #F3F2EF;
+    width: 100%;
+}

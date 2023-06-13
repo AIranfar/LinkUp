@@ -6,9 +6,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import SplashPage from "./components/SplashPage"
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-// import AllPosts from './components/AllPosts'
 import Feed from "./components/FeedPage";
-import UserInfoBox from "./components/UserInfoBox";
+import UserProfile from "./components/UserProfile"
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +32,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <SplashPage />
+          </Route>
+          <Route path="/user/:id">
+            <UserProfile />
           </Route>
         </Switch>
       )}
