@@ -14,10 +14,9 @@ const removeUser = () => ({
 
 export const actionGetOneUser = (user) => ({
 	type: GET_ONE_USER,
-	user
+	payload: user
 })
 
-const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/", {
@@ -116,6 +115,8 @@ export const thunkGetOneUser = (userId) => async dispatch => {
 	}
 }
 
+const initialState = { user: null, singleUser: null };
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
@@ -123,7 +124,8 @@ export default function reducer(state = initialState, action) {
 		case REMOVE_USER:
 			return { user: null };
 		case GET_ONE_USER:
-			return { ...state, user: action.user}
+			const newState = { ...state }
+			return newState
 		default:
 			return state;
 	}

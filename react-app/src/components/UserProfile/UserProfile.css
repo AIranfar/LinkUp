@@ -4,3 +4,12 @@
     background-color: #F3F2EF;
     width: 100%;
 }
+
+.loading {
+    color: #0A66C2;
+    font-size: 50px;
+    display: flex;
+    margin-top: 10rem;
+    justify-content: center;
+}
+
