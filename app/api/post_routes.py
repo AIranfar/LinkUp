@@ -56,7 +56,7 @@ def create_new_post():
 def edit_post(id):
     post = Post.query.get(id)
     data = request.get_json()
-    print("DATA", data)
+    # print("DATA", data)
 
     if post:
         post.post_body = data['post_body']
