@@ -11,8 +11,6 @@ const removeUser = () => ({
 	type: REMOVE_USER,
 });
 
-const initialState = { user: null };
-
 export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/", {
 		headers: {
@@ -100,6 +98,8 @@ export const signUp = (username, email, firstName, lastName, profileImage, about
 		return ["An error occurred. Please try again."];
 	}
 };
+
+const initialState = { user: null };
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {

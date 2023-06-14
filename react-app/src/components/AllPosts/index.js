@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import { thunkGetAllPosts } from "../../store/posts";
 import CreateNewPost from "../CreateNewPost";
 import OpenModalButton from "../OpenModalButton";
@@ -13,6 +14,7 @@ import "./AllPosts.css";
 
 const AllPosts = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const allPosts = useSelector((state) => Object.values(state.allPosts.allPosts));
     const sessionUser = useSelector((state) => state.session.user);
     const allComments = useSelector((state) => Object.values(state.allComments.allComments));
@@ -29,7 +31,7 @@ const AllPosts = () => {
         dispatch(thunkGetComments());
     }, [dispatch]);
 
-    function formatDate(date) {
+    const formatDate = (date) => {
         const options = { month: "short", day: "numeric", year: "numeric" };
         return new Date(date).toLocaleDateString(undefined, options);
     }
@@ -82,11 +84,14 @@ const AllPosts = () => {
                     <div className="all-posts-container">
                         {allPosts.reverse().map((post) => (
                             <div key={post.id} className="single-post">
+                                {/* {console.log('POST USER ID->', post.user_id)} */}
                                 <div className="post-header">
                                     <div className="post-user-info">
-                                        <img src={post.owner_profile_picture} className="post-profile-picture" />
+                                        <img onClick={() => history.push(`/user/${post.user_id}`)} src={post.owner_profile_picture} className="post-profile-picture" />
                                         <div className="post-user-name-created-at">
-                                            {post.owner_first_name} {post.owner_last_name}
+                                            <div onClick={() => history.push(`/user/${post.user_id}`)} className="post-first-last-name">
+                                                {post.owner_first_name} {post.owner_last_name}
+                                            </div>
                                             <p className="post-created-at">{formatDate(post.created_at)}</p>
                                         </div>
                                     </div>
