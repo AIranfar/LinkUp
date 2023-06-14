@@ -33,8 +33,6 @@ def edit_profile(id):
     data = request.get_json()
 
     if user:
-        user.username = data['username']
-        user.email = data['email']
         user.first_name = data['first_name']
         user.last_name = data['last_name']
         user.profile_image = data['profile_image']

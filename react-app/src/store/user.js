@@ -21,7 +21,7 @@ export const thunkGetOneUser = (userId) => async dispatch => {
 }
 
 
-export const editUser = (userInfo, userId) => async dispatch => {
+export const thunkEditProfile = (userInfo, userId) => async dispatch => {
 	const response = await fetch(`/api/users/${userId}`, {
 		method: 'PUT',
 		headers: { "Content-Type": "application/json" },
@@ -42,7 +42,7 @@ const userReducer = (state = initialState, action) => {
 			return { singleUser: action.payload }
 		case EDIT_USER: {
 			const newState = { ...state }
-			newState.singleUser[action.userId.id] = action.userId
+			newState.singleUser = action.payload
 			return newState
 		}
 		default:
