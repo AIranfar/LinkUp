@@ -1,5 +1,6 @@
-const GET_ONE_USER = 'session/GET_ONE_USER'
-const EDIT_USER = 'session/EDIT_USER'
+const GET_ONE_USER = 'user/GET_ONE_USER'
+const EDIT_USER = 'user/EDIT_USER'
+const DELETE_USER = 'user/DELETE_USER'
 
 export const actionGetOneUser = (user) => ({
 	type: GET_ONE_USER,
@@ -9,6 +10,11 @@ export const actionGetOneUser = (user) => ({
 export const actionEditUser = (user) => ({
 	type: EDIT_USER,
 	payload: user
+})
+
+export const actionDeleteUser = (userId) => ({
+	type: DELETE_USER,
+	payload: userId
 })
 
 export const thunkGetOneUser = (userId) => async dispatch => {
@@ -30,8 +36,18 @@ export const thunkEditProfile = (userInfo, userId) => async dispatch => {
 
 	if (response.ok) {
 		const updatedUser = await response.json();
-		console.log('updatedUSER--->', updatedUser)
+		// console.log('updatedUSER--->', updatedUser)
 		dispatch(actionEditUser(updatedUser))
+	}
+}
+
+export const thunkDeleteProfile = (userId) => async dispatch => {
+	const response = await fetch(`/api/users/${userId}`, {
+		method: 'DELETE'
+	})
+
+	if (response.ok) {
+		dispatch(actionDeleteUser(response))
 	}
 }
 
@@ -44,6 +60,11 @@ const userReducer = (state = initialState, action) => {
 		case EDIT_USER: {
 			const newState = { ...state }
 			newState.singleUser = action.payload
+			return newState
+		}
+		case DELETE_USER: {
+			const newState = { ...state }
+			delete newState.singleUser.userId
 			return newState
 		}
 		default:
