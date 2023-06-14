@@ -44,3 +44,17 @@ def edit_profile(id):
         db.session.commit()
         return user.to_dict()
     return {'Message': 'User Info was successfully edited'}
+
+# delete user
+
+@user_routes.route('/<int:id>', methods=['Delete'])
+@login_required
+def delete_required(id):
+    user = User.query.get(id)
+    if (not user):
+        return ('No User Found', 404)
+
+    db.session.delete(user)
+    db.session.commit()
+
+    return {'User Successfully Deleted': id}
