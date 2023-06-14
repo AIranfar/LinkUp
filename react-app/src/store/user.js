@@ -30,6 +30,7 @@ export const thunkEditProfile = (userInfo, userId) => async dispatch => {
 
 	if (response.ok) {
 		const updatedUser = await response.json();
+		console.log('updatedUSER--->', updatedUser)
 		dispatch(actionEditUser(updatedUser))
 	}
 }

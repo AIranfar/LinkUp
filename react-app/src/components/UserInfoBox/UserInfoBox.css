@@ -45,6 +45,7 @@
 .user-info-about-me {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
     text-align: center;
+    word-break: break-word;
     padding-left: 20px;
     padding-right: 20px;
     color: rgb(128, 128, 128);
