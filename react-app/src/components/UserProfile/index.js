@@ -44,12 +44,12 @@ const UserProfile = () => {
                     <OpenModalButton
                         buttonText={<i className="fa-regular fa-pen-to-square"></i>}
                         modalComponent={<EditProfileModal userId={userId} />}
-                        className="edit-pencil-symbol"
+                        className="profile-edit-pencil-symbol"
                     />
                     <OpenModalButton
                         buttonText={<i className="fa-regular fa-trash-can"></i>}
                         modalComponent={<DeleteProfileModal userId={userId} />}
-                        className="delete-trashcan-symbol"
+                        className="profile-delete-trashcan-symbol"
                     />
                 </div>
             );
@@ -96,9 +96,13 @@ const UserProfile = () => {
                             <div className="profile-email">{singleUser.email}</div>
                         </div>
                     </div>
-                    <div className="profile-page-name">{singleUser.first_name} {singleUser.last_name}</div>
-                    <div className="profile-page-location">{singleUser.location}</div>
-                    {renderProfileAction(singleUser)}
+                    <div className="profile-name-location-actions">
+                        <div className="profile-name-location">
+                            <div className="profile-page-name">{singleUser.first_name} {singleUser.last_name}</div>
+                            <div className="profile-page-location">{singleUser.location}</div>
+                        </div>
+                        {renderProfileAction(singleUser)}
+                    </div>
                 </div>
                 <div className="profile-page-about-me-container">
                     <h2 className="profile-page-about-header">About</h2>
