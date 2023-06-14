@@ -1,8 +1,8 @@
 .user-profile-page-container {
     display: flex;
-    gap: 5rem;
+    gap: 3rem;
     background-color: #F3F2EF;
-    width: 100%;
+    max-width: 100%;
 }
 
 .loading {
@@ -13,3 +13,67 @@
     justify-content: center;
 }
 
+.profile-page-wrapper-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 40rem;
+}
+
+.profile-page-user-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    border-radius: 10px;
+    gap: 15px;
+    background-color: white;
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.722);
+}
+
+.user-profile-profile-image {
+    height: 180px;
+    width: 180px;
+    object-fit: cover;
+    border-radius: 100px;
+    border: 3px solid white;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.profile-page-image-container {
+    background-color: #0A66C2;
+    width: 100%;
+    display: flex;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.profile-page-name {
+    font-weight: bold;
+    font-size: 35px;
+    padding-left: 15px;
+}
+
+.profile-page-about-me {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    color: rgb(128, 128, 128);
+}
+
+.profile-page-location {
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+.profile-page-about-me-container {
+    width: 40rem;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.profile-page-about {
+    padding-left: 15px;
+    color: rgba(0, 0, 0, 0.722);
+}

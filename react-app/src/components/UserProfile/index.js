@@ -13,9 +13,10 @@ const UserProfile = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const allPostsArr = Object.values(useSelector((state) => state.allPosts.allPosts));
     const userPosts = allPostsArr.filter((post) => post.user_id == userId);
+    const singleUser = useSelector((state) => state.singleUser.singleUser)
 
-    //   console.log('allPOSTS->', userPosts)
-    //   console.log('USERID', userId)
+    // console.log('allPOSTS->', userPosts)
+    console.log('singleUser', singleUser)
 
     useEffect(() => {
         dispatch(thunkGetOneUser(userId));
@@ -29,7 +30,19 @@ const UserProfile = () => {
     return (
         <div className="user-profile-page-container">
             <UserInfoBox />
-            <h1>USER PROFILE</h1>
+            <div className="profile-page-wrapper-container">
+                <div className="profile-page-user-info">
+                    <div className="profile-page-image-container">
+                        <img src={singleUser.profile_image} alt='user-profile-pic' className='user-profile-profile-image' />
+                    </div>
+                    <div className="profile-page-name">{singleUser.first_name} {singleUser.last_name}</div>
+                    <div className="profile-page-location">{singleUser.location}</div>
+                </div>
+                <div className="profile-page-about-me-container">
+                    <h2 className="profile-page-about">About</h2>
+                    <div className="profile-page-about-me">{singleUser.about_me}</div>
+                </div>
+            </div>
             <AboutLinkUp />
         </div>
     );
