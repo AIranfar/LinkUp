@@ -57,7 +57,7 @@ function ProfileButton({ user }) {
               <div className="user-profile-names">{user.first_name} {user.last_name}</div>
               </div>
               <div className="user-profile-links">
-                {/* <div className="your-profile-link">Your Profile</div> */}
+                <div onClick={() => history.push(`/user/${user.id}`)} className="your-profile-link">Your Profile</div>
                 <button className='user-profile-logout-button' onClick={handleLogout}>Log Out</button>
               </div>
             </div>
