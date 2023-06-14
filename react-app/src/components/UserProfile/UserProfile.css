@@ -2,7 +2,8 @@
     display: flex;
     gap: 3rem;
     background-color: #F3F2EF;
-    max-width: 100%;
+    width: auto;
+    height: fit-content;
 }
 
 .loading {
@@ -49,6 +50,26 @@
     border-top-right-radius: 10px;
 }
 
+.profile-username {
+    color: white;
+    text-decoration: bold;
+}
+
+.profile-email {
+    color: white;
+    text-decoration: bold;
+}
+
+.profile-username-email-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    padding-right: 50px;
+    gap: 2rem;
+}
+
 .profile-page-name {
     font-weight: bold;
     font-size: 35px;
@@ -59,7 +80,7 @@
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
-    color: rgb(128, 128, 128);
+    color: rgb(90, 90, 90);
 }
 
 .profile-page-location {
@@ -73,7 +94,46 @@
     border-radius: 10px;
 }
 
-.profile-page-about {
+.profile-page-about-header {
     padding-left: 15px;
     color: rgba(0, 0, 0, 0.722);
+}
+
+.profile-posts-container {
+    width: 40rem;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.profile-post-cards {
+    color: rgb(90, 90, 90);
+    gap: 1rem;
+}
+
+.profile-post-header {
+    padding-left: 15px;
+    color: rgba(0, 0, 0, 0.722);
+}
+
+.profile-post-date-edit-delete {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.profile-post-image {
+    width: 100%;
+}
+
+.profile-post-date {
+    padding: 15px;
+}
+
+.profile-post-body {
+    padding: 15px;
+}
+
+.profile-post-edit-delete-container {
+    padding-right: 15px;
 }

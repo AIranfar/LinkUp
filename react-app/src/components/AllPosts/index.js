@@ -31,7 +31,7 @@ const AllPosts = () => {
         dispatch(thunkGetComments());
     }, [dispatch]);
 
-    function formatDate(date) {
+    const formatDate = (date) => {
         const options = { month: "short", day: "numeric", year: "numeric" };
         return new Date(date).toLocaleDateString(undefined, options);
     }
@@ -43,10 +43,6 @@ const AllPosts = () => {
     const getCommentCount = (postId) => {
         return matchingComments(postId).length;
     };
-
-    const userProfileHandle = () => {
-
-    }
 
     const renderPostActions = (post) => {
         if (sessionUser.id === post.user_id) {
