@@ -56,20 +56,29 @@ const CreateNewPost = () => {
                         name='post_body'
                     />
                 </div>
-                <div className="new-post-body-container">
-                    <h4 className="new-post-image-text">Post Image (optional)</h4>
-                    {/* {errors.image ? <p className='new-post-errors' id='image-errors'>{errors.image}</p> : null} */}
-                    <input
-                        className="new-post-image"
-                        type='file'
-                        accept=".jpg, .jpeg, .png"
-                        onChange={(e) => setImage(e.target.files[0])}
-                        placeholder='Image URL (Optional)'
-                        name='image'
-                    />
-                </div>
-                <div className='new-submit-button-container'>
-                    <button className='new-post-submit-button' type='submit'>Post</button>
+                <div className="new-post-image-post-container">
+                    <div className="new-post-body-container">
+                        <div className="new-post-image-header-icon">
+                            <h4 className="new-post-image-text">Post Image (optional)</h4>
+                            <label htmlFor="image-upload" className="new-post-image-label">
+                                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                                    <i className="fa-regular fa-image"></i>
+                                    <div className="new-post-image-file-name">{image.name}</div>
+                                </div>
+                            </label>
+                        </div>
+                        <input
+                            id="image-upload"
+                            className="new-post-image"
+                            type='file'
+                            accept=".jpg, .jpeg, .png"
+                            onChange={(e) => setImage(e.target.files[0])}
+                            name='image'
+                        />
+                    </div>
+                    <div className='new-submit-button-container'>
+                        <button className='new-post-submit-button' type='submit'>Post</button>
+                    </div>
                 </div>
             </form>
         </div>
