@@ -20,9 +20,6 @@ const CreateNewPost = () => {
         let allErrors = {}
 
         if (post_body.length < 5 || post_body.length > 500) allErrors.post_body = 'Post must be between 5 and 500 characters'
-        if (image) {
-            if (!image.endsWith('.png') && !image.endsWith('.jpg') && !image.endsWith('.jpeg')) allErrors.image = 'Image URL must end in .png, .jpg, or .jpeg'
-        }
 
         if (Object.keys(allErrors).length) {
             return setErrors(allErrors)
@@ -54,18 +51,19 @@ const CreateNewPost = () => {
                         type='text'
                         rows='9'
                         onChange={(e) => setPost_body(e.target.value)}
-                        value={post_body}
+                        // value={post_body}
                         placeholder='What do you want to talk about?'
                         name='post_body'
                     />
                 </div>
                 <div className="new-post-body-container">
-                    {errors.image ? <p className='new-post-errors' id='image-errors'>{errors.image}</p> : null}
+                    <h4 className="new-post-image-text">Post Image (optional)</h4>
+                    {/* {errors.image ? <p className='new-post-errors' id='image-errors'>{errors.image}</p> : null} */}
                     <input
                         className="new-post-image"
-                        type='url'
-                        onChange={(e) => setImage(e.target.value)}
-                        value={image}
+                        type='file'
+                        accept=".jpg, .jpeg, .png"
+                        onChange={(e) => setImage(e.target.files[0])}
                         placeholder='Image URL (Optional)'
                         name='image'
                     />

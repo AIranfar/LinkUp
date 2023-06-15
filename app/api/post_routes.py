@@ -3,7 +3,7 @@ from flask_login import login_required
 from app.models import Post, User, db
 from app.forms import PostForm
 from datetime import date
-from aws_helpers import get_unique_filename, upload_file_to_s3
+from .aws_helpers import get_unique_filename, upload_file_to_s3
 
 post_routes = Blueprint('posts', __name__)
 
@@ -42,7 +42,7 @@ def create_new_post():
         upload = upload_file_to_s3(image)
 
         if "url" not in upload:
-            return {'error': 'Upload not successful'}
+            return {'error': upload['errors']}
 
         new_post = Post(
             user_id = user_id,

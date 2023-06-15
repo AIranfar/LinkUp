@@ -78,16 +78,11 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .new-post-image {
-    border: 1px solid rgba(196, 196, 196, 0.368);
-    border-radius: 10px;
-    resize: none;
-    width: 100%;
-    margin: auto;
-    margin-top: 20px;
+
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
@@ -111,4 +106,9 @@
 
 .new-post-submit-button:hover {
     background-color: #2c8ae8;
+}
+
+.new-post-image-text {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-size: 1rem;
 }
