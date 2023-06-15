@@ -1,9 +1,11 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms import StringField
 from wtforms.validators import DataRequired, Email, ValidationError, Length, URL
 from app.models import User
+from ..api.aws_helpers import ALLOWED_EXTENSIONS
 
-ALLOWED_IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png')
+# ALLOWED_IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png')
 
 def user_exists(form, field):
     # Checking if user exists
@@ -19,10 +21,10 @@ def username_exists(form, field):
     if user:
         raise ValidationError('Username is already in use')
 
-def is_allowed_image_link(form, field):
-    link = field.data
-    if not any(link.endswith(ext) for ext in ALLOWED_IMAGE_EXTENSIONS):
-        raise ValidationError('Only .jpg, .jpeg, and .png links are allowed.')
+# def is_allowed_image_link(form, field):
+#     link = field.data
+#     if not any(link.endswith(ext) for ext in ALLOWED_IMAGE_EXTENSIONS):
+#         raise ValidationError('Only .jpg, .jpeg, and .png links are allowed.')
 
 class SignUpForm(FlaskForm):
     username = StringField(
@@ -33,8 +35,9 @@ class SignUpForm(FlaskForm):
         'first_name', validators=[DataRequired(), Length(min=3, max=50, message='First name must be between 3 and 50 characters')])
     last_name = StringField(
         'last_name', validators=[DataRequired(), Length(min=3, max=50, message='Last name must be between 3 and 50 characters')])
-    profile_image = StringField(
-        'profile_image', validators=[DataRequired(), URL(message='Invalid Image URL'), is_allowed_image_link])
+    # profile_image = StringField(
+    #     'profile_image', validators=[DataRequired(), URL(message='Invalid Image URL'), is_allowed_image_link])
+    profile_image = FileField('image file', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     about_me = StringField('about_me')
     location = StringField('location')
     password = StringField(
