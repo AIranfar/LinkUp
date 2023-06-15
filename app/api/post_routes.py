@@ -3,6 +3,7 @@ from flask_login import login_required
 from app.models import Post, User, db
 from app.forms import PostForm
 from datetime import date
+from aws_helpers import get_unique_filename, upload_file_to_s3
 
 post_routes = Blueprint('posts', __name__)
 
@@ -36,10 +37,17 @@ def create_new_post():
     form['csrf_token'].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
+        image = form.data['image']
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            return {'error': 'Upload not successful'}
+
         new_post = Post(
             user_id = user_id,
             post_body = form.data['post_body'],
-            image = form.data['image'],
+            image = upload['url'],
             created_at = date.today(),
             updated_at = date.today()
         )
