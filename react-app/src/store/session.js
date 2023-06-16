@@ -66,22 +66,20 @@ export const logout = () => async (dispatch) => {
 };
 
 export const signUp = (username, email, firstName, lastName, profileImage, aboutMe, location, password) => async (dispatch) => {
-	// console.log('Input Data:', firstName, lastName, profileImage)
+	// console.log('Input Data:', profileImage)
+	const newUser = new FormData();
+	newUser.append('username', username);
+	newUser.append('email', email);
+	newUser.append('first_name', firstName);
+	newUser.append('last_name', lastName);
+	newUser.append('profile_image', profileImage);
+	newUser.append('about_me', aboutMe);
+	newUser.append('location', location);
+	newUser.append('password', password);
+
 	const response = await fetch("/api/auth/signup", {
 		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			username: username,
-			email: email,
-			first_name: firstName,
-			last_name: lastName,
-			profile_image: profileImage,
-			about_me: aboutMe,
-			location: location,
-			password: password
-		}),
+		body: newUser
 	});
 
 	if (response.ok) {

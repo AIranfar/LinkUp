@@ -21,6 +21,8 @@ function SignupFormModal() {
 	const [frontEndErrors, setFrontEndErrors] = useState('')
 	const { closeModal } = useModal();
 
+	// console.log('PROFILE IMAGE--->', profileImage)
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
