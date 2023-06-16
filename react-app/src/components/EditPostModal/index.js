@@ -26,9 +26,9 @@ const EditPost = ({ postId }) => {
         let allErrors = {}
 
         if (post_body.length < 5 || post_body.length > 500) allErrors.post_body = 'Post must be between 5 and 500 characters'
-        if (image) {
-            if (!image.endsWith('.png') && !image.endsWith('.jpg') && !image.endsWith('.jpeg')) allErrors.image = 'Image URL must end in .png, .jpg, or .jpeg'
-        }
+        // if (image) {
+        //     if (!image.endsWith('.png') && !image.endsWith('.jpg') && !image.endsWith('.jpeg')) allErrors.image = 'Image URL must end in .png, .jpg, or .jpeg'
+        // }
 
         if (Object.keys(allErrors).length) {
             return setErrors(allErrors)

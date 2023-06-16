@@ -116,7 +116,9 @@ const UserProfile = () => {
                                 <div className="profile-post-date">
                                     {formatDate(post.created_at)}
                                 </div>
+                                <div className="profile-render-post-actions">
                                 {renderPostActions(post)}
+                                </div>
                             </div>
                             <div className="profile-page-post-image">
                                 <div className="profile-post-body">

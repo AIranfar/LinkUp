@@ -20,7 +20,7 @@
     font-size: 12px;
     margin-bottom: -10px;
     /* margin-top: -10px; */
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    /* font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif; */
 }
 
 .signup-container {
@@ -61,4 +61,20 @@
 .signup-textarea-input {
     border: 2px solid black;
     resize: none;
+}
+
+.signup-form-profile-image {
+    display: none;
+}
+
+.signup-image-label-text {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.signup-form-frontend-errors {
+    color: rgb(255, 0, 0);
+    font-weight: 600;
+    font-size: 12px;
 }
