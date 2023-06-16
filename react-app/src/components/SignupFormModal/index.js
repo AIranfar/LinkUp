@@ -18,10 +18,19 @@ function SignupFormModal() {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
+	const [frontEndErrors, setFrontEndErrors] = useState('')
 	const { closeModal } = useModal();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		let allErrors = {}
+
+		if (!profileImage || profileImage === '') allErrors.profileImage = '*Profile picture is required';
+
+		if (Object.keys(allErrors).length) {
+			return setFrontEndErrors(allErrors)
+		}
 
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, firstName, lastName, profileImage, aboutMe, location, password));
@@ -41,7 +50,7 @@ function SignupFormModal() {
 	return (
 		<>
 			<h1 className="signup-header-text">Sign Up</h1>
-			<form className="signup-form-container" onSubmit={handleSubmit}>
+			<form className="signup-form-container" method='POST' encType="multipart/form-data" onSubmit={handleSubmit}>
 				{errors.map((error, idx) => (
 					<ul className='signup-form-errors' key={idx}>{error}</ul>
 				))}
@@ -94,15 +103,23 @@ function SignupFormModal() {
 					/>
 				</div>
 				<div className="signup-container">
-					<label className="signup-label-text">
+					<label htmlFor="profile-image-upload" className="signup-image-label-text">
+						<div>
+						{frontEndErrors.profileImage ? <p className='signup-form-frontend-errors'>{frontEndErrors.profileImage}</p> : null}
 						Profile Picture
+						</div>
+						<div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+							<i className="fa-regular fa-image"></i>
+							<div className="signup-image-file-name">{profileImage.name}</div>
+						</div>
 					</label>
 					<input
-						className="signup-form-input"
-						type="text"
-						value={profileImage}
-						onChange={(e) => setProfileImage(e.target.value)}
-						required
+						id='profile-image-upload'
+						className="signup-form-profile-image"
+						type="file"
+						onChange={(e) => setProfileImage(e.target.files[0])}
+						accept=".jpg, .jpeg, .png"
+						name='profile-image'
 					/>
 				</div>
 				<div className="signup-container">
@@ -154,7 +171,7 @@ function SignupFormModal() {
 					/>
 				</div>
 				<div className="signup-submit-container">
-				<button className="signup-submit-button" type="submit">Sign Up</button>
+					<button className="signup-submit-button" type="submit">Sign Up</button>
 				</div>
 			</form>
 		</>
