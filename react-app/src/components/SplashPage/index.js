@@ -25,7 +25,9 @@ const SplashPage = () => {
                 </div>
                 <img className='splash-page-image' src="/images/splash-page-image.jpg" alt='splash-page-image' />
             </div>
-            <Footer />
+            <div className='splash-page-footer-container'>
+                <Footer />
+            </div>
         </div>
     )
 }
