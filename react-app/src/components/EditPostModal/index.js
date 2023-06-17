@@ -12,31 +12,23 @@ const EditPost = ({ postId }) => {
     const singlePost = postsArr.find((post) => post.id === postId)
     // console.log('singlePost-->', singlePost)
     // console.log('PostId', postId)
-    // const [post_body, setPost_body] = useState(singlePost.post_body)
-    // const [image, setImage] = useState(singlePost.image)
+    const [post_body, setPost_body] = useState(singlePost.post_body)
     const [errors, setErrors] = useState('');
     const { closeModal } = useModal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let post_body = e.target.post_body.value
-        let image = e.target.image.value
-
         let allErrors = {}
 
         if (post_body.length < 5 || post_body.length > 500) allErrors.post_body = 'Post must be between 5 and 500 characters'
-        // if (image) {
-        //     if (!image.endsWith('.png') && !image.endsWith('.jpg') && !image.endsWith('.jpeg')) allErrors.image = 'Image URL must end in .png, .jpg, or .jpeg'
-        // }
 
         if (Object.keys(allErrors).length) {
             return setErrors(allErrors)
         }
 
         const newPost = {
-            post_body,
-            image
+            post_body
         }
 
         await dispatch(thunkEditPost(newPost, singlePost.id))
@@ -61,21 +53,12 @@ const EditPost = ({ postId }) => {
                         className="edit-post-body"
                         type='text'
                         rows='9'
-                        defaultValue={singlePost.post_body}
+                        value={post_body}
+                        onChange={(e) => setPost_body(e.target.value)}
                         placeholder='What do you want to talk about?'
                         name='post_body'
                     />
                 </div>
-                <div className="edit-post-image-container">
-                {errors.image ? <p className='edit-post-errors' id='image-errors'>{errors.image}</p> : null}
-                <input
-                    className="edit-post-image"
-                    type='url'
-                    defaultValue={singlePost.image}
-                    placeholder='Image (Optional)'
-                    name='image'
-                    />
-                    </div>
                 <div className='edit-submit-button-container'>
                     <button className='edit-post-submit-button' type='submit'>Edit Post</button>
                 </div>

@@ -3,7 +3,7 @@ from flask_login import login_required
 from app.models import Post, User, db
 from app.forms import PostForm
 from datetime import date
-from .aws_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
+from .aws_helpers import get_unique_filename, upload_file_to_s3
 
 post_routes = Blueprint('posts', __name__)
 
@@ -64,26 +64,13 @@ def create_new_post():
 def edit_post(id):
     post = Post.query.get(id)
     data = request.get_json()
+    # print("DATA", data)
 
     if post:
-        if 'image' in data:
-            if post.image:
-                remove_file_from_s3(post.image)
-
-            image = data['image']
-            image.filename = get_unique_filename(image.filename)
-            upload = upload_file_to_s3(image)
-
-            if "url" not in upload:
-                return {'error': upload['errors']}
-
-            post.image = upload['url']
-            
         post.post_body = data['post_body']
 
         db.session.commit()
         return post.to_dict()
-
     return {'Message': 'Post was not successfully edited'}
 
 # Delete Post
