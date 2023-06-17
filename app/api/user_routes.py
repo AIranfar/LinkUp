@@ -53,7 +53,6 @@ def edit_profile(id):
         user.location = data['location']
 
         db.session.commit()
-
         return user.to_dict()
 
     return {'Message': 'User Info was successfully edited'}

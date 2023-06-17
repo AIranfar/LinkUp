@@ -86,7 +86,8 @@ const UserProfile = () => {
 
     return (
         <div className="user-profile-page-container">
-            <UserInfoBox />
+            <div className={`user-profile-page-container ${sessionUser.id !== singleUser.id ? "user-info-box-rendering" : "user-info-box-not-rendering"}`} />
+            {sessionUser.id !== singleUser.id && <UserInfoBox />}
             <div className="profile-page-wrapper-container">
                 <div className="profile-page-user-info">
                     <div className="profile-page-image-container">
@@ -117,7 +118,7 @@ const UserProfile = () => {
                                     {formatDate(post.created_at)}
                                 </div>
                                 <div className="profile-render-post-actions">
-                                {renderPostActions(post)}
+                                    {renderPostActions(post)}
                                 </div>
                             </div>
                             <div className="profile-page-post-image">

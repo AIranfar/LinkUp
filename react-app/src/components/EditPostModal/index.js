@@ -13,13 +13,14 @@ const EditPost = ({ postId }) => {
     // console.log('singlePost-->', singlePost)
     // console.log('PostId', postId)
     const [post_body, setPost_body] = useState(singlePost.post_body)
+    const [image, setImage] = useState(singlePost.image)
     const [errors, setErrors] = useState('');
     const { closeModal } = useModal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let allErrors = {};
+        let allErrors = {}
 
         if (post_body.length < 5 || post_body.length > 500) allErrors.post_body = 'Post must be between 5 and 500 characters'
 
@@ -28,7 +29,8 @@ const EditPost = ({ postId }) => {
         }
 
         const newPost = {
-            post_body
+            post_body,
+            image
         }
 
         await dispatch(thunkEditPost(newPost, singlePost.id))
@@ -59,6 +61,18 @@ const EditPost = ({ postId }) => {
                         name='post_body'
                     />
                 </div>
+                <div className="edit-post-image-container">
+                {errors.image ? <p className='edit-post-errors' id='image-errors'>{errors.image}</p> : null}
+                <input
+                    className="edit-post-image"
+                    type='file'
+                    // value={image}
+                    accept=".jpg, .jpeg, .png"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    placeholder='Image (Optional)'
+                    name='image'
+                    />
+                    </div>
                 <div className='edit-submit-button-container'>
                     <button className='edit-post-submit-button' type='submit'>Edit Post</button>
                 </div>
