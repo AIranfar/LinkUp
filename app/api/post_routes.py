@@ -14,7 +14,7 @@ post_routes = Blueprint('posts', __name__)
 def get_all_posts():
     all_posts = Post.query.all()
     response = [one_post.to_dict() for one_post in all_posts]
-    print('All Posts', all_posts)
+    # print('All Posts', all_posts)
 
     # Adds owner username to product
     for post in response:
@@ -63,17 +63,15 @@ def create_new_post():
 @login_required
 def edit_post(id):
     post = Post.query.get(id)
-    data = request.get_json()
-    # print("DATA", data)
-
-    print('data-->', data)
+    data = request.form
+    post_body = data.get('post_body')
+    image = request.files.get('image')
 
     if post:
-        if 'image' in data:
+        if image:
             if post.image:
                 remove_file_from_s3(post.image)
 
-            image = data['image']
             image.filename = get_unique_filename(image.filename)
             upload = upload_file_to_s3(image)
 
@@ -82,13 +80,14 @@ def edit_post(id):
 
             post.image = upload['url']
 
-        post.post_body = data['post_body']
-        post.image = data['image']
+        if post_body:
+            post.post_body = post_body
 
         db.session.commit()
         return post.to_dict()
 
     return {'Message': 'Post was not successfully edited'}
+
 
 # Delete Post
 

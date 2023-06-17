@@ -64,8 +64,7 @@ export const thunkCreateNewPost = (post) => async dispatch => {
 export const thunkEditPost = (post, postId) => async dispatch => {
     const response = await fetch(`/api/posts/${postId}`, {
         method: 'PUT',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(post)
+        body: post
     })
 
     if (response.ok) {
