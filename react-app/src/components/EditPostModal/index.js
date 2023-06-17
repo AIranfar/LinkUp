@@ -19,7 +19,7 @@ const EditPost = ({ postId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let allErrors = {}
+        let allErrors = {};
 
         if (post_body.length < 5 || post_body.length > 500) allErrors.post_body = 'Post must be between 5 and 500 characters'
 

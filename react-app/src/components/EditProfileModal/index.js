@@ -12,7 +12,6 @@ const EditProfile = ({ userId }) => {
     const { closeModal } = useModal();
     const [first_name, setfirst_name] = useState(singleUser.first_name);
     const [last_name, setlast_name] = useState(singleUser.last_name);
-    const [profile_image, setprofile_image] = useState(singleUser.profile_image);
     const [about_me, setabout_me] = useState(singleUser.about_me);
     const [location, setLocation] = useState(singleUser.location);
 
@@ -25,7 +24,6 @@ const EditProfile = ({ userId }) => {
 
         if (first_name.length < 3 || first_name.length > 50) allErrors.first_name = '*First name must be between 4 and 40 characters';
         if (last_name.length < 3 || last_name.length > 50) allErrors.last_name = '*Last name must be between 4 and 40 characters';
-        if (!profile_image.endsWith('.png') && !profile_image.endsWith('.jpg') && !profile_image.endsWith('.jpeg')) allErrors.profile_image = '*Image URL must end in .png, .jpg, or .jpeg';
 
         if (Object.keys(allErrors).length) {
             return setErrors(allErrors)
@@ -34,7 +32,6 @@ const EditProfile = ({ userId }) => {
         const updateProfile = {
             first_name,
             last_name,
-            profile_image,
             about_me,
             location
         }
@@ -76,21 +73,6 @@ const EditProfile = ({ userId }) => {
                         type="text"
                         value={last_name}
                         onChange={(e) => setlast_name(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="edit-profile-container">
-                    <div className='edit-profile-errors'>
-                        {errors.profile_image ? <p>{errors.profile_image}</p> : null}
-                    </div>
-                    <label className="edit-profile-label-text">
-                        Profile Picture
-                    </label>
-                    <input
-                        className="edit-profile-form-input"
-                        type="text"
-                        value={profile_image}
-                        onChange={(e) => setprofile_image(e.target.value)}
                         required
                     />
                 </div>
