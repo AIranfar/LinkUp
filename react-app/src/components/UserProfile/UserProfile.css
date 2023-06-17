@@ -21,6 +21,14 @@
     width: 40rem;
 }
 
+.user-info-box-rendering {
+    margin-left: -50px;
+}
+
+.user-info-box-not-rendering {
+    margin-left: 500px;
+}
+
 .profile-page-user-info {
     display: flex;
     flex-direction: column;
