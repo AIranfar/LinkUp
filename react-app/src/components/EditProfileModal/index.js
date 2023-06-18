@@ -50,6 +50,7 @@ const EditProfile = ({ userId }) => {
         // console.log('UPDATEDPROFILE->', updateProfile)
         closeModal();
         dispatch(thunkGetOneUser(singleUser.id));
+        window.location.reload()
     };
 
     return (
@@ -99,7 +100,7 @@ const EditProfile = ({ userId }) => {
                         accept=".jpg, .jpeg, .png"
                         // value={profile_image}
                         onChange={(e) => setprofile_image(e.target.files[0])}
-                        name='profile_image'
+                        name='pro'
                         required
                     />
                 </div>
