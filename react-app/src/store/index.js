@@ -4,12 +4,14 @@ import session from './session'
 import postReducer from './posts';
 import commentReducer from './comments';
 import userReducer from './user';
+import likesReducer from './likes';
 
 const rootReducer = combineReducers({
   session,
   allPosts: postReducer,
   allComments: commentReducer,
-  singleUser: userReducer
+  singleUser: userReducer,
+  allLikes: likesReducer
 });
 
 
