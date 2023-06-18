@@ -5,12 +5,16 @@ from datetime import date
 
 like_routes = Blueprint('likes', __name__)
 
-# get all likes from post by postId
+# get all likes
 
-@like_routes.route('<int:post_id>')
+@like_routes.route('/')
 @login_required
-def get_all_likes(post_id):
-    post = Post.query.get(post_id)
-    likes = [like.to_dict() for like in post.likes]
+def get_all_likes():
+    posts = Post.query.all()
+    likes = []
+
+    for post in posts:
+        likes.extend([like.to_dict() for like in post.like])
 
     return likes
+
