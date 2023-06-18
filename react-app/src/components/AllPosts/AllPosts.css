@@ -83,10 +83,18 @@
     cursor: pointer;
 }
 
+.post-likes-comments-counter {
+    display: flex;
+    flex-direction: row;
+}
 
 .post-footer {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+}
+
+.open-comment-container{
+
 }
 
 .post-user-info {
@@ -143,6 +151,7 @@
 
 .open-comment-section-button {
     display: flex;
+    justify-content: space-between;
     gap: 5px;
     background-color: white;
     border: none;

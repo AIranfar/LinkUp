@@ -5,7 +5,7 @@ export const actionGetLikes = (likes) => ({
     likes
 })
 
-const normalLikes = (likes) => {
+const normalAllLikes = (likes) => {
     let normalizedLikes = {}
     likes.forEach(like => {
         normalizedLikes[like.id] = like
@@ -18,7 +18,8 @@ export const thunkGetLikes = () => async dispatch => {
 
     if (response.ok) {
         const likes = await response.json()
-        const normalizedLikes = normalLikes(likes)
+        const normalizedLikes = normalAllLikes(likes)
+        // console.log('NORMAL LIKES --> ', normalizedLikes)
         dispatch(actionGetLikes(normalizedLikes))
     }
 }
