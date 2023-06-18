@@ -28,10 +28,9 @@ const EditPost = ({ postId }) => {
             return setErrors(allErrors)
         }
 
-        const newPost = {
-            post_body,
-            image
-        }
+        const newPost = new FormData();
+        newPost.append('post_body', post_body)
+        newPost.append('image', image)
 
         await dispatch(thunkEditPost(newPost, singlePost.id))
         // console.log('updatedPOST --> ', updatedPost)
@@ -44,7 +43,7 @@ const EditPost = ({ postId }) => {
             <div className="edit-post-header-container">
                 <h3 className="edit-post-header">Edit Your Post</h3>
             </div>
-            <form className='edit-post-form-container' onSubmit={handleSubmit}>
+            <form className='edit-post-form-container' method='PUT' encType="multipart/form-data" onSubmit={handleSubmit}>
                 <div className="edit-post-profile-info">
                     <img className='edit-post-profile-image' src={sessionUser.profile_image} />
                     <div className="edit-post-names">{sessionUser.first_name} {sessionUser.last_name}</div>
@@ -62,17 +61,17 @@ const EditPost = ({ postId }) => {
                     />
                 </div>
                 <div className="edit-post-image-container">
-                {errors.image ? <p className='edit-post-errors' id='image-errors'>{errors.image}</p> : null}
-                <input
-                    className="edit-post-image"
-                    type='file'
-                    // value={image}
-                    accept=".jpg, .jpeg, .png"
-                    onChange={(e) => setImage(e.target.files[0])}
-                    placeholder='Image (Optional)'
-                    name='image'
+                    {/* {errors.image ? <p className='edit-post-errors' id='image-errors'>{errors.image}</p> : null} */}
+                    <input
+                        className="edit-post-image"
+                        type='file'
+                        // value={image}
+                        accept=".jpg, .jpeg, .png"
+                        onChange={(e) => setImage(e.target.files[0])}
+                        placeholder='Image (Optional)'
+                        name='image'
                     />
-                    </div>
+                </div>
                 <div className='edit-submit-button-container'>
                     <button className='edit-post-submit-button' type='submit'>Edit Post</button>
                 </div>

@@ -10,6 +10,7 @@ import CreateNewComment from "../CreateNewComment";
 import DeleteCommentModal from "../DeleteCommentModal";
 import EditCommentModal from "../EditCommentModal";
 import { thunkGetComments } from "../../store/comments";
+import { thunkGetLikes } from "../../store/likes";
 import "./AllPosts.css";
 
 const AllPosts = () => {
@@ -29,6 +30,7 @@ const AllPosts = () => {
     useEffect(() => {
         dispatch(thunkGetAllPosts());
         dispatch(thunkGetComments());
+        dispatch(thunkGetLikes());
     }, [dispatch]);
 
     const formatDate = (date) => {

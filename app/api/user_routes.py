@@ -31,26 +31,33 @@ def user(id):
 @login_required
 def edit_profile(id):
     user = User.query.get(id)
-    data = request.get_json()
+    data = request.form
+    first_name = data.get('first_name')
+    last_name = data.get('last_name')
+    profile_image = request.files.get('profile_image')
+    about_me = data.get('about_me')
+    location = data.get('location')
+
+    print('IMAGE --> ', profile_image)
 
     if user:
-        if 'profile_image' in data:
+        if profile_image:
             if user.profile_image:
                 remove_file_from_s3(user.profile_image)
 
-            image = data['profile_image']
-            image.filename = get_unique_filename(image.filename)
-            upload = upload_file_to_s3(image)
+            # image = data['profile_image']
+            profile_image.filename = get_unique_filename(profile_image.filename)
+            upload = upload_file_to_s3(profile_image)
 
             if "url" not in upload:
                 return {'error': upload['errors']}
 
             user.profile_image = upload['url']
 
-        user.first_name = data['first_name']
-        user.last_name = data['last_name']
-        user.about_me = data['about_me']
-        user.location = data['location']
+        user.first_name = first_name
+        user.last_name = last_name
+        user.about_me = about_me
+        user.location = location
 
         db.session.commit()
         return user.to_dict()
