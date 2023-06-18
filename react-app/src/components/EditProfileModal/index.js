@@ -25,21 +25,28 @@ const EditProfile = ({ userId }) => {
 
         if (first_name.length < 3 || first_name.length > 50) allErrors.first_name = '*First name must be between 4 and 40 characters';
         if (last_name.length < 3 || last_name.length > 50) allErrors.last_name = '*Last name must be between 4 and 40 characters';
-        if (!profile_image.endsWith('.png') && !profile_image.endsWith('.jpg') && !profile_image.endsWith('.jpeg')) allErrors.profile_image = '*Image URL must end in .png, .jpg, or .jpeg';
+        // if (!profile_image.endsWith('.png') && !profile_image.endsWith('.jpg') && !profile_image.endsWith('.jpeg')) allErrors.profile_image = '*Image URL must end in .png, .jpg, or .jpeg';
 
         if (Object.keys(allErrors).length) {
             return setErrors(allErrors)
         }
 
-        const updateProfile = {
-            first_name,
-            last_name,
-            profile_image,
-            about_me,
-            location
-        }
+        // const updateProfile = {
+        //     first_name,
+        //     last_name,
+        //     profile_image,
+        //     about_me,
+        //     location
+        // }
 
-        dispatch(thunkEditProfile(updateProfile, singleUser.id))
+        const updatedProfile = new FormData();
+        updatedProfile.append('first_name', first_name)
+        updatedProfile.append('last_name', last_name)
+        updatedProfile.append('profile_image', profile_image)
+        updatedProfile.append('about_me', about_me)
+        updatedProfile.append('location', location)
+
+        await dispatch(thunkEditProfile(updatedProfile, singleUser.id))
         // console.log('UPDATEDPROFILE->', updateProfile)
         closeModal();
         dispatch(thunkGetOneUser(singleUser.id));
@@ -48,7 +55,7 @@ const EditProfile = ({ userId }) => {
     return (
         <>
             <h1 className="edit-profile-header-text">Edit Your Profile</h1>
-            <form className="edit-profile-form-container" onSubmit={handleSubmit}>
+            <form className="edit-profile-form-container" method='PUT' encType="multipart/form-data" onSubmit={handleSubmit}>
                 <div className="edit-profile-container">
                     <div className='edit-profile-errors'>
                         {errors.first_name ? <p>{errors.first_name}</p> : null}
@@ -80,17 +87,19 @@ const EditProfile = ({ userId }) => {
                     />
                 </div>
                 <div className="edit-profile-container">
-                    <div className='edit-profile-errors'>
+                    {/* <div className='edit-profile-errors'>
                         {errors.profile_image ? <p>{errors.profile_image}</p> : null}
-                    </div>
+                    </div> */}
                     <label className="edit-profile-label-text">
                         Profile Picture
                     </label>
                     <input
                         className="edit-profile-form-input"
-                        type="text"
-                        value={profile_image}
-                        onChange={(e) => setprofile_image(e.target.value)}
+                        type="file"
+                        accept=".jpg, .jpeg, .png"
+                        // value={profile_image}
+                        onChange={(e) => setprofile_image(e.target.files[0])}
+                        name='profile_image'
                         required
                     />
                 </div>
