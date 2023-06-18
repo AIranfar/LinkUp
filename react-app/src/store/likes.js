@@ -1,8 +1,14 @@
 const GET_LIKES = 'likes/GET_LIKES'
+const ADD_LIKE = 'likes/ADD_LIKE'
 
 export const actionGetLikes = (likes) => ({
     type: GET_LIKES,
     likes
+})
+
+export const actionAddLike = (like) => ({
+    type: ADD_LIKE,
+    like
 })
 
 const normalAllLikes = (likes) => {
@@ -24,6 +30,18 @@ export const thunkGetLikes = () => async dispatch => {
     }
 }
 
+export const thunkAddLike = (postId) => async dispatch => {
+    const response  = await fetch(`/api/likes/${postId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+    })
+
+    if (response.ok) {
+        const like = await response.json();
+        dispatch(actionAddLike(like))
+    }
+}
+
 const initialState = { allLikes: {} }
 
 const likesReducer = (state = initialState, action) => {
@@ -32,6 +50,10 @@ const likesReducer = (state = initialState, action) => {
             const newState = { ...state }
             newState.allLikes = action.likes
             return newState
+        }
+        case ADD_LIKE: {
+            const newState = { ...state }
+            newState.allLikes[action.like.id] = action.like
         }
         default: return state
     }
