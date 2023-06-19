@@ -14,8 +14,8 @@ const AboutLinkUp = () => {
                         Javascript | React | Redux | PostgresSQL | Python | Flask | SQLAlchemy | HTML | CSS
                     </div>
                 <p className='about-app-my-info'>
-                    Linkup Inc™ 2023<a href="https://www.linkedin.com/in/ashkaun-iranfar-608387220/" target="_blank" rel="noopener noreferrer" className="my-links"><i class="fa-brands fa-linkedin" /></a>
-                    <a href="https://github.com/AIranfar" target="_blank" rel="noopener noreferrer" className="my-links"><i class="fa-brands fa-github" /></a>
+                    Linkup Inc™ 2023<a href="https://www.linkedin.com/in/ashkaun-iranfar-608387220/" target="_blank" rel="noopener noreferrer" className="my-links"><i className="fa-brands fa-linkedin" /></a>
+                    <a href="https://github.com/AIranfar" target="_blank" rel="noopener noreferrer" className="my-links"><i className="fa-brands fa-github" /></a>
                 </p>
                 </div>
             </div>
