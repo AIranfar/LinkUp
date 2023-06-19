@@ -12,3 +12,11 @@
     color: gray;
     cursor: pointer;
 }
+
+.post-like-button.liked {
+    color: #0A66C2;
+  }
+
+  .post-like-text.liked-text {
+    color: #0A66C2;
+  }

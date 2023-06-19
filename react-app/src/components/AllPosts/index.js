@@ -21,12 +21,14 @@ const AllPosts = () => {
     const allPosts = Object.values(useSelector((state) => state.allPosts.allPosts));
     const sessionUser = useSelector((state) => state.session.user);
     const allComments = Object.values(useSelector((state) => state.allComments.allComments));
-    const allLikes = useSelector((state) => state.allLikes.allLikes)
+    const allLikes = useSelector((state) => state.allLikes.allLikes);
+    const allLikesArr = Object.values(allLikes)
     const allUsers = useSelector((state) => state.singleUser.allUsers)
+    // const allUsersArr = Object.values(allUsers)
     const [openCommentId, setOpenCommentId] = useState(null);
 
-    console.log('ALLLikes-->', allLikes)
-    // console.log('ALLUSERS-->', allUsers)
+    // console.log('ALLLikes-->', allLikes)
+    console.log('ALLUSERS-->', allUsers)
 
     const toggleComments = (postId) => {
         setOpenCommentId((prevOpenCommentId) => (prevOpenCommentId === postId ? false : postId));
@@ -34,7 +36,7 @@ const AllPosts = () => {
 
     useEffect(() => {
         dispatch(thunkGetAllUsers());
-        dispatch(thunkGetLikes());  
+        dispatch(thunkGetLikes());
         dispatch(thunkGetAllPosts());
         dispatch(thunkGetComments());
     }, [dispatch]);
@@ -72,27 +74,31 @@ const AllPosts = () => {
         return null;
     };
 
-    // const renderLikes = (postId) => {
-    //     const postLikes = allLikes.filter((like) => like?.post_id === postId);
-    //     console.log('POSTLIKES', postLikes)
-    //     if (postLikes.length === 0) {
-    //       return null;
-    //     } else if (postLikes.length === 1) {
-    //       const userLiked = allUsers.find((user) => user.id === postLikes[0].user_id);
+    const renderLikes = (postId) => {
+        const postLikes = allLikesArr.filter((like) => like.post_id === postId);
 
-    //       if (userLiked) {
-    //         return `${userLiked.first_name} ${userLiked.last_name}`;
-    //       }
-    //     } else {
-    //       const firstUserLiked = allUsers.find((user) => user.id === postLikes[0]?.user_id);
+        if (postLikes.length === 0) {
+          return null;
+        } else if (postLikes.length === 1) {
+          const userId = postLikes[0].user_id;
+          const userLiked = allUsers.find((user) => user.id === userId);
 
-    //       if (firstUserLiked) {
-    //         const { first_name, last_name } = firstUserLiked;
-    //         const remainingLikes = postLikes.length - 1;
-    //         return `${first_name} ${last_name} and ${remainingLikes} others liked this post`;
-    //       }
-    //     }
-    //   }
+          if (userLiked) {
+            return `${userLiked.first_name} ${userLiked.last_name} likes this post`;
+          }
+        } else {
+          const firstUserId = postLikes[0]?.user_id;
+          const firstUserLiked = allUsers.find((user) => user.id === firstUserId);
+
+          if (firstUserLiked) {
+            const { first_name, last_name } = firstUserLiked;
+            const remainingLikes = postLikes.length - 1;
+            return `${first_name} ${last_name} and ${remainingLikes} ${remainingLikes === 1 ? 'other' : 'others'} liked this post`;
+          }
+        }
+      };
+
+
 
     if (!allComments || !allUsers) {
         return <div>Loading...</div>;
@@ -133,7 +139,7 @@ const AllPosts = () => {
                                     <div className='comment-count-section'>
                                         <div className="post-likes-comments-counter">
                                             <div className="post-render-likes">
-                                                {/* {renderLikes(post.id)} likes */}
+                                                {renderLikes(post.id)}
                                             </div>
                                             <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
                                                 {getCommentCount(post.id)} {getCommentCount(post.id) === 1 ? 'comment' : 'comments'}

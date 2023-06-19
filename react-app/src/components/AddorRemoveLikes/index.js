@@ -8,13 +8,10 @@ const AddorRemoveLikes = ({ post }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const allLikes = Object.values(useSelector((state) => state.allLikes.allLikes));
 
-  console.log('JKL:ASJKLSD LIKES', allLikes)
-
   const postLikes = allLikes.filter((like) => like.post_id === post.id);
   const postLiked = postLikes.some((like) => like.user_id === sessionUser.id);
 
   const handleClick = async () => {
-    // console.log('POSTID', post.id)
     if (postLiked) {
       await dispatch(thunkRemoveLike(post.id));
     } else {
@@ -22,12 +19,12 @@ const AddorRemoveLikes = ({ post }) => {
     }
   };
 
-  if (!allLikes) return null
+  if (!allLikes) return null;
 
   return (
-    <button className='post-like-button' onClick={handleClick}>
+    <button className={`post-like-button ${postLiked ? "liked" : ""}`} onClick={handleClick}>
       <i className={postLiked ? "fa-solid fa-thumbs-up" : "fa-regular fa-thumbs-up"} />
-      <div className="post-like-text">like</div>
+      <div className={`post-like-text ${postLiked ? "liked-text" : ""}`}>like</div>
     </button>
   );
 };
