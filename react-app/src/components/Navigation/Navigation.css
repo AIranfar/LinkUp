@@ -114,7 +114,7 @@
 }
 
 .user-profile-open {
-  width: 11rem;
+  width: fit-content;
   background-color: white;
   border: 1px solid rgba(128, 128, 128, 0.472);
   border-radius: 10px;

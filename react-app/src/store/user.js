@@ -1,10 +1,16 @@
 const GET_ONE_USER = 'user/GET_ONE_USER'
+const GET_ALL_USERS = 'user/GET_ALL_USERS'
 const EDIT_USER = 'user/EDIT_USER'
 const DELETE_USER = 'user/DELETE_USER'
 
 export const actionGetOneUser = (user) => ({
 	type: GET_ONE_USER,
 	payload: user
+})
+
+export const actionGetAllUsers = (users) => ({
+	type: GET_ALL_USERS,
+	payload: users
 })
 
 export const actionEditUser = (user) => ({
@@ -26,6 +32,14 @@ export const thunkGetOneUser = (userId) => async dispatch => {
 	}
 }
 
+export const thunkGetAllUsers = () => async dispatch => {
+	const response = await fetch(`/api/users/`);
+
+	if (response.ok) {
+		const users = await response.json();
+		dispatch(actionGetAllUsers(users))
+	}
+}
 
 export const thunkEditProfile = (userInfo, userId) => async dispatch => {
 	console.log('input data-->', userInfo)
@@ -51,12 +65,14 @@ export const thunkDeleteProfile = (userId) => async dispatch => {
 	}
 }
 
-const initialState = { singleUser: {} };
+const initialState = { singleUser: {}, allUsers: {} };
 
 const userReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case GET_ONE_USER:
 			return { singleUser: action.payload }
+		case GET_ALL_USERS:
+			return { allUsers: action.payload}
 		case EDIT_USER: {
 			const newState = { ...state }
 			newState.singleUser = action.payload

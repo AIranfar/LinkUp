@@ -12,27 +12,31 @@ import EditCommentModal from "../EditCommentModal";
 import AddorRemoveLikes from "../AddorRemoveLikes";
 import { thunkGetComments } from "../../store/comments";
 import { thunkGetLikes } from "../../store/likes";
+import { thunkGetAllUsers } from "../../store/user";
 import "./AllPosts.css";
 
 const AllPosts = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const allPosts = useSelector((state) => Object.values(state.allPosts.allPosts));
+    const allPosts = Object.values(useSelector((state) => state.allPosts.allPosts));
     const sessionUser = useSelector((state) => state.session.user);
-    const allComments = useSelector((state) => Object.values(state.allComments.allComments));
-    const allLikes = useSelector((state) => Object.values(state.allLikes.allLikes))
+    const allComments = Object.values(useSelector((state) => state.allComments.allComments));
+    const allLikes = Object.values(useSelector((state) => state.allLikes.allLikes))
+    const allUsers = Object.values(useSelector((state) => state.singleUser.allUsers))
     const [openCommentId, setOpenCommentId] = useState(null);
 
-    // console.log('ALLLikes-->', allLikes)
+    console.log('ALLLikes-->', allLikes)
+    console.log('ALLUSERS-->', allUsers)
 
     const toggleComments = (postId) => {
         setOpenCommentId((prevOpenCommentId) => (prevOpenCommentId === postId ? false : postId));
     };
 
     useEffect(() => {
+        dispatch(thunkGetLikes());
+        dispatch(thunkGetAllUsers());
         dispatch(thunkGetAllPosts());
         dispatch(thunkGetComments());
-        dispatch(thunkGetLikes());
     }, [dispatch]);
 
     const formatDate = (date) => {
@@ -68,13 +72,30 @@ const AllPosts = () => {
         return null;
     };
 
-    const renderLikes = (postId) => {
-        const postLikes = allLikes.filter((like) => like?.post_id === postId);
-        return postLikes.length
-    }
+    // const renderLikes = (postId) => {
+    //     const postLikes = allLikes.filter((like) => like?.post_id === postId);
+    //     console.log('POSTLIKES', postLikes)
+    //     if (postLikes.length === 0) {
+    //       return null;
+    //     } else if (postLikes.length === 1) {
+    //       const userLiked = allUsers.find((user) => user.id === postLikes[0].user_id);
 
-    if (!allComments) {
-        return <div>Loading comments...</div>;
+    //       if (userLiked) {
+    //         return `${userLiked.first_name} ${userLiked.last_name}`;
+    //       }
+    //     } else {
+    //       const firstUserLiked = allUsers.find((user) => user.id === postLikes[0]?.user_id);
+
+    //       if (firstUserLiked) {
+    //         const { first_name, last_name } = firstUserLiked;
+    //         const remainingLikes = postLikes.length - 1;
+    //         return `${first_name} ${last_name} and ${remainingLikes} others liked this post`;
+    //       }
+    //     }
+    //   }
+
+    if (!allComments || !allUsers) {
+        return <div>Loading...</div>;
     }
 
     return (
@@ -111,7 +132,9 @@ const AllPosts = () => {
                                 <div className="post-footer">
                                     <div className='comment-count-section'>
                                         <div className="post-likes-comments-counter">
-                                            {renderLikes(post.id)} likes
+                                            <div className="post-render-likes">
+                                                {/* {renderLikes(post.id)} likes */}
+                                            </div>
                                             <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
                                                 {getCommentCount(post.id)} {getCommentCount(post.id) === 1 ? 'comment' : 'comments'}
                                             </button>

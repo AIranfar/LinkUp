@@ -14,7 +14,7 @@ post_routes = Blueprint('posts', __name__)
 def get_all_posts():
     all_posts = Post.query.all()
     response = [one_post.to_dict() for one_post in all_posts]
-    # print('All Posts', all_posts)
+    print('All Posts', all_posts)
 
     # Adds owner username to product
     for post in response:
@@ -34,27 +34,37 @@ def get_all_posts():
 def create_new_post():
     form = PostForm()
     user_id = session.get('_user_id')
-    form['csrf_token'].data = request.cookies["csrf_token"]
+    form.csrf_token.data = request.cookies.get('csrf_token')
+
+    print('FORM DATA ->', form.data)
 
     if form.validate_on_submit():
-        image = form.data['image']
-        image.filename = get_unique_filename(image.filename)
-        upload = upload_file_to_s3(image)
+        image = form.image.data
 
-        if "url" not in upload:
-            return {'error': upload['errors']}
+        if image:
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+
+            if "url" not in upload:
+                return {'error': upload['errors']}
+
+            image_url = upload['url']
+        else:
+            image_url = None
 
         new_post = Post(
-            user_id = user_id,
-            post_body = form.data['post_body'],
-            image = upload['url'],
-            created_at = date.today(),
-            updated_at = date.today()
+            user_id=user_id,
+            post_body=form.post_body.data,
+            image=image_url,
+            created_at=date.today(),
+            updated_at=date.today()
         )
 
         db.session.add(new_post)
         db.session.commit()
+
         return new_post.to_dict()
+
     return form.errors
 
 # Edit a Post

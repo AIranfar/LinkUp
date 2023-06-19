@@ -100,8 +100,7 @@ const EditProfile = ({ userId }) => {
                         accept=".jpg, .jpeg, .png"
                         // value={profile_image}
                         onChange={(e) => setprofile_image(e.target.files[0])}
-                        name='pro'
-                        required
+                        name='profile-image'
                     />
                 </div>
                 <div className="edit-profile-container">

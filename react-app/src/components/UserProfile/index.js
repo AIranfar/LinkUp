@@ -20,15 +20,15 @@ const UserProfile = () => {
     const userPosts = allPostsArr.filter((post) => post.user_id == userId);
     const singleUser = useSelector((state) => state.singleUser.singleUser);
 
-    console.log('USERPOSTS->', userPosts)
-    console.log('singleUser', singleUser)
+    // console.log('USERPOSTS->', userPosts)
+    // console.log('singleUser', singleUser)
 
     useEffect(() => {
         dispatch(thunkGetOneUser(userId));
         dispatch(thunkGetAllPosts());
     }, [dispatch, userId]);
 
-    if (!userId) {
+    if (!userId || !singleUser) {
         return <div className="loading">Loading...</div>;
     }
 
