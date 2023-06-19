@@ -1,0 +1,14 @@
+.post-like-button {
+    background-color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.post-like-text {
+    color: gray;
+    cursor: pointer;
+}

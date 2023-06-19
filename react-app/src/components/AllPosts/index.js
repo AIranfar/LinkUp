@@ -9,6 +9,7 @@ import EditPostModal from "../EditPostModal";
 import CreateNewComment from "../CreateNewComment";
 import DeleteCommentModal from "../DeleteCommentModal";
 import EditCommentModal from "../EditCommentModal";
+import AddorRemoveLikes from "../AddorRemoveLikes";
 import { thunkGetComments } from "../../store/comments";
 import { thunkGetLikes } from "../../store/likes";
 import "./AllPosts.css";
@@ -115,6 +116,7 @@ const AllPosts = () => {
                                                 {getCommentCount(post.id)} {getCommentCount(post.id) === 1 ? 'comment' : 'comments'}
                                             </button>
                                         </div>
+                                        <AddorRemoveLikes post={post} />
                                     </div>
                                     <div className="open-comment-container">
                                         <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>

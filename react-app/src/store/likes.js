@@ -1,5 +1,6 @@
 const GET_LIKES = 'likes/GET_LIKES'
 const ADD_LIKE = 'likes/ADD_LIKE'
+const REMOVE_LIKE = 'likes/REMOVE_LIKE'
 
 export const actionGetLikes = (likes) => ({
     type: GET_LIKES,
@@ -8,6 +9,11 @@ export const actionGetLikes = (likes) => ({
 
 export const actionAddLike = (like) => ({
     type: ADD_LIKE,
+    like
+})
+
+export const actionRemoveLike = (like) => ({
+    type: REMOVE_LIKE,
     like
 })
 
@@ -31,7 +37,7 @@ export const thunkGetLikes = () => async dispatch => {
 }
 
 export const thunkAddLike = (postId) => async dispatch => {
-    const response  = await fetch(`/api/likes/${postId}`, {
+    const response  = await fetch(`/api/likes/${postId}/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
     })
@@ -39,6 +45,18 @@ export const thunkAddLike = (postId) => async dispatch => {
     if (response.ok) {
         const like = await response.json();
         dispatch(actionAddLike(like))
+    }
+}
+
+export const thunkRemoveLike = (postId) => async dispatch => {
+    const response = await fetch(`/api/likes/${postId}/remove` , {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    })
+
+    if (response.ok) {
+        const like = await response.json();
+        dispatch(actionRemoveLike(like))
     }
 }
 
@@ -54,6 +72,11 @@ const likesReducer = (state = initialState, action) => {
         case ADD_LIKE: {
             const newState = { ...state }
             newState.allLikes[action.like.id] = action.like
+        }
+        case REMOVE_LIKE: {
+            const newState = { ...state }
+            delete newState.allLikes[action.like]
+            return newState
         }
         default: return state
     }
