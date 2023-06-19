@@ -1,5 +1,5 @@
 .all-posts-container {
-    width: 35rem;
+    width: 40rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +17,7 @@
     border: 1px solid rgb(221, 221, 221);
     gap: 10rem;
     border-radius: 10px;
-    width: 35rem;
+    width: 40rem;
 }
 
 .post-profile-picture {
@@ -25,7 +25,7 @@
     width: 3rem;
     border-radius: 4rem;
     object-fit: cover;
-    margin-left: 20px;
+    margin-left: 10px;
     cursor: pointer;
 }
 
@@ -86,15 +86,16 @@
 .post-likes-comments-counter {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin-top: -140px;
+    border-bottom: 1px solid gray;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
 
-.post-footer {
-    display: flex;
-    flex-direction: column;
-}
-
-.open-comment-container{
-
+.render-like-names {
+    color: gray;
 }
 
 .post-user-info {
@@ -134,20 +135,26 @@
 
 .single-post-body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
-    padding-left: 20px;
-    padding-right: 20px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    padding: 10px;
     word-wrap: break-word;
     margin-top: -150px;
 }
 
-.comment-count-section {
-    display: flex;
-    gap: 17rem;
-    justify-content: center;
-    margin-top: -25px;
-    /* border-top: 1px solid gray; */
-}
 
+.open-comment-section-button-numbered {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    background-color: white;
+    border: none;
+    color: gray;
+    font-size: 20px;
+    /* margin-top: -150px; */
+    cursor: pointer;
+    height: 20px;
+}
 
 .open-comment-section-button {
     display: flex;
@@ -157,7 +164,7 @@
     border: none;
     color: gray;
     font-size: 20px;
-    margin-top: -150px;
+    /* margin-top: -150px; */
     cursor: pointer;
     height: 20px;
 }
@@ -176,7 +183,7 @@
     border-radius: 10px;
     height: 2rem;
     width: 88%;
-    margin-top: -100px;
+    /* margin-top: -100px; */
 }
 
 .create-new-comment-button {
@@ -188,6 +195,12 @@
     cursor: pointer;
     color: rgba(0, 0, 0, 0.667);
     text-align: start;
+}
+
+.likes-comment-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
 }
 
 .create-new-comment-button:hover {
@@ -246,8 +259,3 @@
     align-items: start;
     margin-top: 15px;
 }
-
-/* .post-render-likes {
-    background-color: green;
-    color: blue
-} */
