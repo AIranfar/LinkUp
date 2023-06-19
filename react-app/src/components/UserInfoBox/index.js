@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './UserInfoBox.css';
 
 const UserInfoBox = () => {
-    const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user)
 
     return (
