@@ -24,7 +24,7 @@ export const actionDeleteUser = (userId) => ({
 })
 
 const normalizedAllUsers = (users) => {
-	console.log('USERS-->', users)
+	// console.log('USERS-->', users)
 	let normalizedUsers = {};
 	users.forEach(user => {
 		normalizedUsers[user.dispatch] = user
@@ -46,8 +46,8 @@ export const thunkGetAllUsers = () => async dispatch => {
 
 	if (response.ok) {
 		const users = await response.json();
-		const normalUsers = normalizedAllUsers(users)
-		dispatch(actionGetAllUsers(normalUsers))
+		// const normalUsers = normalizedAllUsers(users)
+		dispatch(actionGetAllUsers(users))
 	}
 }
 
