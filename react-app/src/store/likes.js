@@ -30,6 +30,7 @@ export const thunkGetLikes = () => async dispatch => {
 
     if (response.ok) {
         const likes = await response.json()
+        console.log('LIKES--->',likes )
         const normalizedLikes = normalAllLikes(likes)
         // console.log('NORMAL LIKES --> ', normalizedLikes)
         dispatch(actionGetLikes(normalizedLikes))
@@ -37,6 +38,7 @@ export const thunkGetLikes = () => async dispatch => {
 }
 
 export const thunkAddLike = (postId) => async dispatch => {
+    console.log('POSTID', postId)
     const response  = await fetch(`/api/likes/${postId}/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
@@ -44,7 +46,9 @@ export const thunkAddLike = (postId) => async dispatch => {
 
     if (response.ok) {
         const like = await response.json();
+        // console.log('LIKE-->', like)
         dispatch(actionAddLike(like))
+        // dispatch(actionGetLikes())
     }
 }
 
@@ -57,6 +61,7 @@ export const thunkRemoveLike = (postId) => async dispatch => {
     if (response.ok) {
         const like = await response.json();
         dispatch(actionRemoveLike(like))
+        dispatch(thunkGetLikes())
     }
 }
 
@@ -70,8 +75,9 @@ const likesReducer = (state = initialState, action) => {
             return newState
         }
         case ADD_LIKE: {
-            const newState = { ...state }
+            const newState = { ...state, allLikes: { ...state.allLikes } }
             newState.allLikes[action.like.id] = action.like
+            return newState
         }
         case REMOVE_LIKE: {
             const newState = { ...state }

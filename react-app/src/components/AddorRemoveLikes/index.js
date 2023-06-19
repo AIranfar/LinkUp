@@ -6,18 +6,23 @@ import "./AddorRemoveLikes.css";
 const AddorRemoveLikes = ({ post }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const allLikes = useSelector((state) => Object.values(state.allLikes.allLikes));
+  const allLikes = Object.values(useSelector((state) => state.allLikes.allLikes));
+
+  console.log('JKL:ASJKLSD LIKES', allLikes)
 
   const postLikes = allLikes.filter((like) => like.post_id === post.id);
   const postLiked = postLikes.some((like) => like.user_id === sessionUser.id);
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    // console.log('POSTID', post.id)
     if (postLiked) {
-      dispatch(thunkRemoveLike(post.id));
+      await dispatch(thunkRemoveLike(post.id));
     } else {
-      dispatch(thunkAddLike(post.id));
+      await dispatch(thunkAddLike(post.id));
     }
   };
+
+  if (!allLikes) return null
 
   return (
     <button className='post-like-button' onClick={handleClick}>

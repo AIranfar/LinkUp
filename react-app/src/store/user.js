@@ -23,6 +23,15 @@ export const actionDeleteUser = (userId) => ({
 	payload: userId
 })
 
+const normalizedAllUsers = (users) => {
+	console.log('USERS-->', users)
+	let normalizedUsers = {};
+	users.forEach(user => {
+		normalizedUsers[user.dispatch] = user
+	})
+	return normalizedUsers
+}
+
 export const thunkGetOneUser = (userId) => async dispatch => {
 	const response = await fetch(`/api/users/${userId}`);
 
@@ -37,7 +46,8 @@ export const thunkGetAllUsers = () => async dispatch => {
 
 	if (response.ok) {
 		const users = await response.json();
-		dispatch(actionGetAllUsers(users))
+		const normalUsers = normalizedAllUsers(users)
+		dispatch(actionGetAllUsers(normalUsers))
 	}
 }
 
