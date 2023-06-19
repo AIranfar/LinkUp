@@ -24,7 +24,7 @@ const AddorRemoveLikes = ({ post }) => {
   return (
     <button className={`post-like-button ${postLiked ? "liked" : ""}`} onClick={handleClick}>
       <i className={postLiked ? "fa-solid fa-thumbs-up" : "fa-regular fa-thumbs-up"} />
-      <div className={`post-like-text ${postLiked ? "liked-text" : ""}`}>like</div>
+      <div className={`post-like-text ${postLiked ? "liked-text" : ""}`}>Like</div>
     </button>
   );
 };

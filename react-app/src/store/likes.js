@@ -30,7 +30,7 @@ export const thunkGetLikes = () => async dispatch => {
 
     if (response.ok) {
         const likes = await response.json()
-        console.log('LIKES--->',likes )
+        // console.log('LIKES--->',likes )
         const normalizedLikes = normalAllLikes(likes)
         // console.log('NORMAL LIKES --> ', normalizedLikes)
         dispatch(actionGetLikes(normalizedLikes))

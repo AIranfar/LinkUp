@@ -28,7 +28,7 @@ const AllPosts = () => {
     const [openCommentId, setOpenCommentId] = useState(null);
 
     // console.log('ALLLikes-->', allLikes)
-    console.log('ALLUSERS-->', allUsers)
+    // console.log('ALLUSERS-->', allUsers)
 
     const toggleComments = (postId) => {
         setOpenCommentId((prevOpenCommentId) => (prevOpenCommentId === postId ? false : postId));
@@ -135,26 +135,32 @@ const AllPosts = () => {
                                 </div>
                                 <div className="single-post-body">{post.post_body}</div>
                                 <img src={post.image} className="all-posts-image" />
-                                <div className="post-footer">
-                                    <div className='comment-count-section'>
-                                        <div className="post-likes-comments-counter">
-                                            <div className="post-render-likes">
+                                <div>
+                                        <div
+                                            className="post-likes-comments-counter"
+                                        >
+                                            <div className="render-like-names">
                                                 {renderLikes(post.id)}
                                             </div>
-                                            <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
+                                            <button
+                                                className='open-comment-section-button-numbered'
+                                                onClick={() => toggleComments(post.id)}>
                                                 {getCommentCount(post.id)} {getCommentCount(post.id) === 1 ? 'comment' : 'comments'}
                                             </button>
                                         </div>
+                                    <div className="likes-comment-container">
                                         <AddorRemoveLikes post={post} />
-                                    </div>
-                                    <div className="open-comment-container">
-                                        <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
+                                        <button
+                                            className='open-comment-section-button'
+                                            onClick={() => toggleComments(post.id)}>
                                             <i className="fa-regular fa-comment-dots"></i> Comment
                                         </button>
                                     </div>
                                     {openCommentId === post.id && (
                                         <div>
-                                            <p className="new-comment-button-container">
+                                            <p
+                                            className="new-comment-button-container"
+                                            >
                                                 <img src={sessionUser.profile_image} className="new-comment-profile-picture" />
                                                 <OpenModalButton
                                                     className='create-new-comment-button'
