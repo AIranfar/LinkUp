@@ -54,6 +54,7 @@ const CreateNewPost = () => {
                         // value={post_body}
                         placeholder='What do you want to talk about?'
                         name='post_body'
+                        required
                     />
                 </div>
                 <div className="new-post-image-post-container">
