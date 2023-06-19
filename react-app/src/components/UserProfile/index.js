@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetOneUser } from "../../store/user";
 import { thunkGetAllPosts } from "../../store/posts";
-import AboutLinkUp from "../AboutLinkUp";
-import UserInfoBox from "../UserInfoBox";
 import OpenModalButton from "../OpenModalButton";
 import EditProfileModal from "../EditProfileModal";
 import DeleteProfileModal from "../DeleteProfileModal";

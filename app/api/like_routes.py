@@ -16,6 +16,7 @@ def get_all_likes():
     for post in posts:
         likes.extend([like.to_dict() for like in post.like])
 
+    print('likes', likes)
     return likes
 
 @like_routes.route('/<int:post_id>/new', methods=['POST'])
@@ -39,7 +40,7 @@ def create_new_like(post_id):
     db.session.add(like)
     db.session.commit()
 
-    return {'Message': 'Post liked successfully'}
+    return like.to_dict()
 
 @like_routes.route('/<int:post_id>/remove', methods=['DELETE'])
 @login_required
@@ -58,4 +59,4 @@ def remove_like(post_id):
     db.session.delete(like)
     db.session.commit()
 
-    return {'message': 'Like deleted successfully'}
+    return like.to_dict()

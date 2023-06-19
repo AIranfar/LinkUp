@@ -21,20 +21,20 @@ const AllPosts = () => {
     const allPosts = Object.values(useSelector((state) => state.allPosts.allPosts));
     const sessionUser = useSelector((state) => state.session.user);
     const allComments = Object.values(useSelector((state) => state.allComments.allComments));
-    const allLikes = Object.values(useSelector((state) => state.allLikes.allLikes))
-    const allUsers = Object.values(useSelector((state) => state.singleUser.allUsers))
+    const allLikes = useSelector((state) => state.allLikes.allLikes)
+    const allUsers = useSelector((state) => state.singleUser.allUsers)
     const [openCommentId, setOpenCommentId] = useState(null);
 
     console.log('ALLLikes-->', allLikes)
-    console.log('ALLUSERS-->', allUsers)
+    // console.log('ALLUSERS-->', allUsers)
 
     const toggleComments = (postId) => {
         setOpenCommentId((prevOpenCommentId) => (prevOpenCommentId === postId ? false : postId));
     };
 
     useEffect(() => {
-        dispatch(thunkGetLikes());
         dispatch(thunkGetAllUsers());
+        dispatch(thunkGetLikes());  
         dispatch(thunkGetAllPosts());
         dispatch(thunkGetComments());
     }, [dispatch]);
