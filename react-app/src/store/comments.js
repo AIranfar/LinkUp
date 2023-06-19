@@ -43,6 +43,7 @@ export const thunkGetComments = () => async dispatch => {
         const comments = await response.json()
         // console.log('NORMAL COMMENTS', comments)
         const normalizedComments = normalizedAllComments(comments)
+        console.log('normal comments-->', normalizedComments)
         dispatch(actionGetComments(normalizedComments))
     }
 }

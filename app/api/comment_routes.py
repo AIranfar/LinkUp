@@ -32,7 +32,7 @@ def get_all_comments():
 def create_new_comment(post_id):
     user_id = session.get('_user_id')
     data = request.get_json()
-    print('DATAAAAAAAAAA----->', data)
+    # print('DATAAAAAAAAAA----->', data)
     new_comment = Comment(
         comment_body=data['comment_body'],
         user_id=user_id,

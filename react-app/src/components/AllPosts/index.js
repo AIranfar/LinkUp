@@ -9,6 +9,7 @@ import EditPostModal from "../EditPostModal";
 import CreateNewComment from "../CreateNewComment";
 import DeleteCommentModal from "../DeleteCommentModal";
 import EditCommentModal from "../EditCommentModal";
+import AddorRemoveLikes from "../AddorRemoveLikes";
 import { thunkGetComments } from "../../store/comments";
 import { thunkGetLikes } from "../../store/likes";
 import "./AllPosts.css";
@@ -19,9 +20,10 @@ const AllPosts = () => {
     const allPosts = useSelector((state) => Object.values(state.allPosts.allPosts));
     const sessionUser = useSelector((state) => state.session.user);
     const allComments = useSelector((state) => Object.values(state.allComments.allComments));
+    const allLikes = useSelector((state) => Object.values(state.allLikes.allLikes))
     const [openCommentId, setOpenCommentId] = useState(null);
 
-    // console.log('ALLCOMMENTS', sessionUser)
+    // console.log('ALLLikes-->', allLikes)
 
     const toggleComments = (postId) => {
         setOpenCommentId((prevOpenCommentId) => (prevOpenCommentId === postId ? false : postId));
@@ -66,6 +68,11 @@ const AllPosts = () => {
         return null;
     };
 
+    const renderLikes = (postId) => {
+        const postLikes = allLikes.filter((like) => like?.post_id === postId);
+        return postLikes.length
+    }
+
     if (!allComments) {
         return <div>Loading comments...</div>;
     }
@@ -86,7 +93,7 @@ const AllPosts = () => {
                     <div className="all-posts-container">
                         {allPosts.reverse().map((post) => (
                             <div key={post.id} className="single-post">
-                                {/* {console.log('POST USER ID->', post.user_id)} */}
+                                {/* {console.log('POST USER ID->', post)} */}
                                 <div className="post-header">
                                     <div className="post-user-info">
                                         <img onClick={() => history.push(`/user/${post.user_id}`)} src={post.owner_profile_picture} className="post-profile-picture" />
@@ -103,15 +110,21 @@ const AllPosts = () => {
                                 <img src={post.image} className="all-posts-image" />
                                 <div className="post-footer">
                                     <div className='comment-count-section'>
+                                        <div className="post-likes-comments-counter">
+                                            {renderLikes(post.id)} likes
+                                            <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
+                                                {getCommentCount(post.id)} {getCommentCount(post.id) === 1 ? 'comment' : 'comments'}
+                                            </button>
+                                        </div>
+                                        <AddorRemoveLikes post={post} />
+                                    </div>
+                                    <div className="open-comment-container">
                                         <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
                                             <i className="fa-regular fa-comment-dots"></i> Comment
                                         </button>
-                                        <button className='open-comment-section-button' onClick={() => toggleComments(post.id)}>
-                                            {getCommentCount(post.id)} {getCommentCount(post.id) === 1 ? 'comment' : 'comments'}
-                                        </button>
                                     </div>
                                     {openCommentId === post.id && (
-                                        <>
+                                        <div>
                                             <p className="new-comment-button-container">
                                                 <img src={sessionUser.profile_image} className="new-comment-profile-picture" />
                                                 <OpenModalButton
@@ -158,7 +171,7 @@ const AllPosts = () => {
                                                     </div>
                                                 </div>
                                             ))}
-                                        </>
+                                        </div>
                                     )}
                                 </div>
                             </div>
