@@ -28,15 +28,35 @@
     width: 70%;
 }
 
+.edit-profile-image-header-icon {
+    display: flex;
+    flex-direction: column;
+}
+
 .edit-profile-label-text {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
     margin-bottom: 10px;
+}
+
+.edit-profile-image-label {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.edit-profile-image-file-name {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.635);
 }
 
 .edit-profile-form-input {
     border-radius: 8px;
     margin-bottom: 10px;
 }
+
+.edit-profile-image-form-input {
+    display: none;
+}
+
 .edit-profile-submit-container {
     margin-bottom: 10px;
     margin-top: 10px;

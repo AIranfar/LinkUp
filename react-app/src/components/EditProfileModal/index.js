@@ -88,14 +88,18 @@ const EditProfile = ({ userId }) => {
                     />
                 </div>
                 <div className="edit-profile-container">
-                    {/* <div className='edit-profile-errors'>
-                        {errors.profile_image ? <p>{errors.profile_image}</p> : null}
-                    </div> */}
-                    <label className="edit-profile-label-text">
-                        Profile Picture
-                    </label>
+                    <div className="edit-profile-image-header-icon">
+                        <label className="edit-profile-label-text">Profile Picture</label>
+                        <label htmlFor="image-upload" className="edit-profile-image-label">
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                                <i className="fa-regular fa-image"></i>
+                                <div className="edit-profile-image-file-name">{profile_image.name}</div>
+                            </div>
+                        </label>
+                    </div>
                     <input
-                        className="edit-profile-form-input"
+                        id='image-upload'
+                        className="edit-profile-image-form-input"
                         type="file"
                         accept=".jpg, .jpeg, .png"
                         // value={profile_image}
