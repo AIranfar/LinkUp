@@ -52,7 +52,7 @@ export const thunkGetAllUsers = () => async dispatch => {
 }
 
 export const thunkEditProfile = (userInfo, userId) => async dispatch => {
-	console.log('input data-->', userInfo)
+	// console.log('input data-->', userInfo)
 	const response = await fetch(`/api/users/${userId}`, {
 		method: 'PUT',
 		body: userInfo

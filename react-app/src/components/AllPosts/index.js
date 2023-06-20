@@ -28,7 +28,7 @@ const AllPosts = () => {
     const [openCommentId, setOpenCommentId] = useState(null);
 
     // console.log('ALLLikes-->', allLikes)
-    console.log('ALLUSERS-->', allUsers)
+    // console.log('ALLUSERS-->', allUsers)
 
     const toggleComments = (postId) => {
         setOpenCommentId((prevOpenCommentId) => (prevOpenCommentId === postId ? false : postId));
