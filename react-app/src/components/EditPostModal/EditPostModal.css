@@ -74,26 +74,39 @@
 }
 
 .edit-post-image-container {
-    width: 87%;
-    margin: auto;
     display: flex;
-    flex-direction: column;
-    margin-top: 10px;
+    padding-left: 35px;
+    justify-content: space-between;
 }
 
 .edit-post-image {
-    border: 1px solid rgba(196, 196, 196, 0.368);
-    border-radius: 10px;
-    resize: none;
-    width: 100%;
-    margin: auto;
-    margin-top: 20px;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    display: none
+}
+
+.edit-post-image-header-icon {
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.635);
+}
+
+.edit-post-image-text {
+    font-size: 1rem;
+}
+
+.edit-post-image-label {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.edit-post-image-file-name {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.516);
 }
 
 .edit-submit-button-container {
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+    align-items: flex-end;
     margin-top: 20px;
     margin-right: 35px;
 }

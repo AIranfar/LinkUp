@@ -122,12 +122,13 @@
 .new-post-image-post-container {
     display: flex;
     padding-left: 35px;
+    justify-content: space-between;
 }
 
 .new-post-image-header-icon {
     display: flex;
     flex-direction: column;
-    color: rgba(0, 0, 0, 0.516);
+    color: rgba(0, 0, 0, 0.635);
 }
 
 .new-post-image-file-name {
