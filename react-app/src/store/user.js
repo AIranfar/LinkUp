@@ -27,7 +27,7 @@ const normalizedAllUsers = (users) => {
 	// console.log('USERS-->', users)
 	let normalizedUsers = {};
 	users.forEach(user => {
-		normalizedUsers[user.dispatch] = user
+		normalizedUsers[user.id] = user
 	})
 	return normalizedUsers
 }
@@ -46,8 +46,9 @@ export const thunkGetAllUsers = () => async dispatch => {
 
 	if (response.ok) {
 		const users = await response.json();
-		// const normalUsers = normalizedAllUsers(users)
-		dispatch(actionGetAllUsers(users))
+		const normalUsers = normalizedAllUsers(users)
+		// console.log('USERS RESPONSE->', users)
+		dispatch(actionGetAllUsers(normalUsers))
 	}
 }
 
@@ -82,7 +83,7 @@ const userReducer = (state = initialState, action) => {
 		case GET_ONE_USER:
 			return { singleUser: action.payload }
 		case GET_ALL_USERS:
-			return { allUsers: action.payload}
+			return { ...state, allUsers: action.payload }
 		case EDIT_USER: {
 			const newState = { ...state }
 			newState.singleUser = action.payload

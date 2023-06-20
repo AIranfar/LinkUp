@@ -23,12 +23,12 @@ const AllPosts = () => {
     const allComments = Object.values(useSelector((state) => state.allComments.allComments));
     const allLikes = useSelector((state) => state.allLikes.allLikes);
     const allLikesArr = Object.values(allLikes)
-    const allUsers = useSelector((state) => state.singleUser.allUsers)
-    const allUsersArr = Object.values(allUsers)
+    const allUsers = useSelector((state) => state.singleUser.allUsers);
+    const allUsersArr = Object.values(allUsers || {})
     const [openCommentId, setOpenCommentId] = useState(null);
 
     // console.log('ALLLikes-->', allLikes)
-    // console.log('ALLUSERS-->', allUsers)
+    // console.log('ALLUSERS-->', allUsersArr)
 
     const toggleComments = (postId) => {
         setOpenCommentId((prevOpenCommentId) => (prevOpenCommentId === postId ? false : postId));
