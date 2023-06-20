@@ -38,7 +38,7 @@ def edit_profile(id):
     about_me = data.get('about_me')
     location = data.get('location')
 
-    print('IMAGE --> ', profile_image)
+    # print('IMAGE --> ', profile_image)
 
     if user:
         if profile_image:

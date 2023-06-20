@@ -51,7 +51,7 @@ def create_new_comment(post_id):
 def edit_comment(comment_id):
     comment = Comment.query.get(comment_id)
     data = request.get_json()
-    print("DATA", data)
+    # print("DATA", data)
 
     if comment:
         comment.comment_body = data['comment_body']
