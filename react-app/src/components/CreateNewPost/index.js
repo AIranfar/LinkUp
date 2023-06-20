@@ -58,25 +58,23 @@ const CreateNewPost = () => {
                     />
                 </div>
                 <div className="new-post-image-post-container">
-                    <div className="new-post-body-container">
-                        <div className="new-post-image-header-icon">
-                            <h4 className="new-post-image-text">Post Image (optional)</h4>
-                            <label htmlFor="image-upload" className="new-post-image-label">
-                                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                                    <i className="fa-regular fa-image"></i>
-                                    <div className="new-post-image-file-name">{image.name}</div>
-                                </div>
-                            </label>
-                        </div>
-                        <input
-                            id="image-upload"
-                            className="new-post-image"
-                            type='file'
-                            accept=".jpg, .jpeg, .png"
-                            onChange={(e) => setImage(e.target.files[0])}
-                            name='image'
-                        />
+                    <div className="new-post-image-header-icon">
+                        <h4 className="new-post-image-text">Post Image (optional)</h4>
+                        <label htmlFor="image-upload" className="new-post-image-label">
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                                <i className="fa-regular fa-image"></i>
+                                <div className="new-post-image-file-name">{image.name}</div>
+                            </div>
+                        </label>
                     </div>
+                    <input
+                        id="image-upload"
+                        className="new-post-image"
+                        type='file'
+                        accept=".jpg, .jpeg, .png"
+                        onChange={(e) => setImage(e.target.files[0])}
+                        name='image'
+                    />
                     <div className='new-submit-button-container'>
                         <button className='new-post-submit-button' type='submit'>Post</button>
                     </div>

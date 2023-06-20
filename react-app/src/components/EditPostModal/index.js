@@ -61,8 +61,17 @@ const EditPost = ({ postId }) => {
                     />
                 </div>
                 <div className="edit-post-image-container">
-                    {/* {errors.image ? <p className='edit-post-errors' id='image-errors'>{errors.image}</p> : null} */}
+                    <div className="edit-post-image-header-icon">
+                        <h4 className="edit-post-image-text">Edit Image (optional)</h4>
+                        <label htmlFor="image-upload" className="edit-post-image-label">
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                                <i className="fa-regular fa-image"></i>
+                                <div className="edit-post-image-file-name">{image.name}</div>
+                            </div>
+                        </label>
+                    </div>
                     <input
+                        id="image-upload"
                         className="edit-post-image"
                         type='file'
                         // value={image}
@@ -71,9 +80,9 @@ const EditPost = ({ postId }) => {
                         placeholder='Image (Optional)'
                         name='image'
                     />
-                </div>
-                <div className='edit-submit-button-container'>
-                    <button className='edit-post-submit-button' type='submit'>Edit Post</button>
+                    <div className='edit-submit-button-container'>
+                        <button className='edit-post-submit-button' type='submit'>Edit Post</button>
+                    </div>
                 </div>
             </form>
         </div>
