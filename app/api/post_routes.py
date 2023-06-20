@@ -14,7 +14,7 @@ post_routes = Blueprint('posts', __name__)
 def get_all_posts():
     all_posts = Post.query.all()
     response = [one_post.to_dict() for one_post in all_posts]
-    print('All Posts', all_posts)
+    # print('All Posts', all_posts)
 
     # Adds owner username to product
     for post in response:
@@ -36,7 +36,7 @@ def create_new_post():
     user_id = session.get('_user_id')
     form.csrf_token.data = request.cookies.get('csrf_token')
 
-    print('FORM DATA ->', form.data)
+    # print('FORM DATA ->', form.data)
 
     if form.validate_on_submit():
         image = form.image.data

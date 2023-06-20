@@ -16,7 +16,7 @@ def get_all_likes():
     for post in posts:
         likes.extend([like.to_dict() for like in post.like])
 
-    print('likes', likes)
+    # print('likes', likes)
     return likes
 
 @like_routes.route('/<int:post_id>/new', methods=['POST'])

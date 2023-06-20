@@ -38,7 +38,7 @@ export const thunkGetLikes = () => async dispatch => {
 }
 
 export const thunkAddLike = (postId) => async dispatch => {
-    console.log('POSTID', postId)
+    // console.log('POSTID', postId)
     const response  = await fetch(`/api/likes/${postId}/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
