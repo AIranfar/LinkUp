@@ -24,7 +24,7 @@ const AllPosts = () => {
     const allLikes = useSelector((state) => state.allLikes.allLikes);
     const allLikesArr = Object.values(allLikes)
     const allUsers = useSelector((state) => state.singleUser.allUsers)
-    // const allUsersArr = Object.values(allUsers)
+    const allUsersArr = Object.values(allUsers)
     const [openCommentId, setOpenCommentId] = useState(null);
 
     // console.log('ALLLikes-->', allLikes)
@@ -81,14 +81,14 @@ const AllPosts = () => {
           return null;
         } else if (postLikes.length === 1) {
           const userId = postLikes[0].user_id;
-          const userLiked = allUsers.find((user) => user.id === userId);
+          const userLiked = allUsersArr.find((user) => user.id === userId);
 
           if (userLiked) {
             return `${userLiked.first_name} ${userLiked.last_name} likes this post`;
           }
         } else {
           const firstUserId = postLikes[0]?.user_id;
-          const firstUserLiked = allUsers.find((user) => user.id === firstUserId);
+          const firstUserLiked = allUsersArr.find((user) => user.id === firstUserId);
 
           if (firstUserLiked) {
             const { first_name, last_name } = firstUserLiked;
