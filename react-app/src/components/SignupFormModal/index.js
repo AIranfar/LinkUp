@@ -49,11 +49,6 @@ function SignupFormModal() {
 		}
 	};
 
-	const handleProfileImageChange = (e) => {
-		setProfileImage(e.target.files[0]);
-		setFrontEndErrors({});
-	  };
-
 	return (
 		<>
 			<h1 className="signup-header-text">Sign Up</h1>
@@ -124,7 +119,7 @@ function SignupFormModal() {
 						id='profile-image-upload'
 						className="signup-form-profile-image"
 						type="file"
-						onChange={handleProfileImageChange}
+						onChange={(e) => setProfileImage(e.target.files[0])}
 						accept=".jpg, .jpeg, .png"
 						name='profile-image'
 					/>
